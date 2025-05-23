@@ -1,0 +1,106 @@
+site_name: DeGov.AI Docs
+site_url: https://degov.ai
+site_description: "DeGov.AI is a governance platform that leverages AI to enhance decision-making and community engagement."
+copyright: Copyright &copy; RingDAO 2025
+repo_name: ringecosystem/degov-docs
+edit_uri: https://github.com/ringecosystem/degov-docs/edit/main/docs
+theme:
+  name: material
+  logo: resource/pics/degov.png
+  favicon: resource/pics/degov.svg
+  font:
+    text: San Francisco
+    code: SFMono-Regular
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  language: en
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+
+extra:
+  generator: false
+  homepage: https://degov.ai
+  status:
+    new: Recently added
+    deprecated: Deprecated
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ringecosystem/degov
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/ai_degov
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/DeGov_AI
+
+  analytics:
+    provider: google
+    property: 
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="https://github.com/ringecosystem/degov-docs/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">feedback form</a>.
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+extra_css:
+  - resource/stylesheets/extra.css
+
+plugins:
+  - search
+  - meta-descriptions:
+      enable_checks: true
+      max_length: 500
+      trim: true
+  - git-authors
+  - git-revision-date-localized:
+      fallback_to_build_date: false
+      enable_creation_date: true
+  - redirects:
+      redirect_maps:
+
+nav:
+  - Home: index.md
