@@ -1,16 +1,30 @@
-
-:root  > * {
-  --md-primary-fg-color:        #000000;
-  --md-primary-fg-color--light: #000000;
-  --md-primary-fg-color--dark:  #000000;
+[data-md-color-scheme="default"] {
+    --md-primary-fg-color:        #000000;
 }
 
 .md-header__title > .md-header__ellipsis > .md-header__topic > .md-ellipsis {
     font-family: Montserrat Thin;
-    font-size: 18;
+    font-size: 24px;
     font-weight: 400;
 }
 
-.md-nav__link--active > span {
-    font-weight: bold;
+/* Make links more distinguishable */
+.md-content a {
+    color: #673ab7; /* Deep Purple, matching the theme */
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.md-content a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Style external links differently */
+.md-content a[href^="http"]::after {
+    content: "↗";
+    display: inline-block;
+    margin-left: 0.2em;
+    font-size: 0.8em;
+    vertical-align: super;
 }

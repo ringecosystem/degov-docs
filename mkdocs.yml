@@ -31,6 +31,8 @@ theme:
   language: en
   palette:
     - scheme: default
+      primary: deep purple
+      accent: deep purple
  
 extra:
   generator: false
