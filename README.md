@@ -1,6 +1,4 @@
-# degov-docs
-
-## Installing dependencies
+# DeGov.AI Documentation
 
 To install all required MkDocs plugins, run:
 
@@ -19,9 +17,3 @@ mkdocs build
 ```sh
 mkdocs serve
 ```
-
-The following plugins are integrated:
-- mkdocs-git-revision-date-localized-plugin
-- mkdocs-git-authors-plugin
-- mkdocs-redirects
-- mkdocs-meta-descriptions-plugin

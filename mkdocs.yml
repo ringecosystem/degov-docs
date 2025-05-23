@@ -30,22 +30,14 @@ theme:
     - toc.follow
   language: en
   palette:
-    - media: "(prefers-color-scheme)"
+    - scheme: default
       toggle:
-        icon: material/link
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: custom
-      toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: custom
+    - scheme: slate
       toggle:
-        icon: material/toggle-switch-off
-        name: Switch to system preference
+        icon: material/brightness-4
+        name: Switch to light mode
 
 extra:
   generator: false
@@ -87,7 +79,7 @@ extra:
       make our documentation better.
 
 extra_css:
-  - resource/stylesheets/extra.css
+  # - resource/stylesheets/extra.css
 
 plugins:
   - search
