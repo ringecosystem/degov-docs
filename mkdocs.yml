@@ -6,7 +6,7 @@ repo_name: ringecosystem/degov-docs
 edit_uri: https://github.com/ringecosystem/degov-docs/edit/main/docs
 theme:
   name: material
-  logo: resource/pics/degov.png
+  logo: resource/pics/degov.svg
   favicon: resource/pics/degov.svg
   font:
     text: San Francisco
@@ -31,14 +31,7 @@ theme:
   language: en
   palette:
     - scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-
+ 
 extra:
   generator: false
   homepage: https://degov.ai
@@ -79,7 +72,7 @@ extra:
       make our documentation better.
 
 extra_css:
-  # - resource/stylesheets/extra.css
+  - resource/stylesheets/extra.css
 
 plugins:
   - search
@@ -96,3 +89,9 @@ plugins:
 
 nav:
   - Home: index.md
+  - Governance:
+      - Overview: governance/overview.md
+  - Delegation:
+      - Overview: delegation/overview.md
+  - Parameters Index:
+      - Overview: parameters/overview.md
