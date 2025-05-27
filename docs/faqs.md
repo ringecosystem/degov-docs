@@ -3,7 +3,7 @@
 
 This document provides answers to frequently asked questions about DeGov.AI including general information, proposal processes, and delegation, etc. Here you will find essential details to help you navigate the platform effectively.
 
-## General FAQs
+## General
 
 #### What's the difference between DeGov.AI and Snapshot?
 #### How can my DAO get support from DeGov.AI?
@@ -12,7 +12,7 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 #### Is there an off-chain platform for discussing proposals?
 
 
-## Proposal FAQs
+## Proposal
 
 #### What is the proposal threshold?
 #### What is the lifecycle of a proposal?
@@ -21,7 +21,7 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 #### How can I check the status of a proposal?
 
 
-## Delegate FAQs
+## Delegate
 
 #### What is delegation?
 #### What is voting power?

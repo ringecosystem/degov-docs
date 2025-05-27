@@ -9,7 +9,6 @@ theme:
   logo: resource/pics/degov.svg
   favicon: resource/pics/degov.svg
   font:
-    text: San Francisco
     code: SFMono-Regular
   features:
     - announce.dismiss
@@ -103,12 +102,13 @@ nav:
         - Overview: governance/proposal/overview.md
         - Lifecycle: governance/proposal/lifecycle.md
         - Voting: governance/proposal/voting.md
-      - Delegation:
-        - Overview: governance/delegation/overview.md
-
+        - Delegation: governance/proposal/delegation.md
       - Key Parameters:
         - Proposal thresholds: governance/parameters/proposal-thresholds.md
         - Quorum: governance/parameters/quorum.md
         - Proposal delay: governance/parameters/proposal-delay.md
         - Voting period: governance/parameters/voting-period.md
         - TimeLock delay: governance/parameters/timelock-delay.md
+  - Integration:
+      - Overview: integration/overview.md
+      - Deploy By Yourself: integration/deploy.md
