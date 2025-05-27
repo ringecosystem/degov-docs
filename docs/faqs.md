@@ -10,7 +10,9 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 #### How is AI integrated into DeGov.AI?
 #### How can I create or vote on proposals?
 #### Is there an off-chain platform for discussing proposals?
-
+#### I'm not a developer. Can I still use DeGov.AI?
+#### I'm a developer. How can I set up a DAO?
+#### Will DeGov.AI support other governance models in the future?
 
 ## Proposal
 
@@ -28,3 +30,5 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 #### How are governance tokens and voting power related?
 #### How can I delegate my voting power?
 #### Can I split my voting power and delegate it to multiple delegates?
+#### Will delegate transfer my tokens to the delegate?
+#### Does it support partial delegation?
