@@ -91,12 +91,12 @@ plugins:
 nav:
   - Home: 
       - What is DeGov.AI?: index.md
+      - Best Practices: best-practices.md
       - FAQs: faqs.md
   - Governance:
       - Introduction:
         - What are DAOs?: governance/intro/daos.md
-        - Onchain Governance: governance/intro/onchain.md
-        - Offchain Governance: governance/intro/offchain.md
+        - OnChain / OffChain: governance/intro/onchain-offchain.md
         - Governance Model: governance/intro/model.md
       - Proposal: 
         - Overview: governance/proposal/overview.md
