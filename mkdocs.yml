@@ -79,11 +79,16 @@ markdown_extensions:
   - attr_list
   - admonition
   - md_in_html
-  - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search
+  - mermaid2
   - meta-descriptions:
       enable_checks: true
       max_length: 500
