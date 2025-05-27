@@ -75,6 +75,13 @@ extra:
 extra_css:
   - resource/stylesheets/extra.css
 
+markdown_extensions:
+  - attr_list
+  - admonition
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.details
+
 plugins:
   - search
   - meta-descriptions:
