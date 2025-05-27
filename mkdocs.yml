@@ -90,10 +90,25 @@ plugins:
       redirect_maps:
 
 nav:
-  - Home: index.md
+  - Home: 
+      - What is DeGov.AI?: index.md
+      - FAQs: faqs.md
   - Governance:
-      - Overview: governance/overview.md
-  - Delegation:
-      - Overview: delegation/overview.md
-  - Parameters Index:
-      - Overview: parameters/overview.md
+      - Introduction:
+        - What are DAOs?: governance/intro/daos.md
+        - Onchain Governance: governance/intro/onchain.md
+        - Offchain Governance: governance/intro/offchain.md
+        - Governance Model: governance/intro/model.md
+      - Proposal: 
+        - Overview: governance/proposal/overview.md
+        - Lifecycle: governance/proposal/lifecycle.md
+        - Voting: governance/proposal/voting.md
+      - Delegation:
+        - Overview: governance/delegation/overview.md
+
+      - Key Parameters:
+        - Proposal thresholds: governance/parameters/proposal-thresholds.md
+        - Quorum: governance/parameters/quorum.md
+        - Proposal delay: governance/parameters/proposal-delay.md
+        - Voting period: governance/parameters/voting-period.md
+        - TimeLock delay: governance/parameters/timelock-delay.md
