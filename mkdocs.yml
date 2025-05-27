@@ -111,6 +111,7 @@ nav:
         - Voting: governance/proposal/voting.md
         - Delegation: governance/proposal/delegation.md
       - Key Parameters:
+        - Overview: governance/parameters/overview.md
         - Proposal thresholds: governance/parameters/proposal-thresholds.md
         - Quorum: governance/parameters/quorum.md
         - Proposal delay: governance/parameters/proposal-delay.md
