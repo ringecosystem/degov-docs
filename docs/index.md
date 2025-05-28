@@ -8,6 +8,19 @@
 *   **AI-Powered Governance:** AI agents are integrated directly into the governance workflow. These agents can perform a range of tasks, from simplifying complex proposals through summarization and providing insightful feedback, to connecting with real-world data sources with [MCP](https://modelcontextprotocol.io/) to enrich community engagement and decision-making.
 *   **Open Source & Community-Driven:** DeGov.AI is an open-source project. We believe in transparency and collaboration, inviting everyone to inspect, modify, and contribute to our [codebase](https://github.com/ringecosystem/degov).
 
+## Try Demo
+
+Experience DeGov.AI firsthand with our interactive demo platform:
+
+**[🚀 Launch Demo](https://demo.degov.ai/)**
+
+Explore the full range of AI-powered governance features in a live environment. The demo showcases real DAO scenarios where you can:
+
+- Create and vote on proposals
+- Interact with AI agents for proposal analysis
+- Experience the seamless integration of AI in governance workflows
+- Test the user interface and governance mechanisms
+
 ### Real-world examples powered by DeGov.AI
 
 - **[RingDAO](https://gov.ringdao.com)** - Governing the Ring ecosystem and its development
@@ -21,4 +34,5 @@ We believe in the power of community. Connect with us to stay updated and partic
 
 *   **Telegram:** [DeGov.AI Official](https://t.me/DeGov_AI)
 *   **X (formerly Twitter):** [@ai_degov](https://x.com/ai_degov)
+*   **GitHub:** [DeGov.AI Repository](https://github.com/ringecosystem/degov)
 

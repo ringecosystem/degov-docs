@@ -124,3 +124,4 @@ nav:
   - Integration:
       - Overview: integration/overview.md
       - Deploy By Yourself: integration/deploy.md
+      - Launch With Assistant: integration/launch.md
