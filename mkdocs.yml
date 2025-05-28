@@ -112,8 +112,8 @@ nav:
       - Proposal: 
         - Overview: governance/proposal/overview.md
         - Lifecycle: governance/proposal/lifecycle.md
+        - Vote Delegation: governance/proposal/delegation.md
         - Voting: governance/proposal/voting.md
-        - Delegation: governance/proposal/delegation.md
       - Key Parameters:
         - Overview: governance/parameters/overview.md
         - Proposal thresholds: governance/parameters/proposal-thresholds.md
