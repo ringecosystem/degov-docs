@@ -88,7 +88,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - mermaid2
   - meta-descriptions:
       enable_checks: true
       max_length: 500
