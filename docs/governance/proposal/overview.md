@@ -8,96 +8,64 @@ A governance proposal is simply a suggestion that the community votes on. Anyone
 
 ## Types of Proposals
 
-DeGov.AI community members can suggest different kinds of changes:
+Governance proposals can cover a wide range of topics. Here are some common categories:
 
-### Changing How Things Work
-- Adjusting voting rules (like how long voting lasts or how many people need to participate)
-- Updating platform settings and limits
-- Fine-tuning how the system operates
+### Protocol Parameter Changes
+- Adjusting operational rules (e.g., voting periods, quorum requirements).
+- Modifying system settings and operational limits.
+- Fine-tuning how the underlying protocol or system functions.
 
-### Improving the Platform
-- Adding new features that make DeGov.AI better
-- Fixing bugs or security issues
-- Upgrading the technology behind the scenes
+### System Upgrades & Improvements
+- Introducing new features or functionalities.
+- Addressing identified bugs or security vulnerabilities.
+- Upgrading core infrastructure or technology.
 
-### Managing Community Funds
-- Deciding how to spend money from the community treasury
-- Funding new projects or initiatives
-- Supporting developers and contributors
+### Treasury & Fund Management
+- Allocating funds from a community-controlled treasury.
+- Funding development grants, new projects, or ecosystem initiatives.
+- Compensating contributors or service providers.
 
-### Community Decisions
-- Approving partnerships with other organizations
-- Supporting community-led projects
-- Creating new groups or committees
+### General Community & Policy Decisions
+- Ratifying partnerships or collaborations.
+- Endorsing community-led initiatives or working groups.
+- Establishing or amending community guidelines or charters.
 
 ## What Goes Into a Proposal?
 
 Every proposal needs to include several pieces of information:
 
 ### Clear Description
+
 A good proposal explains:
+
 - What exactly is being suggested
 - Why this change would be helpful
 - How it might affect the community
 - When it would be implemented
 
 ### Action Plan
-The specific steps that will happen if the proposal passes. This might include:
-- Which parts of the system will be changed
-- What new features will be added
-- How funds will be spent
+
+The proposal can attach specific actions that will be executed if it passes. This is an important part because it tells everyone exactly what will happen if the proposal is approved. It might include:
+
+- Which smart contracts will be called
+- What functions will be executed
+- How much money will be spent (if applicable)
+
 
 !!! tip "Writing Good Proposals"
     The best proposals are easy to understand and explain clearly what will happen. Remember, the community needs to understand what they're voting for!
 
 ## Who Can Create Proposals?
 
-Not everyone can create proposals - this helps prevent spam and ensures serious suggestions. To create a proposal, you need:
-
-### Enough Tokens
-You must own a certain number of governance tokens. This shows you have a stake in the community's success.
-
-### Clean Record
-You can't have another proposal already being voted on. This keeps things organized and manageable.
-
-### Active Participation
-Your tokens need to be "activated" for voting (this is called delegation - more on this in other guides).
+To maintain quality and prevent spam, not just anyone can submit a proposal. Aspiring proposers must hold a minimum number of governance tokens. This requirement demonstrates a vested interest in the community's well-being and goals. The specific token amount needed is determined by the [proposal threshold](../parameters/proposal-thresholds.md), which is set by the community.
 
 ## How Proposals Get Unique Names
 
 Each proposal gets a special fingerprint (called an ID) that's created from its contents. This ensures:
+
 - No two identical proposals can exist
 - Proposals can't be changed after creation
 - Everyone can verify what they're voting on
-
-## Safety Features
-
-DeGov.AI has built-in safety features to protect the community:
-
-### Waiting Periods
-Even after a proposal passes, there's a waiting period before changes take effect. This gives everyone time to:
-- Review what was approved
-- Prepare for changes
-- Catch any potential problems
-
-### Community Watch
-During the waiting period, the community can:
-- Double-check that everything looks correct
-- Raise concerns if something seems wrong
-- Make sure the changes are what everyone expected
-
-!!! info "Why the Wait?"
-    Think of this like a "cooling off" period. It ensures that important changes don't happen too quickly and gives everyone a chance to speak up if needed.
-
-## Saving Money on Fees
-
-DeGov.AI is designed to be cost-effective:
-
-### Bundling Changes
-Multiple related changes can be grouped together in one proposal, saving on transaction fees.
-
-### Smart Processing
-The system is optimized to use less energy and cost less money when executing approved proposals.
 
 ## The Journey of a Proposal
 
@@ -119,7 +87,7 @@ Ready to participate in governance? Here's how to start:
 ### Step 1: Get Governance Tokens
 You'll need to own some governance tokens to participate in voting.
 
-### Step 2: Activate Your Voting Power
+### Step 2: Activate Voting Power
 This involves a simple process called "delegation" - even if you're voting for yourself.
 
 ### Step 3: Stay Informed
@@ -145,39 +113,3 @@ Want to dive deeper? Check out these related guides:
 - [Voting Guide](voting.md) - Everything about casting your vote
 - [Vote Delegation](delegation.md) - How to delegate your voting power
 - [Governance Parameters](../parameters/overview.md) - The rules that govern the system
-
----
-
-## Technical Details
-
-For developers and technically-minded users, here are the implementation specifics:
-
-### Smart Contract Framework
-DeGov.AI proposals are implemented using the OpenZeppelin Governor framework, providing:
-- Battle-tested security
-- Standard governance patterns
-- Interoperability with other protocols
-
-### Proposal Structure
-Each proposal consists of:
-- `targets[]`: Array of contract addresses to call
-- `values[]`: Array of ETH amounts to send (usually zero)
-- `calldatas[]`: Array of encoded function calls
-- `description`: Human-readable proposal text
-
-### Unique Identification
-Proposals receive deterministic IDs calculated as:
-```solidity
-proposalId = keccak256(abi.encode(targets, values, calldatas, descriptionHash))
-```
-
-### Timelock Integration
-Approved proposals are queued in a TimelockController contract:
-- Enforces execution delays for security
-- Allows proposal cancellation in emergencies
-- Provides predictable execution timing
-
-### Gas Optimization
-- Batch multiple operations in single proposals
-- Optimized calldata encoding
-- Efficient state transitions
