@@ -103,6 +103,7 @@ nav:
   - Home: 
       - What is DeGov.AI?: index.md
       - Best Practices: best-practices.md
+      - Roadmap: roadmap.md
       - FAQs: faqs.md
   - Governance:
       - Introduction:
