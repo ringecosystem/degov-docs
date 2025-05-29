@@ -8,6 +8,14 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 
 ## General
 
+#### What blockchains does DeGov.AI support?
+
+Currently, DeGov.AI supports Darwinia Chain, which is an EVM-compatible blockchain in the Polkadot ecosystem. We plan to expand support to other EVM-compatible chains in the future, including Ethereum Mainnet, Arbitrum, Base, and Ethereum Sepolia. Stay tuned for updates.
+
+#### Is there an off-chain platform for discussing proposals?
+
+DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
+
 #### What's the difference between DeGov.AI and Snapshot?
 
 DeGov.AI and Snapshot serve different purposes in the governance ecosystem:
@@ -17,17 +25,6 @@ DeGov.AI and Snapshot serve different purposes in the governance ecosystem:
 - Snapshot is primarily an off-chain voting platform that uses cryptographic signatures for gasless voting. While cost-effective, it requires manual execution of approved proposals.
 
 DeGov.AI combines the best of both worlds: on-chain security with AI-powered enhancements and user-friendly interfaces. Learn more about [on-chain vs off-chain governance](governance/intro/onchain-offchain.md).
-
-#### How can my DAO get support from DeGov.AI?
-
-Getting support for your DAO is straightforward:
-
-1. Community Support: Join our [Telegram channel](https://t.me/DeGov_AI) for community-driven help
-2. Documentation: Review our comprehensive docs for self-service setup
-3. GitHub: Report issues or contribute to our [open-source codebase](https://github.com/ringecosystem/degov)
-4. Direct Contact: Reach out via our social channels for partnership opportunities
-
-We're committed to supporting DAOs of all sizes in their governance journey.
 
 #### How is AI integrated into DeGov.AI?
 
@@ -39,6 +36,17 @@ AI integration is a core feature of DeGov.AI from the start. We aim to enhance g
 - Multiple AI agents can collaborate to analyze complex proposals and provide insights
 
 We are actively developing these features this year, see our [Roadmap](roadmap.md) for the latest updates. The goal is to create a fully autonomous AI governance system that can handle routine decisions while allowing human oversight for critical issues.
+
+#### How can my DAO get support from DeGov.AI?
+
+Getting support for your DAO is straightforward:
+
+1. Community Support: Join our [Telegram channel](https://t.me/DeGov_AI) for community-driven help
+2. Documentation: Review our comprehensive docs for self-service setup
+3. GitHub: Report issues or contribute to our [open-source codebase](https://github.com/ringecosystem/degov)
+4. Direct Contact: Reach out via our social channels for partnership opportunities
+
+We're committed to supporting DAOs of all sizes in their governance journey.
 
 #### How can I create or vote on proposals?
 
@@ -58,9 +66,6 @@ Voting on Proposals:
 
 Learn more about the complete [proposal lifecycle](governance/proposal/lifecycle.md) and [voting mechanisms](governance/proposal/voting.md). Try the process on our [demo platform](https://demo.degov.ai/) first!
 
-#### Is there an off-chain platform for discussing proposals?
-
-DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
 
 #### I'm not a developer. Can I still use DeGov.AI?
 
@@ -81,10 +86,6 @@ If you're a developer, familiarity with smart contract development and deploymen
 #### Will DeGov.AI support other governance models in the future?
 
 Yes! We're actively developing these features based on community feedback. Learn about current [governance models](governance/intro/model.md) we support.
-
-#### What blockchains does DeGov.AI support?
-
-Currently, DeGov.AI supports Darwinia Chain, which is an EVM-compatible blockchain in the Polkadot ecosystem. We plan to expand support to other EVM-compatible chains in the future, including Ethereum Mainnet, Arbitrum, Base, and Ethereum Sepolia. Stay tuned for updates.
 
 #### Is DeGov.AI secure?
 
