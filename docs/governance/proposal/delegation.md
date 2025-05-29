@@ -1,4 +1,11 @@
+---
+description: "Vote delegation in DeGov.AI - how to activate your voting power, delegate to trusted representatives, or vote yourself. Essential first step for governance participation."
+---
+
 # Vote Delegation
+
+!!! important "Important First Step"
+    In DeGov.AI, you must delegate your voting power before you can participate in governance - even if you want to vote for yourself! This is a one-time setup that activates your tokens for voting.
 
 Vote delegation lets you share your voting power with people you trust, or activate it for yourself. Think of it like giving someone your proxy vote in a shareholder meeting - they can vote on your behalf, but you still own your shares.
 
@@ -16,9 +23,6 @@ Delegation is a way to make sure your voice gets heard in governance, even if yo
 - **You (Delegator)**: The person who owns tokens and chooses where the voting power goes
 - **Representative (Delegate)**: The person who receives voting power and casts votes
 - **Self-Delegation**: When you delegate to yourself to vote directly
-
-!!! important "Important First Step"
-    In DeGov.AI, you must delegate your voting power before you can participate in governance - even if you want to vote for yourself! This is a one-time setup that activates your tokens for voting.
 
 ## How Delegation Works
 
@@ -43,11 +47,13 @@ Delegation is a way to make sure your voice gets heard in governance, even if yo
 ### Option 1: Vote for Yourself (Self-Delegation)
 
 **Best for people who**:
+
 - Want to vote on proposals themselves
 - Have time to research and stay informed
 - Prefer to keep full control
 
 **How it works**:
+
 - You delegate your voting power to your own wallet address
 - You can then vote directly on any proposal
 - It's like registering to vote - you have to do it once to participate
@@ -55,11 +61,13 @@ Delegation is a way to make sure your voice gets heard in governance, even if yo
 ### Option 2: Choose a Representative
 
 **Best for people who**:
+
 - Don't have time to research every proposal
 - Want to support someone with relevant expertise
 - Trust someone else's judgment on governance matters
 
 **How it works**:
+
 - You delegate your voting power to someone else's address
 - They can vote using your power (combined with their own and others who delegated to them)
 - You can watch their voting decisions and change delegates if you disagree
@@ -69,18 +77,22 @@ Delegation is a way to make sure your voice gets heard in governance, even if yo
 ### Questions to Ask Yourself
 
 **Do you have time to stay informed?**
+
 - Yes → Consider self-delegation
 - No → Look for a good representative
 
 **Do you understand the technical details?**
+
 - Yes → Self-delegation might work well
 - No → Find someone with relevant expertise
 
 **Do you trust someone else's judgment?**
+
 - Yes → Representative delegation could be perfect
 - No → Self-delegation gives you full control
 
 **How important is this to you?**
+
 - Very important → Stay directly involved with self-delegation
 - Somewhat important → Either approach works
 - Not very important → Representative delegation saves time
@@ -117,30 +129,16 @@ If you choose to delegate to someone else, look for people who:
 
 ## How to Set Up Delegation
 
-### Step 1: Decide Who to Delegate To
-- **For self-delegation**: Use your own wallet address
-- **For representative delegation**: Find someone you trust and get their wallet address
+On the DeGov.AI platform, setting up delegation is straightforward:
 
-### Step 2: Use the Delegation Interface
-Most platforms provide easy-to-use interfaces:
-- Go to the governance section of the website
-- Look for "delegation" or "delegate votes"
-- Enter the address you want to delegate to
-- Confirm the transaction
-
-### Step 3: Pay the Transaction Fee
-Like most blockchain actions, delegation requires a small transaction fee (gas). This is usually just a few dollars.
-
-### Step 4: Confirm It Worked
-Check that your delegation was successful:
-- Your voting power should now show as delegated
-- The person you delegated to should have increased voting power
-- You should see the delegation in your transaction history
+- Connect your wallet in your DAO governance interface
+- Go to the profile page and follow the instructions to delegate
 
 ## Managing Your Delegation
 
 ### Staying Informed
 Even if you delegate to someone else, it's good to:
+
 - Occasionally check how they voted
 - Read their explanations for important decisions
 - Make sure they're still active and engaged
@@ -148,61 +146,19 @@ Even if you delegate to someone else, it's good to:
 
 ### When to Change Delegates
 Consider switching if your representative:
+
 - Stops participating regularly
 - Makes decisions you strongly disagree with
 - Becomes inactive in the community
 - Changes their approach in ways you don't like
 
 ### How to Change
-Changing delegates is easy:
-- Follow the same process as initial delegation
-- Enter the new person's address
-- Confirm the transaction
-- Your voting power immediately moves to the new delegate
 
-## Delegation Strategies
+On DeGov.AI, you can change your delegate at any time:
 
-### For Beginners
-- **Start with self-delegation** to learn how governance works
-- **Watch experienced delegates** to see how they make decisions
-- **Ask questions** in community forums
-- **Switch to representative delegation** if you get too busy
-
-### For Busy People
-- **Find one good representative** you trust
-- **Check their activity** occasionally
-- **Stay informed** about major proposals even if you don't vote directly
-- **Be ready to switch** if needed
-
-### For Experts
-- **Consider becoming a delegate yourself** to help others
-- **Self-delegate** to maintain direct control
-- **Help educate** newcomers about governance
-- **Share your reasoning** when you vote to help others learn
-
-## Benefits for the Community
-
-### Why Delegation Helps Everyone
-
-**Increases Participation**:
-- People who can't vote directly can still have their voice heard
-- More total voting power gets activated
-- Decisions represent more of the community
-
-**Leverages Expertise**:
-- Knowledgeable community members can help make better decisions
-- Complex technical proposals get proper evaluation
-- Experience and wisdom get shared across the community
-
-**Saves Time and Effort**:
-- Not everyone needs to research every proposal in detail
-- People can focus on their strengths and interests
-- The community can move faster on decisions
-
-**Builds Leadership**:
-- Good delegates become community leaders
-- People develop governance skills and experience
-- The community identifies trusted voices
+- Connect your wallet in the DAO governance interface
+- Go to the delegations page and select a new delegate
+- Confirm the change in your wallet
 
 ## Common Concerns and Questions
 
@@ -261,42 +217,178 @@ Want to explore other aspects of governance?
 
 ## Technical Implementation Details
 
-For developers and technically-minded users:
+For developers and technically-minded users working with [OpenZeppelin Contracts 5.x](https://docs.openzeppelin.com/contracts/5.x/governance):
+
+### Core Architecture
+Delegation is implemented through the `ERC20Votes` extension, which integrates with the `IVotes` interface:
+
+```solidity
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+import {ERC20Votes} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+import {IERC6372} from "@openzeppelin/contracts/interfaces/IERC6372.sol";
+```
 
 ### Core Delegation Functions
 ```solidity
-// Delegate voting power
-function delegate(address delegatee) public
+// Delegate voting power to an address
+function delegate(address delegatee) public virtual
+
+// Delegate voting power using signature (EIP-712)
+function delegateBySig(
+    address delegatee,
+    uint256 nonce,
+    uint256 expiry,
+    uint8 v,
+    bytes32 r,
+    bytes32 s
+) public virtual
 
 // Get current delegate for an address  
-function delegates(address account) public view returns (address)
+function delegates(address account) public view virtual returns (address)
 
-// Get voting power of an address
-function getVotes(address account) public view returns (uint256)
+// Get current voting power of an address
+function getVotes(address account) public view virtual returns (uint256)
 
-// Get historical voting power
-function getPastVotes(address account, uint256 blockNumber) public view returns (uint256)
+// Get historical voting power at specific timepoint
+function getPastVotes(address account, uint256 timepoint) public view virtual returns (uint256)
+
+// Get total supply at specific timepoint
+function getPastTotalSupply(uint256 timepoint) public view virtual returns (uint256)
 ```
 
-### How It Works Under the Hood
-1. **Token Contract Integration**: Delegation is built into the governance token contract using ERC20Votes extension
-2. **Voting Power Tracking**: The contract maintains real-time tracking of delegated voting power
-3. **Historical Snapshots**: Past voting power is preserved for proposal snapshot functionality
-4. **Event Logging**: All delegation changes are logged on-chain for transparency
+### ERC-6372 Clock Integration
+OpenZeppelin 5.x uses the [ERC-6372 standard for time-based operations](https://eips.ethereum.org/EIPS/eip-6372):
+
+```solidity
+// Get current timepoint (timestamp or block number)
+function clock() public view virtual returns (uint48)
+
+// Get clock mode description
+function CLOCK_MODE() public view virtual returns (string memory)
+
+// For timestamp-based governance:
+function clock() public view override returns (uint48) {
+    return uint48(block.timestamp);
+}
+
+function CLOCK_MODE() public pure override returns (string memory) {
+    return "mode=timestamp";
+}
+```
+
+### Voting Power Calculation
+```solidity
+// Internal function that calculates voting power
+function _getVotingUnits(address account) internal view virtual returns (uint256) {
+    return balanceOf(account);
+}
+
+// How delegation affects voting power distribution
+function _delegate(address delegator, address delegatee) internal virtual {
+    address currentDelegate = delegates(delegator);
+    _delegates[delegator] = delegatee;
+
+    emit DelegateChanged(delegator, currentDelegate, delegatee);
+    _moveDelegateVotes(currentDelegate, delegatee, _getVotingUnits(delegator));
+}
+```
+
+### Checkpoint System
+OpenZeppelin 5.x uses an efficient checkpoint system for historical data:
+
+```solidity
+// Internal checkpoint structure for vote tracking
+struct Checkpoint {
+    uint48 _key;    // Timepoint (timestamp or block number)
+    uint208 _value; // Vote count at that timepoint
+}
+
+// Get checkpoints for an account
+function checkpoints(address account, uint32 pos) public view virtual returns (Checkpoint memory)
+
+// Get number of checkpoints for an account
+function numCheckpoints(address account) public view virtual returns (uint32)
+```
 
 ### Key Events
 ```solidity
-event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
-event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
+event DelegateChanged(
+    address indexed delegator, 
+    address indexed fromDelegate, 
+    address indexed toDelegate
+);
+
+event DelegateVotesChanged(
+    address indexed delegate, 
+    uint256 previousVotes, 
+    uint256 newVotes
+);
+```
+
+### Integration with Governor
+The Governor contract reads voting power through the `IVotes` interface:
+
+```solidity
+import {GovernorVotes} from "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol";
+
+contract MyGovernor is Governor, GovernorVotes {
+    constructor(IVotes _token) GovernorVotes(_token) {}
+    
+    // Governor automatically uses delegated voting power
+    function _getVotes(
+        address account,
+        uint256 timepoint,
+        bytes memory /*params*/
+    ) internal view virtual override returns (uint256) {
+        return token.getPastVotes(account, timepoint);
+    }
+}
+```
+
+### Self-Delegation Pattern
+```solidity
+// Users must delegate to themselves to activate voting power
+function enableVoting() public {
+    _delegate(msg.sender, msg.sender);
+}
+
+// Check if an address has activated voting
+function hasActivatedVoting(address account) public view returns (bool) {
+    return delegates(account) != address(0);
+}
 ```
 
 ### Security Features
-- **Atomic Operations**: Delegation changes happen instantly and atomically
-- **Historical Integrity**: Past voting power cannot be manipulated retroactively
-- **Reentrancy Protection**: Delegation functions include standard security protections
-- **Access Control**: Only token holders can delegate their own tokens
 
-### Gas Optimization
-- **Efficient Storage**: Voting power calculations are optimized for gas efficiency
-- **Batch Operations**: Multiple delegation changes can be batched where supported
-- **Minimal State Changes**: The system minimizes unnecessary storage updates
+**Nonce-Based Signature Protection**:
+```solidity
+// Prevents signature replay attacks
+function nonces(address owner) public view virtual returns (uint256)
+```
+
+**Atomic State Changes**:
+- All delegation changes happen in a single transaction
+- Vote power transfers are atomic and cannot be partially applied
+
+**Historical Integrity**:
+- Past voting power cannot be retroactively modified
+- Checkpoints ensure accurate historical lookups
+
+**Access Control**:
+- Only token holders can delegate their own tokens
+- Signature-based delegation requires valid EIP-712 signatures
+
+### Gas Optimization Features
+
+**Efficient Checkpointing**:
+- Only creates new checkpoints when voting power actually changes
+- Binary search for historical lookups
+
+**Minimal Storage Updates**:
+- Batches multiple operations to reduce gas costs
+- Optimized storage layout for frequently accessed data
+
+**ERC-6372 Efficiency**:
+- Supports both timestamp and block number modes
+- Governor automatically adapts to token's clock mode

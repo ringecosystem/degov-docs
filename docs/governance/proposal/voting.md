@@ -1,36 +1,31 @@
+---
+description: "How to vote on proposals in DeGov.AI - understanding voting options, voting power, timing, and making your voice heard in community governance decisions."
+---
+
 # Proposal Voting
 
-Voting is how you make your voice heard in the DeGov.AI community. It's like participating in an election, but instead of choosing politicians, you're choosing what changes should happen to the platform you use.
+Voting is how you make your voice heard in your community. It's like participating in an election, but instead of choosing politicians, you're choosing what changes should happen to the platform you use.
 
 ## How Voting Works
 
-Think of voting in DeGov.AI like a democratic election with some special features designed for fairness and security.
+Think of DAO voting like a democratic election with some special features designed for fairness and security.
 
 ### The Basic Idea
 
 - Everyone who owns governance tokens gets to vote
 - The more tokens you have, the stronger your vote (like having more shares in a company)
-- Your voting power is locked in when the proposal starts (so you can't buy tokens just to influence a vote)
+- **Important**: Your voting power is locked in when the proposal starts (so you can't buy tokens just to influence a vote)
 - You have three options for every proposal
 
 ## Your Voting Options
 
 For every proposal, you have three choices:
 
-### 👍 Yes (Support the Proposal)
-- **What it means**: "I think this is a good idea and want it to happen"
-- **When to choose this**: You believe the proposal will benefit the community
-- **Effect**: Your vote counts toward making the proposal successful
-
-### 👎 No (Oppose the Proposal)  
-- **What it means**: "I don't think this is a good idea"
-- **When to choose this**: You think the proposal could harm the community or isn't necessary
-- **Effect**: Your vote counts against the proposal
-
-### 🤷 Abstain (No Strong Opinion)
-- **What it means**: "I don't have a strong opinion, but I want to participate"
-- **When to choose this**: You're neutral on the issue but want to help reach the minimum participation requirement
-- **Effect**: Shows you participated but doesn't count for or against the proposal
+| Option                         | What it means                                                    | When to choose this                                                                 | Effect                                                                 |
+| :----------------------------- | :--------------------------------------------------------------- | :---------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
+| 👍 **Yes (Support the Proposal)** | "I think this is a good idea and want it to happen"              | You believe the proposal will benefit the community                                 | Your vote counts toward making the proposal successful                 |
+| 👎 **No (Oppose the Proposal)**   | "I don't think this is a good idea"                              | You think the proposal could harm the community or isn't necessary                  | Your vote counts against the proposal                                  |
+| 🤷 **Abstain (No Strong Opinion)** | "I don't have a strong opinion, but I want to participate"       | You're neutral on the issue but want to help reach the minimum participation requirement | Shows you participated but doesn't count for or against the proposal |
 
 !!! tip "When to Abstain"
     Abstaining is useful when you want to help the community reach the minimum participation threshold but don't feel qualified to judge the proposal, or when you have a conflict of interest.
@@ -40,7 +35,9 @@ For every proposal, you have three choices:
 Your voting power depends on how many governance tokens you owned when the proposal was created - not how many you have now.
 
 ### Why This Matters
+
 Imagine if voting power changed during voting:
+
 - Someone could buy a lot of tokens just before voting ends
 - Vote for their preferred option
 - Then sell the tokens immediately
@@ -49,7 +46,8 @@ Imagine if voting power changed during voting:
 ### The "Snapshot" System
 When a proposal starts accepting votes, the system takes a "photograph" (snapshot) of everyone's token holdings. Your voting power for that proposal is locked in based on this snapshot.
 
-**Example**: 
+**Example**:
+
 - You owned 100 tokens when Proposal A started voting
 - You later bought 50 more tokens  
 - For Proposal A, you still only have 100 votes
@@ -60,6 +58,7 @@ When a proposal starts accepting votes, the system takes a "photograph" (snapsho
 For a proposal to pass, two things must happen:
 
 ### 1. Enough People Must Vote (Quorum)
+
 - There's a minimum participation threshold
 - This prevents a small group from making decisions for everyone
 - Both "Yes," "No," and "Abstain" votes count toward this requirement
@@ -69,6 +68,7 @@ For a proposal to pass, two things must happen:
 - "Abstain" votes don't count for or against, only toward participation
 
 **Example**:
+
 - 1000 people need to vote minimum (quorum)
 - Actual votes: 600 Yes, 300 No, 200 Abstain
 - Result: ✅ Passes (1100 people voted, meeting quorum, and Yes > No)
@@ -76,27 +76,31 @@ For a proposal to pass, two things must happen:
 ## How to Vote
 
 ### Step 1: Make Sure You Can Vote
+
 Before voting, check that:
+
 - You owned tokens when the proposal snapshot was taken
 - You've "activated" your voting power (called delegation - don't worry, you can delegate to yourself)
 - The proposal is still accepting votes
 - You haven't already voted on this proposal
 
 ### Step 2: Research the Proposal
+
 Take time to understand:
+
 - What exactly is being proposed
 - Why the proposer thinks it's needed
 - What other community members are saying
 - How it might affect you and the platform
 
 ### Step 3: Cast Your Vote
-You can vote through:
-- The governance website (easiest option)
-- Mobile apps (if available)
-- Direct blockchain interaction (for advanced users)
+
+Once you're ready, go to the DeGov.AI voting interface and click the top right button to vote. 
 
 ### Step 4: Track the Results
+
 Monitor:
+
 - How the voting is progressing
 - Whether enough people are participating
 - Discussion and reactions from the community
@@ -106,6 +110,7 @@ Monitor:
 Sometimes you might want someone else to vote on your behalf. This is called delegation.
 
 ### Why Delegate?
+
 - **Time constraints**: You don't have time to research every proposal
 - **Expertise**: Someone else knows more about certain topics
 - **Trust**: You trust someone's judgment on governance matters
@@ -113,17 +118,21 @@ Sometimes you might want someone else to vote on your behalf. This is called del
 ### Types of Delegation
 
 **Vote for Yourself** (Self-Delegation):
+
 - You keep control of your own votes
 - Most common choice for active participants
 - You must do this even to vote for yourself (it's a one-time setup)
 
 **Choose a Representative**:
+
 - Pick someone you trust to vote on your behalf
 - They use their judgment plus your voting power
 - You can change your choice anytime
 
 ### Choosing a Good Representative
+
 Look for people who:
+
 - Vote regularly and thoughtfully
 - Explain their reasoning clearly
 - Share your values and priorities
@@ -132,27 +141,6 @@ Look for people who:
 
 !!! info "Delegation is Flexible"
     You can change who you delegate to at any time, and you always keep ownership of your tokens. Only the voting power is shared.
-
-## Staying Safe While Voting
-
-DeGov.AI has several protections built in:
-
-### Protection Against Manipulation
-- **Snapshot timing**: Prevents people from buying tokens just to influence votes
-- **One vote per proposal**: You can't vote multiple times on the same thing
-- **Transparent process**: All votes are recorded publicly
-
-### What to Watch Out For
-- **Vote buying**: People trying to pay you to vote a certain way
-- **Misleading information**: Always verify claims made about proposals
-- **Pressure tactics**: Vote based on your own judgment, not pressure from others
-
-### Best Practices for Safe Voting
-1. **Do your own research** - don't just follow others
-2. **Verify information** from multiple sources
-3. **Be suspicious** of promises that seem too good to be true
-4. **Ask questions** if something doesn't make sense
-5. **Report suspicious activity** to community moderators
 
 ## Getting the Most from Voting
 
@@ -178,50 +166,32 @@ DeGov.AI has several protections built in:
 
 ### "I Don't Have Any Voting Power"
 **Possible causes**:
+
 - You bought tokens after the proposal snapshot
 - You haven't delegated your voting power (even to yourself)
 - Your wallet isn't connected properly
 
 **Solutions**:
+
 - Check when you acquired your tokens vs. when the proposal was created
 - Complete the delegation process
 - Verify your wallet connection
 
 ### "My Vote Didn't Go Through"
 **Possible causes**:
+
 - The transaction failed due to network issues
 - You ran out of gas (transaction fee)
 - The voting period ended
 
 **Solutions**:
+
 - Check your transaction history
 - Try again with higher gas fees
 - Verify the proposal is still accepting votes
 
 ### "I Changed My Mind"
 Unfortunately, once you vote on a proposal, you usually can't change it. This ensures the integrity of the voting process. Make sure you're confident in your choice before voting.
-
-## Voting Tools and Interfaces
-
-### Web Interfaces
-Most people vote through user-friendly websites that show:
-- All active proposals
-- Clear descriptions of what each proposal does  
-- Your voting power and history
-- Real-time results and participation
-
-### Mobile Apps
-Some communities offer mobile apps for:
-- Getting notified about new proposals
-- Quick voting on the go
-- Tracking results
-- Managing your delegation
-
-### Advanced Tools
-For power users:
-- Analytics dashboards showing voting trends
-- Tools for bulk delegation management
-- APIs for building custom interfaces
 
 ## Learn More
 

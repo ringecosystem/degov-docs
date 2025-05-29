@@ -103,6 +103,7 @@ nav:
   - Home: 
       - What is DeGov.AI?: index.md
       - Best Practices: best-practices.md
+      - Roadmap: roadmap.md
       - FAQs: faqs.md
   - Governance:
       - Introduction:
@@ -112,8 +113,8 @@ nav:
       - Proposal: 
         - Overview: governance/proposal/overview.md
         - Lifecycle: governance/proposal/lifecycle.md
+        - Vote Delegation: governance/proposal/delegation.md
         - Voting: governance/proposal/voting.md
-        - Delegation: governance/proposal/delegation.md
       - Key Parameters:
         - Overview: governance/parameters/overview.md
         - Proposal thresholds: governance/parameters/proposal-thresholds.md
@@ -124,3 +125,4 @@ nav:
   - Integration:
       - Overview: integration/overview.md
       - Deploy By Yourself: integration/deploy.md
+      - Launch With Assistant: integration/launch.md

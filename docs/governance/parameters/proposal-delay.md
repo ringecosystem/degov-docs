@@ -1,3 +1,7 @@
+---
+description: "Configure proposal delay parameters for your DAO - the time between proposal creation and voting start. Learn optimal settings for review periods and community preparation."
+---
+
 # Proposal Delay
 
 !!! important "Clock Mode Considerations"

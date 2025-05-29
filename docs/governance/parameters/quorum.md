@@ -1,3 +1,7 @@
+---
+description: "Configure quorum requirements for DAO proposals - the minimum participation needed for valid governance decisions. Learn optimal settings to balance security and functionality."
+---
+
 # Quorum
 
 !!! important "Balance is Critical"

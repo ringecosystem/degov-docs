@@ -1,3 +1,7 @@
+---
+description: "Configure timelock delay for DAO security - the waiting period after proposal approval before execution. Balance security protection with operational efficiency."
+---
+
 # TimeLock Delay
 
 !!! important "Balance is Critical"
