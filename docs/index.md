@@ -1,3 +1,7 @@
+---
+description: "DeGov.AI is a next-generation AI-powered governance platform for DAOs, built on OpenZeppelin Governor with integrated AI agents for enhanced decision-making and community engagement."
+---
+
 # What is DeGov.AI?
 
 [DeGov.AI](https://degov.ai/) is a next-generation governance platform that leverages **AI agents** to empower Decentralized Autonomous Organizations (DAOs). Our mission is to help DAOs cultivate vibrant communities and make more informed, effective decisions.

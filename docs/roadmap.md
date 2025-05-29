@@ -1,3 +1,7 @@
+---
+description: "Explore DeGov.AI's 5-phase development roadmap from basic DAO platform to sophisticated AI-powered governance ecosystem with autonomous agent swarms."
+---
+
 # DeGov.AI Roadmap
 
 This roadmap outlines the development journey of DeGov.AI from a basic open-source DAO platform to a sophisticated AI-powered governance ecosystem. The roadmap is structured in five progressive phases, each building upon the previous achievements to ultimately realize the vision of autonomous AI agent swarms managing decentralized organizations.

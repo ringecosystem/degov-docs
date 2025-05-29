@@ -1,3 +1,7 @@
+---
+description: "DeGov.AI integration guide - learn how to deploy and set up DeGov.AI for your DAO, with options for self-hosting or professional assistance."
+---
+
 # Integration Overview
 
 Welcome to the DeGov.AI integration guide! This section will help you understand how to get DeGov.AI up and running for your DAO, whether you prefer a self-hosted solution or professional assistance.

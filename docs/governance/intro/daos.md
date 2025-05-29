@@ -1,3 +1,7 @@
+---
+description: "Learn about Decentralized Autonomous Organizations (DAOs) - what they are, why they matter, and how they enable transparent, democratic governance through smart contracts and community consensus."
+---
+
 # Understanding DAOs
 
 ## What are DAOs?

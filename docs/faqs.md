@@ -1,3 +1,7 @@
+---
+description: "Frequently asked questions about DeGov.AI covering general information, proposal processes, delegation, AI agents, and platform features. Essential guidance for users."
+---
+
 # Frequently Asked Questions (FAQs)
 
 This document provides answers to frequently asked questions about DeGov.AI including general information, proposal processes, and delegation, etc. Here you will find essential details to help you navigate the platform effectively.
@@ -12,7 +16,7 @@ DeGov.AI and Snapshot serve different purposes in the governance ecosystem:
 
 - Snapshot is primarily an off-chain voting platform that uses cryptographic signatures for gasless voting. While cost-effective, it requires manual execution of approved proposals.
 
-DeGov.AI combines the best of both worlds: on-chain security with AI-powered enhancements and user-friendly interfaces. Learn more about [on-chain vs off-chain governance](/governance/intro/onchain-offchain/).
+DeGov.AI combines the best of both worlds: on-chain security with AI-powered enhancements and user-friendly interfaces. Learn more about [on-chain vs off-chain governance](governance/intro/onchain-offchain.md).
 
 #### How can my DAO get support from DeGov.AI?
 
@@ -41,7 +45,7 @@ We are actively developing these features this year, see our [Roadmap](roadmap.m
 Creating Proposals:
 
 1. Connect your wallet to the DeGov.AI platform
-2. Ensure you meet the [proposal threshold](./governance/parameters/proposal-thresholds.md) requirements
+2. Ensure you meet the [proposal threshold](governance/parameters/proposal-thresholds.md) requirements
 3. Draft your proposal with clear title, description, and executable actions
 4. Submit the proposal for community review
 
@@ -52,7 +56,7 @@ Voting on Proposals:
 3. Cast your vote (For, Against, or Abstain)
 4. Your voting power is automatically calculated based on your token holdings
 
-Learn more about the complete [proposal lifecycle](./governance/proposal/lifecycle.md) and [voting mechanisms](./governance/proposal/voting.md). Try the process on our [demo platform](https://demo.degov.ai/) first!
+Learn more about the complete [proposal lifecycle](governance/proposal/lifecycle.md) and [voting mechanisms](governance/proposal/voting.md). Try the process on our [demo platform](https://demo.degov.ai/) first!
 
 #### Is there an off-chain platform for discussing proposals?
 
@@ -68,15 +72,15 @@ Absolutely! DeGov.AI is designed for all community members:
 - Mobile-Friendly: Access governance features from any device
 - Educational Resources: Comprehensive guides and tutorials available
 
-No technical expertise required to participate in governance! Check out our [DAO introduction guide](/governance/intro/daos/) to get started.
+No technical expertise required to participate in governance! Check out our [DAO introduction guide](governance/intro/daos.md) to get started.
 
 #### I'm a developer. How can I set up a DAO?
 
-If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: Check our [Integration Guide](/integration/overview/) and [deployment documentation](/integration/deploy/) for detailed technical documentation.
+If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: Check our [Integration Guide](integration/overview.md) and [deployment documentation](integration/deploy.md) for detailed technical documentation.
 
 #### Will DeGov.AI support other governance models in the future?
 
-Yes! We're actively developing these features based on community feedback. Learn about current [governance models](/governance/intro/model/) we support.
+Yes! We're actively developing these features based on community feedback. Learn about current [governance models](governance/intro/model.md) we support.
 
 #### What blockchains does DeGov.AI support?
 
@@ -98,7 +102,7 @@ Your DAO's security is ensured through proven, transparent technology.
 
 #### What is the proposal threshold?
 
-The proposal threshold is the minimum amount of governance tokens required to create a proposal. This ensures that only committed community members can initiate governance actions, preventing spam and low-quality proposals. Learn more about [proposal thresholds](/governance/parameters/proposal-thresholds/).
+The proposal threshold is the minimum amount of governance tokens required to create a proposal. This ensures that only committed community members can initiate governance actions, preventing spam and low-quality proposals. Learn more about [proposal thresholds](governance/parameters/proposal-thresholds.md).
 
 #### What is the lifecycle of a proposal?
 
@@ -110,7 +114,7 @@ A proposal goes through several stages:
 4. Queued: Successful proposals enter timelock (if configured)
 5. Executed: Proposal actions are automatically executed on-chain
 
-Each stage has specific timeframes defined by your DAO's governance parameters. See our detailed [proposal lifecycle guide](/governance/proposal/lifecycle/) for more information.
+Each stage has specific timeframes defined by your DAO's governance parameters. See our detailed [proposal lifecycle guide](governance/proposal/lifecycle.md) for more information.
 
 #### What are the best practices for creating a proposal?
 
@@ -128,7 +132,7 @@ Process Best Practices:
 - Technical Review: Ensure all smart contract interactions are correct
 - Timeline Considerations: Account for voting and execution periods
 
-AI Assistance: Use AI agents to help refine your proposal and identify potential issues. Learn more about [proposal creation](./governance/proposal/overview.md) for details.
+AI Assistance: Use AI agents to help refine your proposal and identify potential issues. Learn more about [proposal creation](governance/proposal/overview.md) for details.
 
 #### How can I vote on a proposal?
 
@@ -145,11 +149,11 @@ Voting Options:
 - Against: Oppose the proposal  
 - Abstain: Counted toward quorum but neutral on outcome
 
-Your vote is final and cannot be changed once submitted. Learn more about [voting mechanisms](./governance/proposal/voting.md).
+Your vote is final and cannot be changed once submitted. Learn more about [voting mechanisms](governance/proposal/voting.md).
 
 #### How can I check the status of a proposal?
 
-DeGov.AI provides real-time updates on proposal status. See the [proposal lifecycle](/governance/proposal/lifecycle/) for details on each stage. Key status indicators include:
+DeGov.AI provides real-time updates on proposal status. See the [proposal lifecycle](governance/proposal/lifecycle.md) for details on each stage. Key status indicators include:
 
 - Pending: Proposal is awaiting the delay period
 - Active: Voting is currently open
@@ -191,7 +195,7 @@ Common Reasons for Low Turnout:
 - Lack of clear communication
 - Technical complexity
 
-Use AI insights to understand participation patterns and improve future proposals. Learn about [quorum requirements](./governance/parameters/quorum.md) and how they affect proposal outcomes.
+Use AI insights to understand participation patterns and improve future proposals. Learn about [quorum requirements](governance/parameters/quorum.md) and how they affect proposal outcomes.
 
 #### How long does the voting period last?
 
@@ -207,7 +211,7 @@ Factors Affecting Duration:
 - Community Size: Larger communities may need more time
 - Complexity: Technical proposals may require extended review
 
-Check your DAO's specific voting period in the governance parameters. See our guide on [voting periods](./governance/parameters/voting-period.md) for configuration details.
+Check your DAO's specific voting period in the governance parameters. See our guide on [voting periods](governance/parameters/voting-period.md) for configuration details.
 
 
 ## Delegate

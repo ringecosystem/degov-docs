@@ -1,3 +1,7 @@
+---
+description: "Complete guide to proposal lifecycle in DeGov.AI - from idea creation through voting, execution, and all stages proposals go through before becoming reality."
+---
+
 # Proposal Lifecycle
 
 Understanding how proposals move from idea to reality is key to participating in DeGov.AI governance. Think of it like following a bill through government - there are specific stages each proposal must go through before becoming law.

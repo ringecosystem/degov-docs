@@ -1,3 +1,7 @@
+---
+description: "How to vote on proposals in DeGov.AI - understanding voting options, voting power, timing, and making your voice heard in community governance decisions."
+---
+
 # Proposal Voting
 
 Voting is how you make your voice heard in your community. It's like participating in an election, but instead of choosing politicians, you're choosing what changes should happen to the platform you use.

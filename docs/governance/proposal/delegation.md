@@ -1,3 +1,7 @@
+---
+description: "Vote delegation in DeGov.AI - how to activate your voting power, delegate to trusted representatives, or vote yourself. Essential first step for governance participation."
+---
+
 # Vote Delegation
 
 !!! important "Important First Step"

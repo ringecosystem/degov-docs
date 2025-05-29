@@ -1,3 +1,7 @@
+---
+description: "Set optimal voting periods for DAO governance - how long community members have to vote on proposals. Balance timely decisions with broad participation."
+---
+
 # Voting Period
 
 !!! important "Voting Period Overview"

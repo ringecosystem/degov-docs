@@ -1,3 +1,7 @@
+---
+description: "Professional DeGov.AI launch assistance - get expert help deploying a customized DAO governance solution with full technical support and custom configurations."
+---
+
 # Launch With Assistant
 
 If you prefer professional assistance or need a custom setup, the DeGov.AI team can help you launch a tailored instance for your community. This service is ideal for DAOs that want a fully managed solution or require specific customizations.

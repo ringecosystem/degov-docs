@@ -1,3 +1,7 @@
+---
+description: "Understanding governance proposals in DeGov.AI - how community decisions are made, proposal types, creation process, and democratic participation in DAOs."
+---
+
 # Proposal Overview
 
 Think of governance proposals as the community's way of making important decisions together. Just like how a neighborhood association might vote on new community rules or how to spend shared funds, DeGov.AI uses proposals to let everyone have a say in how the platform evolves.

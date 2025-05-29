@@ -1,3 +1,7 @@
+---
+description: "Best practices guide for DeGov.AI users - tailored recommendations for technical teams, non-technical teams, and governance learners to navigate the platform effectively."
+---
+
 # Best Practices
 
 This document outlines the best practices for different roles of users in the DeGov.AI ecosystem. Whether you're a project team looking to build a DAO or an individual seeking to learn about governance, this guide will help you navigate the platform effectively.

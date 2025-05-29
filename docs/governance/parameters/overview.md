@@ -1,3 +1,7 @@
+---
+description: "Overview of DeGov.AI governance parameters based on OpenZeppelin Governor - key settings that control proposal creation, voting, and execution in your DAO."
+---
+
 # Governance Parameters Overview
 
 !!! info "Getting Started"

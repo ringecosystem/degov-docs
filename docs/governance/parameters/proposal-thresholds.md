@@ -1,3 +1,7 @@
+---
+description: "Set optimal proposal thresholds for DAO governance - minimum token requirements to create proposals. Balance accessibility with spam prevention."
+---
+
 # Proposal Thresholds
 
 !!! important "Balance is Critical"

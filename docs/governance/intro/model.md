@@ -1,3 +1,7 @@
+---
+description: "Understanding DeGov.AI's governance model built on OpenZeppelin Governor framework - providing secure, flexible, and community-vetted onchain governance for DAOs."
+---
+
 # Governance Model: The OpenZeppelin Governor Framework in DeGov.AI
 
 DeGov.AI is architected around the robust and widely adopted [OpenZeppelin Governor framework](https://docs.openzeppelin.com/contracts/4.x/api/governance). This choice is deliberate, aiming to provide DAOs with a secure, flexible, and community-vetted foundation for onchain governance. While various governance models exist, the OpenZeppelin Governor contracts offer a standardized yet customizable approach that aligns perfectly with DeGov.AI's mission to empower decentralized communities.

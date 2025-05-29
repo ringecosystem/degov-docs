@@ -1,3 +1,7 @@
+---
+description: "Learn the difference between onchain and offchain governance in DAOs - execution mechanisms, security trade-offs, and when to use each approach."
+---
+
 # Onchain and Offchain Governance
 
 In the realm of Decentralized Autonomous Organizations (DAOs) and blockchain-based systems, governance refers to the mechanisms by which decisions are made and implemented. This can broadly be categorized into onchain and offchain governance.
