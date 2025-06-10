@@ -1,15 +1,22 @@
+# Project information
 site_name: DeGov.AI Docs
 site_url: https://degov.ai
 site_description: "DeGov.AI is a governance platform that leverages AI to enhance decision-making and community engagement."
 copyright: Copyright &copy; RingDAO 2025
-repo_name: ringecosystem/degov-docs
+
+# Repository information
+repo_name: ringecosystem/degov
+repo_url: https://github.com/ringecosystem/degov
 edit_uri: https://github.com/ringecosystem/degov-docs/edit/main/docs
+
 theme:
   name: material
   logo: resource/pics/degov.svg
   favicon: resource/pics/degov.svg
   font:
     code: SFMono-Regular
+  icon:
+    repo: fontawesome/brands/github
   features:
     - announce.dismiss
     - content.action.edit
@@ -23,9 +30,9 @@ theme:
     - navigation.path
     - navigation.top
     - navigation.tracking
-    - search.highlight
     - search.share
     - search.suggest
+    - search.highlight
     - toc.follow
   language: en
   palette:

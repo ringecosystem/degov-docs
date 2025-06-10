@@ -12,6 +12,18 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 
 Currently, DeGov.AI supports Darwinia Chain, which is an EVM-compatible blockchain in the Polkadot ecosystem. We plan to expand support to other EVM-compatible chains in the future, including Ethereum Mainnet, Arbitrum, Base, and Ethereum Sepolia. Stay tuned for updates.
 
+#### How does DeGov.AI utilize AI capabilities?
+
+Integrating AI into our product is a core focus starting from the first version. We aim to solve long-term challenges in the decentralized governance space, such as proposal quality, voting participation, and decision-making efficiency by leveraging AI agents.
+
+Currently, the following AI-related features are in our roadmap:
+
+- Integrated AI agents assist with proposal review, summarization, and voting analysis. One of the biggest challenges in the governance process is the complexity of proposals and the difficulty for community members to understand their implications. By reducing the cognitive load, we aim to increase participation and improve decision-making quality.
+- AI agents can serve as special roles in the governance process, accepting delegation and voting on behalf of the community. AI agents can collect and analyze the community's opinions, preferences, and feedback, and then cast votes based on the aggregated data. This approach can avoid the preference of a few individuals dominating the decision-making process, ensuring that the community's collective voice is represented.
+- Multiple AI agents can collaborate to analyze complex proposals and provide insights. This collaborative approach allows for a more comprehensive understanding of proposals, as different AI agents can bring their unique perspectives and expertise to the table.
+
+Bringing AI into governance opens up exciting possibilities for the future of decentralized organizations. We are actively developing these features this year, see our [Roadmap](roadmap.md) for the latest updates.
+
 #### Is there an off-chain platform for discussing proposals?
 
 DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
@@ -25,17 +37,6 @@ DeGov.AI and Snapshot serve different purposes in the governance ecosystem:
 - Snapshot is primarily an off-chain voting platform that uses cryptographic signatures for gasless voting. While cost-effective, it requires manual execution of approved proposals.
 
 DeGov.AI combines the best of both worlds: on-chain security with AI-powered enhancements and user-friendly interfaces. Learn more about [on-chain vs off-chain governance](governance/intro/onchain-offchain.md).
-
-#### How is AI integrated into DeGov.AI?
-
-AI integration is a core feature of DeGov.AI from the start. We aim to enhance governance processes through AI agents. The following AI capabilities are currently in our roadmap:
-
-- AI agents assist with proposal review, summarization, voting analysis, and decision-making
-- AI agents serve as special roles in the governance process that can accept delegation and vote on behalf of the community
-- Agents can interact with external data sources through the [Model Context Protocol](https://modelcontextprotocol.io/) and make informed decisions based on real-time data
-- Multiple AI agents can collaborate to analyze complex proposals and provide insights
-
-We are actively developing these features this year, see our [Roadmap](roadmap.md) for the latest updates. The goal is to create a fully autonomous AI governance system that can handle routine decisions while allowing human oversight for critical issues.
 
 #### How can my DAO get support from DeGov.AI?
 
