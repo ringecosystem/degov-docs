@@ -34,17 +34,17 @@ The XAccount integration will allow DAOs to manage assets, execute proposals, an
 
 ---
 
-### Phase 3: AI Argentic Delegate 🚧 **IN PROGRESS**
+### Phase 3: AI Agent Delegate 🚧 **IN PROGRESS**
 
 **Intelligent Governance Automation**
 
-This transformative phase introduces artificial intelligence into the governance process through the development of AI Argentic Delegates - sophisticated agents capable of autonomous decision-making within predefined parameters. These AI delegates will utilize advanced machine learning frameworks to analyze proposals, assess their impact, and participate in governance activities with human-like reasoning capabilities.
+This transformative phase introduces artificial intelligence into the governance process through the development of AI Agent Delegates - sophisticated agents capable of autonomous decision-making within predefined parameters. These AI delegates will utilize advanced machine learning frameworks to analyze proposals, assess their impact, and participate in governance activities with human-like reasoning capabilities.
 
 The AI agents will be thoroughly tested in live DAO environments to ensure reliability, security, and alignment with community values. This phase represents the first step toward truly autonomous governance, where AI delegates can handle routine decisions, flag important issues for human review, and provide data-driven insights to enhance overall DAO decision-making quality.
 
 ---
 
-### Phase 4: Swarm Coordination Between Multiple Argentic Delegates 🔬 **RESEARCH PHASE**
+### Phase 4: Swarm Coordination Between Multiple Agent Delegates 🔬 **RESEARCH PHASE**
 
 **Collaborative AI Governance Networks**
 
