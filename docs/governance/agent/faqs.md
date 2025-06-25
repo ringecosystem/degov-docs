@@ -1,32 +1,24 @@
 # FAQs
 
-#### Who controls the private key of the agent?
+**Who controls the agent’s private key?**  
+The agent’s private key is currently managed by the RingDAO team to ensure reliability and security. We plan to explore decentralized key management in the future.
 
-Currently, the private key of the agent is controlled by the RingDAO team. We may consider decentralizing the control of the agent in the future, but for now, it is managed by the team to ensure the integrity and reliability of the agent's operations.
+**Is the agent available for all DAOs on DeGov?**  
+Yes. The agent runs as an open-source plugin (https://github.com/ringecosystem/degov-essential) alongside DeGov. Anyone hosting a DeGov instance can deploy the agent service and enable it for their DAO.
 
-#### Will the agent is available for all DAOs on the DeGov platform?
+**Do all DAOs share the same X account?**  
+Yes. All DAOs on the DeGov platform use the official X account: [@ai_degov](https://x.com/ai_degov).
 
-There is no exact answer to this question. The agent service is developed as a plugin https://github.com/ringecosystem/degov-essential and work together with the DeGov platform. As the degov is open source, anyone can deploy their own degov instance. If you want to use the agent service, you need to maintain a extra agent service to work with your degov instance. By default, for all the DAOs created on the DeGov platform, the agent service is available and can be used by the community members to delegate their voting power to the agent.
+**Can the agent see who voted in the tweet poll?**  
+No. Due to X’s privacy limitations, the agent only sees aggregate poll results (For/Against/Abstain), not individual voter identities.
 
-#### Will all the DAOs on the DeGov platform use the only one X account to interact with the agent?
+**Are tweet poll votes counted as on-chain votes?**  
+No. The tweet poll is an off-chain gauge of community sentiment. On-chain votes follow DeGov’s smart contracts. Poll results only inform the agent’s analysis.
 
-Yes, currently all the DAOs on the DeGov platform use the official X account [https://x.com/ai_degov](https://x.com/ai_degov)
+**What prevents malicious manipulation of the tweet poll?**  
+The agent uses a multi-source strategy. Poll votes are one input, combined with on-chain vote data and comment sentiment. The agent also detects abnormal activity (bots, Sybil attacks) when evaluating poll results.
 
-#### Does the agent know who voted for/against/abstain on the proposal tweet poll?
-
-No, the agent does not know who voted for/against/abstain on the proposal tweet poll because the limited visibility of the X platform. The agent can only see the total number of votes for each option (For/Against/Abstain) but not the individual voters' identities.
-
-#### Will the vote on the proposal tweet poll be counted as the onchain vote?
-
-No, the votes on the proposal tweet poll will not be counted as the onchain votes. The tweet poll is an offchain mechanism to gather community opinions. In addition, the tweet poll results is only part of the information that the agent uses to make a vote decision on the proposal.
-
-#### Will someone maliciously vote on the proposal tweet poll to influence the agent's vote decision?
-
-There is a possibility that someone may try to manipulate the proposal tweet poll by voting in a way that does not reflect their true opinion. 
-However, please note that the tweet poll or comment is only part of the information that the agent uses to make a vote decision on the proposal. The agent will also analyze the onchain voting data and the judgment of the proposal itself to avoid being influenced by malicious votes.
-
-#### For the proposal tweet poll, how does the agent handle the votes?
-
-There is a poll end time set ahead of the proposal voting end time. The agent will analyze the tweet poll votes results before the proposal voting end time and make a vote decision based on the predefined voting strategy. See the section [How does the agent make a vote decision?](./voting.md#how-does-the-agent-make-a-vote-decision) for more details.
+**How does the agent use tweet poll data?**  
+The poll closes before on-chain voting ends. The agent analyzes poll results, sentiment from comments, and on-chain metrics to cast its vote based on its configured strategy. See [How does the agent make a vote decision?](./voting.md#how-does-the-agent-make-a-vote-decision) for details.
 
 
