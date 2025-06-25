@@ -1,8 +1,12 @@
+---
+description: "Discover how the DeGov Agent autonomously analyzes proposals using polls, comments, and on-chain data to cast informed votes."
+---
+
 # Agent Voting
 
 ## Overview
 
-As described in [What’s special about the DeGov Agent?](./delegate.md#what-special-about-the-degov-agent), the DeGov Agent is an AI-powered delegate that analyzes proposals and votes on behalf of members who delegate to it. This section explains the agent voting workflow, key features, and decision process.
+As described in [What’s special about the DeGov Agent?](./delegate.md#what-is-special-about-the-degov-agent), the DeGov Agent is an AI-powered delegate that analyzes proposals and votes on behalf of members who delegate to it. This section explains the agent voting workflow, key features, and decision process.
 
 ## What is Agent Voting?
 

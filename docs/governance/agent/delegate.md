@@ -1,3 +1,7 @@
+---
+description: "Understand how the AI-powered DeGov Agent accepts delegations, analyzes proposals, and casts votes on behalf of community members."
+---
+
 # Agent Delegate
 
 In DeGov-based DAOs, the “DeGov Agent” appears first in the `Delegates` tab. Unlike a traditional delegate controlled by an individual, the DeGov Agent is powered by AI to analyze proposals—both on-chain and off-chain—and cast votes automatically before the proposal deadline.

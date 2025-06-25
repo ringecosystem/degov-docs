@@ -1,3 +1,7 @@
+---
+description: "Frequently asked questions about the DeGov Agent's key management, availability, and voting process."
+---
+
 # FAQs
 
 **Who controls the agent’s private key?**  
