@@ -25,6 +25,9 @@ theme:
     - content.code.copy
     - content.tooltips
     - navigation.footer
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path
@@ -103,6 +106,9 @@ plugins:
   - git-revision-date-localized:
       fallback_to_build_date: false
       enable_creation_date: true
+  - git-committers:
+      repository: ringecosystem/degov-docs
+      branch: main
   - redirects:
       redirect_maps:
 
