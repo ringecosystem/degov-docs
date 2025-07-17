@@ -10,23 +10,50 @@ This document provides answers to frequently asked questions about DeGov.AI incl
 
 #### What blockchains does DeGov.AI support?
 
-Currently, DeGov.AI supports Darwinia Chain, which is an EVM-compatible blockchain in the Polkadot ecosystem. We plan to expand support to other EVM-compatible chains in the future, including Ethereum Mainnet, Arbitrum, Base, and Ethereum Sepolia. Stay tuned for updates.
+We plan to expand support to all the mainstream EVM-compatible chains, including Ethereum Mainnet, Arbitrum, Base at the first stage. See the [DeGov Apps](https://apps.degov.ai) for the latest updates on supported chains and DAOs.
 
 #### How does DeGov.AI utilize AI capabilities?
 
-Integrating AI into our product is a core focus starting from the first version. We aim to solve long-term challenges in the decentralized governance space, such as proposal quality, voting participation, and decision-making efficiency by leveraging AI agents.
+Utilizing AI capabilities is a core focus of DeGov.AI. Currently, the following AI-related features are available:
 
-Currently, the following AI-related features are in our roadmap:
+1. **AI-Powered Proposal Review**, this feature allows AI agents to assist with proposal review, summarization, and voting analysis. This reduces cognitive load and increases participation quality.
 
-- Integrated AI agents assist with proposal review, summarization, and voting analysis. One of the biggest challenges in the governance process is the complexity of proposals and the difficulty for community members to understand their implications. By reducing the cognitive load, we aim to increase participation and improve decision-making quality.
-- AI agents can serve as special roles in the governance process, accepting delegation and voting on behalf of the community. AI agents can collect and analyze the community's opinions, preferences, and feedback, and then cast votes based on the aggregated data. This approach can avoid the preference of a few individuals dominating the decision-making process, ensuring that the community's collective voice is represented.
-- Multiple AI agents can collaborate to analyze complex proposals and provide insights. This collaborative approach allows for a more comprehensive understanding of proposals, as different AI agents can bring their unique perspectives and expertise to the table.
+    ![alt text](./images/ai-review.png)
 
-Bringing AI into governance opens up exciting possibilities for the future of decentralized organizations. We are actively developing these features this year, see our [Roadmap](roadmap.md) for the latest updates.
+2. **Agent Delegation and Voting**
+
+    As the screen shows, the "DeGov Agent" is the AI agent that can receive delegation and vote on behalf of the delegator who has delegated their voting power to the agent. 
+
+    ![alt text](./images/agent-1.png)
+
+    ![alt text](./images/agent-2.png)
+
+    Once the agent receives delegation, it will automatically vote on proposals based on the community's preferences and feedback before the voting deadline. 
+
+    ![alt text](./images/agent-3.png)
+
+    ![alt text](./images/agent-4.png)
+
+This is just a brief overview of the AI capabilities currently available in DeGov.AI, for more details, please refer to our [Agent Governance Overview](./governance/agent/overview.md). Bringing AI into governance opens up exciting possibilities for the future of decentralized organizations. We are actively developing these features this year, so stay tuned for updates!
 
 #### Is there an off-chain platform for discussing proposals?
 
 DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
+
+![alt text](./images/offchain-discussion.png)
+
+#### What's the difference between DeGov.AI and [Tally](https://www.tally.xyz/)?
+
+Both DeGov.AI and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences:
+
+- DeGov.AI is open source and fully customizable, allowing you to run your own instance and modify the code as needed. Tally is a closed-source platform with limited customization options.
+- DeGov.AI support agent governance, enabling AI agents to participate in the governance process. Tally does not currently have AI agent integration.
+- For each proposal created in the DeGov.AI platform, it will automatically create a corresponding X post to notify the community, while Tally does not have this feature.
+
+    ![alt text](./images/x-1.png)
+
+    ![alt text](./images/x-2.png)
+
 
 #### What's the difference between DeGov.AI and Snapshot?
 
@@ -48,24 +75,6 @@ Getting support for your DAO is straightforward:
 4. Direct Contact: Reach out via our social channels for partnership opportunities
 
 We're committed to supporting DAOs of all sizes in their governance journey.
-
-#### How can I create or vote on proposals?
-
-Creating Proposals:
-
-1. Connect your wallet to the DeGov.AI platform
-2. Ensure you meet the [proposal threshold](governance/parameters/proposal-thresholds.md) requirements
-3. Draft your proposal with clear title, description, and executable actions
-4. Submit the proposal for community review
-
-Voting on Proposals:
-
-1. Navigate to active proposals in your DAO
-2. Review the proposal details and AI-generated summaries
-3. Cast your vote (For, Against, or Abstain)
-4. Your voting power is automatically calculated based on your token holdings
-
-Learn more about the complete [proposal lifecycle](governance/proposal/lifecycle.md) and [voting mechanisms](governance/proposal/voting.md). Try the process on our [demo platform](https://demo.degov.ai/) first!
 
 
 #### I'm not a developer. Can I still use DeGov.AI?
@@ -101,6 +110,24 @@ Security is our top priority:
 Your DAO's security is ensured through proven, transparent technology.
 
 ## Proposal
+
+#### How can I create or vote on proposals?
+
+Creating Proposals:
+
+1. Connect your wallet to the DeGov.AI platform
+2. Ensure you meet the [proposal threshold](governance/parameters/proposal-thresholds.md) requirements
+3. Draft your proposal with clear title, description, and executable actions
+4. Submit the proposal for community review
+
+Voting on Proposals:
+
+1. Navigate to active proposals in your DAO
+2. Review the proposal details and AI-generated summaries
+3. Cast your vote (For, Against, or Abstain)
+4. Your voting power is automatically calculated based on your token holdings
+
+Learn more about the complete [proposal lifecycle](governance/proposal/lifecycle.md) and [voting mechanisms](governance/proposal/voting.md). Try the process on our [demo platform](https://demo.degov.ai/) first!
 
 #### What is the proposal threshold?
 

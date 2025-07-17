@@ -4,13 +4,14 @@ description: "DeGov.AI is a next-generation AI-powered governance platform for D
 
 # What is DeGov.AI?
 
-[DeGov.AI](https://degov.ai/) is a next-generation governance platform that leverages **AI agents** to empower Decentralized Autonomous Organizations (DAOs). Our mission is to help DAOs cultivate vibrant communities and make more informed, effective decisions.
+[DeGov.AI](https://degov.ai) is an AI-powered governance platform designed for DAOs that use the [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance) framework. 
+What sets DeGov.AI apart is its [agent governance](./governance/agent/overview.md) feature, which allows AI agents to participate in the governance process, enhancing decision-making and community engagement.
 
 ## Key Features
 
-*   **Built on OpenZeppelin Governor:** DeGov.AI leverages the battle-tested [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance) framework. This provides a robust, secure, and community-trusted foundation for your DAO's governance. Existing DAOs using OpenZeppelin Governor can seamlessly transition to DeGov.AI.
-*   **AI-Powered Governance:** AI agents are integrated directly into the governance workflow. These agents can perform a range of tasks, from simplifying complex proposals through summarization and providing insightful feedback, to connecting with real-world data sources with [MCP](https://modelcontextprotocol.io/) to enrich community engagement and decision-making.
-*   **Open Source & Community-Driven:** DeGov.AI is an open-source project. We believe in transparency and collaboration, inviting everyone to inspect, modify, and contribute to our [codebase](https://github.com/ringecosystem/degov).
+* **Agent Governance:** DeGov.AI introduces a unique agent governance model where AI agents are not just tools but active participants in the governance process. These agents can analyze proposals, provide insights, and even vote on behalf of the community, ensuring that decisions are informed by data and AI-driven analysis. See our [Agent Governance Overview](./governance/agent/overview.md) for more details.
+* **Open Source & Community-Driven:** DeGov.AI is fully open source, allowing anyone to inspect, modify, and contribute to the codebase. You can even clone the repository and run it yourself. See our codebase on [GitHub](https://github.com/ringecosystem/degov).
+* **Built on OpenZeppelin Governor:** DeGov.AI leverages the battle-tested [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance) framework. This provides a robust, secure, and community-trusted foundation for your DAO's governance. Existing DAOs using OpenZeppelin Governor can seamlessly transition to DeGov.AI.
 
 ## Try Demo
 
@@ -18,19 +19,16 @@ Experience DeGov.AI firsthand with our interactive demo platform:
 
 **[🚀 Launch Demo](https://demo.degov.ai/)**
 
-Explore the full range of AI-powered governance features in a live environment. The demo showcases real DAO scenarios where you can:
+Explore the full range of AI-powered governance features in a live environment. The demo showcases realistic DAO scenarios where you can:
 
 - Create and vote on proposals
 - Interact with AI agents for proposal analysis
 - Experience the seamless integration of AI in governance workflows
 - Test the user interface and governance mechanisms
 
-### Real-world examples powered by DeGov.AI
+### Real-world examples
 
-- **[RingDAO](https://gov.ringdao.com)** - Governing the Ring ecosystem and its development
-- **[KtonDAO](https://gov.ktondao.xyz)** - Managing Kton token governance and community decisions  
-- **[RCG](https://guild-gov.ringdao.com)** - Ring Community Guild governance for ecosystem growth
-
+You can also find real-world DAOs that are using DeGov.AI in the [DeGov Apps](https://apps.degov.ai). These applications demonstrate the practical implementation of DeGov.AI's features in various DAO contexts, showcasing how AI agents enhance governance processes.
 
 ## Join Our Community
 

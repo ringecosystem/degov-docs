@@ -6,13 +6,13 @@ description: "Explore DeGov.AI's 5-phase development roadmap from basic DAO plat
 
 This roadmap outlines the development journey of DeGov.AI from a basic open-source DAO platform to a sophisticated AI-powered governance ecosystem. The roadmap is structured in five progressive phases, each building upon the previous achievements to ultimately realize the vision of autonomous AI agent swarms managing decentralized organizations.
 
-Our development follows a phased approach that prioritizes core functionality first, then gradually introduces advanced features like cross-chain capabilities and AI automation. Currently, we have successfully completed Phase 1, 2 and are actively working on Phases 4.
+Our development follows a phased approach that prioritizes core functionality first, then gradually introduces advanced features like cross-chain capabilities and AI automation. Currently, we have successfully completed Phase 1, 2, 3 and are actively working on Phases 4.
 
 ---
 
 ## Development Phases
 
-The DeGov.AI vision will be realized through a series of development phases, each focusing on specific aspects of decentralized governance and AI integration. The roadmap is designed to evolve iteratively, allowing for community feedback and adaptation to emerging technologies and governance needs. See the [Roadmap](https://github.com/ringecosystem/collaboration/blob/master/rfps/dao-ai-agent.md) for the latest updates and progress. Let's explore each phase in detail.
+The DeGov.AI vision will be realized through a series of development phases, each focusing on specific aspects of decentralized governance and AI integration. The roadmap is designed to evolve iteratively, allowing for community feedback and adaptation to emerging technologies and governance needs. Let's explore each phase in detail.
 
 ### Phase 1: Open-Source DAO Application Platform ✅ **COMPLETED**
 
@@ -34,11 +34,11 @@ The XAccount integration will allow DAOs to manage assets, execute proposals, an
 
 ---
 
-### Phase 3: AI Agent Delegate 🚧 **IN PROGRESS**
+### Phase 3: Agent Governance 🚧 ✅ **COMPLETED**
 
 **Intelligent Governance Automation**
 
-This transformative phase introduces artificial intelligence into the governance process through the development of AI Agent Delegates - sophisticated agents capable of autonomous decision-making within predefined parameters. These AI delegates will utilize advanced machine learning frameworks to analyze proposals, assess their impact, and participate in governance activities with human-like reasoning capabilities.
+This transformative phase introduces AI capabilities into the governance process through the development of Agent Governance - sophisticated agents capable of autonomous decision-making within predefined parameters. These AI delegates will utilize advanced machine learning frameworks to analyze proposals, assess their impact, and participate in governance activities with human-like reasoning capabilities.
 
 The AI agents will be thoroughly tested in live DAO environments to ensure reliability, security, and alignment with community values. This phase represents the first step toward truly autonomous governance, where AI delegates can handle routine decisions, flag important issues for human review, and provide data-driven insights to enhance overall DAO decision-making quality.
 
