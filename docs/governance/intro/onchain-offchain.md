@@ -34,6 +34,9 @@ Offchain governance encompasses decision-making processes conducted outside the 
 While DeGov.AI champions onchain governance for its robustness and trustlessness, it recognizes the value of offchain mechanisms for community engagement and initial proposal shaping. A typical workflow in the DeGov.AI ecosystem might look like this:
 
 1. **Ideation & Discussion (Offchain)**: New ideas are discussed on community forums (e.g., Discourse, Discord) that can be linked in you `degov.yml` via `offChainDiscussionUrl` and create a entrypoint in the DeGov.AI UI. Discussions gather rough consensus and feedback from the community.
+
+    ![alt text](../../images/offchain-discussion.png)
+
 2. **Formal Proposal (Onchain)**: If there's strong offchain support, a formal proposal is created on DeGov.AI. This involves creating a detailed proposal that outlines the exact actions to be taken by smart contracts.
 3. **Voting (Onchain)**: Token holders (or their delegates) vote on the proposal directly on the blockchain using DeGov.AI. This is where gas costs are incurred, and votes are cryptographically secured.
 4. **Execution (Onchain)**: If the proposal passes (meeting quorum and threshold requirements) and the timelock period completes, the proposal is automatically executed by the DeGov.AI smart contracts.
