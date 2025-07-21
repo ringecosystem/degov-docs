@@ -137,7 +137,7 @@ nav:
         - TimeLock delay: governance/parameters/timelock-delay.md
   - Agent Governance:
       - Overview: governance/agent/overview.md
-      - Proposal Review: governance/agent/review.md
+      - Agent Review: governance/agent/review.md
       - Agent Delegate: governance/agent/delegate.md
       - Agent Voting: governance/agent/voting.md
       - FAQs: governance/agent/faqs.md
