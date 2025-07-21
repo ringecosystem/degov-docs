@@ -10,7 +10,7 @@ The agent’s private key is currently managed by the RingDAO team to ensure rel
 
 #### Is the agent available for all DAOs on DeGov?
 
-Yes. The agent runs as an open-source plugin (https://github.com/ringecosystem/degov-essential) alongside DeGov. Anyone hosting a DeGov instance can deploy the agent service and enable it for their DAO.
+Yes. The agent runs as an open-source plugin [https://github.com/ringecosystem/degov-essential](h   ttps://github.com/ringecosystem/degov-essential) alongside DeGov. Anyone hosting a DeGov instance can deploy the agent service and enable it for their DAO.
 
 #### Do all DAOs share the same X account?
 

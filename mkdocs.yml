@@ -25,6 +25,9 @@ theme:
     - content.code.copy
     - content.tooltips
     - navigation.footer
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path
@@ -103,6 +106,9 @@ plugins:
   - git-revision-date-localized:
       fallback_to_build_date: false
       enable_creation_date: true
+  - git-committers:
+      repository: ringecosystem/degov-docs
+      branch: main
   - redirects:
       redirect_maps:
 
@@ -131,7 +137,7 @@ nav:
         - TimeLock delay: governance/parameters/timelock-delay.md
   - Agent Governance:
       - Overview: governance/agent/overview.md
-      - Proposal Review: governance/agent/review.md
+      - Agent Review: governance/agent/review.md
       - Agent Delegate: governance/agent/delegate.md
       - Agent Voting: governance/agent/voting.md
       - FAQs: governance/agent/faqs.md
