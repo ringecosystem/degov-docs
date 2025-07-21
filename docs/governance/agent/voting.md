@@ -30,12 +30,21 @@ However, where does these information come from? Keep reading to find out.
 
 The DeGov Agent relies on the X Interaction Model to gather and analyze both on-chain and off-chain signals:
 
-1. **Proposal Announcement on X**: When a proposal is created, the agent posts a tweet summarizing the proposal, linking to details, and launching a For/Against/Abstain poll. The poll closes before the on-chain voting deadline. An example tweet might look like this: [https://x.com/ai_degov/status/1945708657796165884](https://x.com/ai_degov/status/1945708657796165884)
+1. **Proposal Announcement on X**: When a proposal is created, the agent posts a tweet summarizing the proposal, linking to details, and launching a For/Against/Abstain poll. The poll closes before the on-chain voting deadline. 
+    
+    An example tweet might look like this: [https://x.com/ai_degov/status/1945708657796165884](https://x.com/ai_degov/status/1945708657796165884)
+
+    ![Final Vote Confirmation](./images/agent-voting-4.png)
+
+    You can also view the tweet link in the proposal details page, which looks like this:
+
+    ![Final Vote Confirmation](./images/agent-voting-5.png)
+    
 2. **Automatic Updates**: The agent monitors on-chain events (status changes, votes, queueing, execution) and posts progress updates as comments on the original tweet.
 3. **Community Voting**: Members can vote on-chain in DeGov or off-chain via the tweet poll. Off-chain poll results do not directly affect on-chain tallies but inform the agent’s analysis.
 4. **Final Decision**: After the tweet poll and before on-chain voting ends, the agent synthesizes tweet poll results, comments sentiment, and live on-chain data. It then casts its on-chain vote according to the configured strategy and publishes its rationale as a comment.
 
-![Final Vote Confirmation](./images/agent-voting-4.png)
+
 
 ## Voting Strategy
 
