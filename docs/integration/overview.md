@@ -14,11 +14,8 @@ Experience DeGov.AI in action: [demo.degov.ai](https://demo.degov.ai/)
 
 ### 🚀 Production Examples
 
-See real DAOs using DeGov.AI:
+You can also find real-world DAOs that are using DeGov.AI in the [DeGov Apps](https://apps.degov.ai). These applications demonstrate the practical implementation of DeGov.AI's features in various DAO contexts, showcasing how AI agents enhance governance processes.
 
-- **[RingDAO](https://gov.ringdao.com)** - Governing the Ring ecosystem
-- **[KtonDAO](https://gov.ktondao.xyz)** - Kton token governance
-- **[RCG](https://guild-gov.ringdao.com)** - Ring Community Guild
 
 ## Integration Options
 
