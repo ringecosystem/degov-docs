@@ -44,7 +44,7 @@ Before you begin, ensure you have the following installed on your system:
 
 ## Configuration Options
 
-The `degov.yml` file is the core configuration file for your DeGov instance, following the explanation comments in the demo file. See the [https://github.com/ringecosystem/degov-registry/tree/main/daos](https://github.com/ringecosystem/degov-registry/tree/main/daos) for examples of existing DAOs. Feel to ask in the [DeGov community](https://t.me/DeGov_AI) for help with configuration.
+The `degov.yml` file is the core configuration file for your DeGov instance, following the explanation comments in the demo file. See the [https://github.com/ringecosystem/degov-registry/tree/main/daos](https://github.com/ringecosystem/degov-registry/tree/main/daos) for examples of existing DAOs. Feel to ask in the [DeGov community](https://t.me/RingDAO_Hub) for help with configuration.
 
 ## Environment Variables
 
@@ -128,4 +128,4 @@ If you encounter issues:
 1. Check the [troubleshooting section](#troubleshooting) above
 2. Review the logs using `docker compose logs`
 3. Open an issue on the [DeGov Launcher repository](https://github.com/ringecosystem/degov-launcher/issues)
-4. Join our [Telegram community](https://t.me/DeGov_AI) for community support
+4. Join our [Telegram community](https://t.me/RingDAO_Hub) for community support

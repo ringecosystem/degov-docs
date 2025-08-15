@@ -53,7 +53,7 @@ Even with technical skills, you might prefer our assisted deployment service for
 
 **How to Request Assistance:**
 
-1. **Contact our team** through [GitHub Issues](https://github.com/ringecosystem/degov/issues) or [Telegram Group](https://t.me/degov_ai) 
+1. **Contact our team** through [GitHub Issues](https://github.com/ringecosystem/degov/issues) or [Telegram Group](https://t.me/RingDAO_Hub) 
 2. **Provide project details** including your requirements and technical setup:
     - Blockchain network (e.g., Ethereum, Darwinia)
     - Desired governance parameters (voting periods, quorum, etc.)
@@ -139,7 +139,7 @@ If you're interested in learning more about DAO governance concepts, mechanisms,
 
 ## Getting Help
 
-We offer multiple channels to help you succeed with DAO governance, including community support through GitHub Discussions and comprehensive documentation. For specialized needs, we provide professional services such as expert consultation, custom development, and ongoing support for deployed DAOs. You can reach us through our [DeGov Repository](https://github.com/ringecosystem/degov) for general inquiries or join our [DeGov.AI Community](https://t.me/degov_ai) on Telegram for real-time discussions.
+We offer multiple channels to help you succeed with DAO governance, including community support through GitHub Discussions and comprehensive documentation. For specialized needs, we provide professional services such as expert consultation, custom development, and ongoing support for deployed DAOs. You can reach us through our [DeGov Repository](https://github.com/ringecosystem/degov) for general inquiries or join our [DeGov.AI Community](https://t.me/RingDAO_Hub) on Telegram for real-time discussions.
 
 ---
 

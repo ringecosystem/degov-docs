@@ -55,7 +55,7 @@ extra:
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/ai_degov
     - icon: fontawesome/brands/telegram
-      link: https://t.me/DeGov_AI
+      link: https://t.me/RingDAO_Hub
 
   analytics:
     provider: google

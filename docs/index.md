@@ -34,7 +34,7 @@ You can also find real-world DAOs that are using DeGov.AI in the [DeGov Apps](ht
 
 We believe in the power of community. Connect with us to stay updated and participate in the DeGov.AI journey:
 
-*   **Telegram:** [DeGov.AI Official](https://t.me/DeGov_AI)
+*   **Telegram:** [DeGov.AI Official](https://t.me/RingDAO_Hub)
 *   **X (formerly Twitter):** [@ai_degov](https://x.com/ai_degov)
 *   **GitHub:** [DeGov.AI Repository](https://github.com/ringecosystem/degov)
 
