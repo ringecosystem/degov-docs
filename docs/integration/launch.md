@@ -24,7 +24,7 @@ Consider our assisted launch service if you:
 
 1. **Contact our team** through one of these channels:  
 
-    - **Telegram**: [DeGov.AI Official](https://t.me/DeGov_AI)
+    - **Telegram**: [DeGov.AI Official](https://t.me/RingDAO_Hub)
     - **X (Twitter)**: [@ai_degov](https://x.com/ai_degov)
 
 2. **Schedule a consultation call** to discuss:
@@ -65,6 +65,6 @@ To provide you with the best service, please prepare:
 Ready to launch your DeGov.AI instance with professional assistance?
 
 1. **[Contact our team](https://degov.ai)** for an initial consultation
-2. **Join our [Telegram community](https://t.me/DeGov_AI)** to connect with other DAO operators
+2. **Join our [Telegram community](https://t.me/RingDAO_Hub)** to connect with other DAO operators
 3. **Follow us on [X](https://x.com/ai_degov)** for updates and governance insights
 4. **Explore our [GitHub](https://github.com/ringecosystem/degov)** to understand the technical foundation

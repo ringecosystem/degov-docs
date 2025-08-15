@@ -65,6 +65,6 @@ Choose your integration path:
 
 1. **Technical team with DevOps experience?** → [Deploy By Yourself](deploy.md)
 2. **Prefer professional assistance?** → [Launch With Assistant](launch.md)
-3. **Still deciding?** → Join our [Telegram community](https://t.me/DeGov_AI) to discuss your needs
+3. **Still deciding?** → Join our [Telegram community](https://t.me/RingDAO_Hub) to discuss your needs
 
 Ready to transform your DAO's governance with AI-powered tools? Let's get started! 🚀 

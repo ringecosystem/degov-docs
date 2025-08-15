@@ -69,7 +69,7 @@ DeGov.AI combines the best of both worlds: on-chain security with AI-powered enh
 
 Getting support for your DAO is straightforward:
 
-1. Community Support: Join our [Telegram channel](https://t.me/DeGov_AI) for community-driven help
+1. Community Support: Join our [Telegram channel](https://t.me/RingDAO_Hub) for community-driven help
 2. Documentation: Review our comprehensive docs for self-service setup
 3. GitHub: Report issues or contribute to our [open-source codebase](https://github.com/ringecosystem/degov)
 4. Direct Contact: Reach out via our social channels for partnership opportunities
