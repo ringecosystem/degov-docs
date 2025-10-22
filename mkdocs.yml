@@ -111,14 +111,15 @@ plugins:
       branch: main
   - redirects:
       redirect_maps:
+        "roadmap.md": "index.md"
+        "best-practices.md": "index.md"
 
 nav:
   - Home: 
       - What is DeGov.AI?: index.md
-      - Best Practices: best-practices.md
-      - Roadmap: roadmap.md
       - FAQs: faqs.md
   - DeGov Square:
+      - Overview: governance/overview.md
       - Introduction:
         - What are DAOs?: governance/intro/daos.md
         - OnChain / OffChain: governance/intro/onchain-offchain.md

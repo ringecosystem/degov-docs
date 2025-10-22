@@ -1,8 +1,6 @@
 ---
-description: "DeGov.AI is a next-generation AI-powered governance platform for DAOs, built on OpenZeppelin Governor with integrated AI agents for enhanced decision-making and community engagement."
+description: "DeGov.AI delivers secure, reliable, and AI‑enhanced governance solutions for DAOs on the Ethereum ecosystem."
 ---
-
-# What is DeGov.AI?
 
 [DeGov.AI](https://degov.ai) delivers secure, reliable, and AI‑enhanced governance solutions for DAOs on the Ethereum ecosystem. We currently offer two flagship products:
 
@@ -13,13 +11,10 @@ description: "DeGov.AI is a next-generation AI-powered governance platform for D
 
 We strongly believe that DAOs represent a new organizational paradigm for the future, fostering stronger community-based organizations than traditional companies. Therefore, we are committed to building tools that accelerate the adoption of DAOs.
 
-We also believe that open-source is essential for DAO tooling, as it embodies the core DAO values of transparency and trustworthiness. This is why our core product, [degov](https://github.com/ringecosystem/degov), has been fully open-sourced on GitHub since day one. Anyone can audit the code, contribute to it, or deploy it to build their own DAO freely.
+We strongly believe that DAO tools should be open-sourced, meaning anyone can freely audit, contribute to, or deploy the code. This aligns with the core DAO values of transparency and trustworthiness. This is why our core product, [degov](https://github.com/ringecosystem/degov), has been fully open-sourced on GitHub since day one.
 
 ## Join Our Community
 
-We believe in the power of community. Join us to stay updated:
-
 * **X (formerly Twitter):** [@ai_degov](https://x.com/ai_degov)
-* **DeGovX**: [@DeGov_X](https://x.com/degov_x)
 * **Telegram:** [DeGov.AI Tg](https://t.me/RingDAO_Hub)
 * **GitHub:** [https://github.com/ringecosystem/degov](https://github.com/ringecosystem/degov)
