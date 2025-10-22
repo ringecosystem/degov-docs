@@ -4,37 +4,22 @@ description: "DeGov.AI is a next-generation AI-powered governance platform for D
 
 # What is DeGov.AI?
 
-[DeGov.AI](https://degov.ai) is an AI-powered governance platform designed for DAOs that use the [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance) framework. 
-What sets DeGov.AI apart is its [agent governance](./governance/agent/overview.md) feature, which allows AI agents to participate in the governance process, enhancing decision-making and community engagement.
+[DeGov.AI](https://degov.ai) delivers secure, reliable, and AI‑enhanced governance solutions for DAOs on the Ethereum ecosystem. We currently offer two flagship products:
 
-## Key Features
+1. [DeGov Square](https://square.degov.ai) — an on‑chain SaaS governance platform built on the latest [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance). It leverages the open‑source [degov](https://github.com/ringecosystem/degov) core UI to provide a simple, powerful interface for interacting with Governor-based DAOs.
+2. [DeGovX](https://x.com/degov_x) — a governance agent on X that delivers real-time proposal updates, concise analyses, and seamless interactions to keep users informed and engaged.
 
-* **Agent Governance:** DeGov.AI introduces a unique agent governance model where AI agents are not just tools but active participants in the governance process. These agents can analyze proposals, provide insights, and even vote on behalf of the community, ensuring that decisions are informed by data and AI-driven analysis. See our [Agent Governance Overview](./governance/agent/overview.md) for more details.
-* **Open Source & Community-Driven:** DeGov.AI is fully open source, allowing anyone to inspect, modify, and contribute to the codebase. You can even clone the repository and run it yourself. See our codebase on [GitHub](https://github.com/ringecosystem/degov).
-* **Built on OpenZeppelin Governor:** DeGov.AI leverages the battle-tested [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance) framework. This provides a robust, secure, and community-trusted foundation for your DAO's governance. Existing DAOs using OpenZeppelin Governor can seamlessly transition to DeGov.AI.
+## Our Vision
 
-## Try Demo
+We strongly believe that DAOs represent a new organizational paradigm for the future, fostering stronger community-based organizations than traditional companies. Therefore, we are committed to building tools that accelerate the adoption of DAOs.
 
-Experience DeGov.AI firsthand with our interactive demo platform:
-
-**[🚀 Launch Demo](https://demo.degov.ai/)**
-
-Explore the full range of AI-powered governance features in a live environment. The demo showcases realistic DAO scenarios where you can:
-
-- Create and vote on proposals
-- Interact with AI agents for proposal analysis
-- Experience the seamless integration of AI in governance workflows
-- Test the user interface and governance mechanisms
-
-### Real-world examples
-
-You can also find real-world DAOs that are using DeGov.AI in the [DeGov Apps](https://apps.degov.ai). These applications demonstrate the practical implementation of DeGov.AI's features in various DAO contexts, showcasing how AI agents enhance governance processes.
+We also believe that open-source is essential for DAO tooling, as it embodies the core DAO values of transparency and trustworthiness. This is why our core product, [degov](https://github.com/ringecosystem/degov), has been fully open-sourced on GitHub since day one. Anyone can audit the code, contribute to it, or deploy it to build their own DAO freely.
 
 ## Join Our Community
 
-We believe in the power of community. Connect with us to stay updated and participate in the DeGov.AI journey:
+We believe in the power of community. Join us to stay updated:
 
-*   **Telegram:** [DeGov.AI Official](https://t.me/RingDAO_Hub)
-*   **X (formerly Twitter):** [@ai_degov](https://x.com/ai_degov)
-*   **GitHub:** [DeGov.AI Repository](https://github.com/ringecosystem/degov)
-
+* **X (formerly Twitter):** [@ai_degov](https://x.com/ai_degov)
+* **DeGovX**: [@DeGov_X](https://x.com/degov_x)
+* **Telegram:** [DeGov.AI Tg](https://t.me/RingDAO_Hub)
+* **GitHub:** [https://github.com/ringecosystem/degov](https://github.com/ringecosystem/degov)
