@@ -4,19 +4,28 @@ description: "Learn the difference between onchain and offchain governance in DA
 
 # Onchain and Offchain Governance
 
-In the realm of Decentralized Autonomous Organizations (DAOs) and blockchain-based systems, governance refers to the mechanisms by which decisions are made and implemented. This can broadly be categorized into onchain and offchain governance.
+In the realm of DAO governance, it has two primary approaches: onchain and offchain governance. Both methods have their unique advantages and trade-offs, and they can be employed in different scenarios depending on the needs of the community. Understanding the distinctions between these methods is crucial for designing effective governance systems that align with a community's needs and values. 
 
 ## Onchain Governance
 
-Onchain governance embeds decision-making rules and procedures directly within the blockchain protocol. All stages—from proposal creation and voting to outcome execution—transpire on the blockchain. This method is central to DeGov.AI's philosophy, prioritizing maximum transparency, immutability, and trustlessness. DeGov.AI's onchain governance ensures decisions are binding, transparent, and immutable, automatically executed by smart contracts. It utilizes secure OpenZeppelin Governor contracts and token-weighted voting (ERC20/ERC721) within a formal proposal lifecycle (creation, delay, voting, timelock, execution). This model minimizes reliance on trust, automates implementation, offers clarity, and enhances censorship resistance. Nonetheless, it faces challenges like transaction costs (gas fees), slower processing due to block confirmations and voting periods, potentially reduced participation from smaller token holders because of costs and formality, and inflexibility in modifying governance rules, which also necessitates a protracted onchain procedure.
+Onchain governance refers to decision-making processes, such as proposal voting and execution, that occur directly on the smart contract of the blockchain.
+
+The advantages of onchain governance lies in its transparency, immutability, and trustlessness. All the decisions made are transparently recorded on the blockchain, ensuring that they cannot be altered or tampered with. That's especially important for DAOs with big communities and significant treasury management, where trust minimization is critical. The automatic execution of decisions through smart contracts eliminates the need for intermediaries, reducing the risk of censorship or manipulation. 
+
+The disadvantages is apparently the cost and speed. Every action taken onchain incurs gas fees, which can be a barrier for smaller token holders to participate. The process can also be slower due to block confirmation times and voting periods, which may hinder rapid decision-making in fast-paced environments.
 
 ## Offchain Governance
 
-Offchain governance encompasses decision-making processes conducted outside the blockchain, typically involving forum discussions, community calls, or polls on platforms like Snapshot for signaling sentiment. While these preliminary stages occur offchain, a designated multi-signature wallet or administrative body might implement the final decision onchain. Primarily, offchain governance acts as a tool for gauging community sentiment rather than directly enacting onchain changes. Its main benefits include flexibility through diverse discussion and polling tools (e.g., Discourse, Discord, Snapshot), cost-efficiency by avoiding gas fees, and rapid sentiment gathering, which promotes quick iteration and inclusivity by lowering participation hurdles. This approach facilitates more detailed discussions and qualitative feedback. However, it also has drawbacks: it depends on trusted entities to translate consensus into onchain actions, offchain polls can be less secure and prone to manipulation, decisions lack inherent binding power, and discussions risk fragmentation across various platforms.
+Offchain governance refers to decision-making processes, such as proposal voting, discussion, and sentiment gathering, that occur outside the blockchain. Once a consensus is reached offchain, a trusted party (like a multi-signature wallet or admin) will execute the proposal onchain.
+
+The advantages of offchain governance include flexibility, cost-efficiency, and speed. Communities can utilize various discussion platforms (like Discourse, Discord) and polling tools (like Snapshot) to gather input and gauge sentiment without incurring gas fees. This approach allows for rapid iteration and adaptation of governance processes, making it easier for communities to engage in discussions and provide qualitative feedback.
+
+The disadvantages lies in its reliance on trusted entities to implement decisions onchain, which can introduce centralization risks. Even if a consensus is reached offchain, the lack of inherent binding power means that decisions may not be executed as intended. Additionally, offchain polls can be more susceptible to manipulation and Sybil attacks, and discussions may become fragmented across multiple platforms, making it challenging to maintain a cohesive community dialogue.
+
 
 ## Comparing Onchain and Offchain Governance
 
-| Feature             | Onchain Governance (DeGov.AI)                                  | Offchain Governance                                       |
+| Feature             | Onchain Governance                                  | Offchain Governance                                       |
 | ------------------- | -------------------------------------------------------------- | --------------------------------------------------------- |
 | **Execution**       | Automatic, by smart contract                                   | Manual, requires trusted party to implement onchain       |
 | **Binding**         | Decisions are binding and automatically enforced               | Decisions are signals, non-binding without onchain action |
@@ -29,24 +38,10 @@ Offchain governance encompasses decision-making processes conducted outside the 
 | **Trust**           | Trust in code and protocol                                     | Trust in community, multi-sig holders, or platform admins |
 | **Primary Use Case**| Formal proposals, treasury management, protocol upgrades       | Community sentiment, informal polls, discussion, ideation |
 
-## The DeGov.AI Approach: A Hybrid Model
+## The DeGov Square Approach: Onchain
 
-While DeGov.AI champions onchain governance for its robustness and trustlessness, it recognizes the value of offchain mechanisms for community engagement and initial proposal shaping. A typical workflow in the DeGov.AI ecosystem might look like this:
+DeGov Square focuses on onchain governance and is based on the OpenZeppelin Governor framework. For onchain governance, smart contract security is the top priority. Choosing well-audited and battle-tested governance frameworks is a wise decision compared to building one from scratch. This approach is DeGov Square's core value proposition.
 
-1. **Ideation & Discussion (Offchain)**: New ideas are discussed on community forums (e.g., Discourse, Discord) that can be linked in you `degov.yml` via `offChainDiscussionUrl` and create a entrypoint in the DeGov.AI UI. Discussions gather rough consensus and feedback from the community.
+Although DeGov Square emphasizes onchain governance, we also recommend discussing ideas and gathering community sentiment offchain before formalizing proposals onchain. To facilitate this, we provide an offchain discussion entry point in the main UI that links to your community forums (e.g., Discourse, Discord). This can be configured in your `degov.yml` file via the `offChainDiscussionUrl` property, as shown below:
 
-    ![alt text](../../images/offchain-discussion.png)
-
-2. **Formal Proposal (Onchain)**: If there's strong offchain support, a formal proposal is created on DeGov.AI. This involves creating a detailed proposal that outlines the exact actions to be taken by smart contracts.
-3. **Voting (Onchain)**: Token holders (or their delegates) vote on the proposal directly on the blockchain using DeGov.AI. This is where gas costs are incurred, and votes are cryptographically secured.
-4. **Execution (Onchain)**: If the proposal passes (meeting quorum and threshold requirements) and the timelock period completes, the proposal is automatically executed by the DeGov.AI smart contracts.
-
-This hybrid approach combines the inclusivity and agility of offchain discussions with the security and finality of onchain execution, creating a comprehensive and effective governance model.
-
-## Conclusion
-
-Both onchain and offchain governance play crucial roles in the lifecycle of a DAO. Onchain governance provides the secure and transparent foundation for making binding decisions, as exemplified by DeGov.AI. Offchain governance offers a flexible and accessible layer for community discussion, sentiment gathering, and initial proposal development. By understanding the strengths and weaknesses of each, DAOs can design governance systems that are both robust and responsive to their community's needs. DeGov.AI is designed to seamlessly integrate with offchain discussion channels to facilitate this balanced approach.
-
-
-
-
+![alt text](../../images/offchain-discussion.png)

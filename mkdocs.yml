@@ -120,7 +120,7 @@ nav:
       - FAQs: faqs.md
   - DeGov Square:
       - Overview: governance/overview.md
-      - Introduction:
+      - Basic Concepts:
         - What are DAOs?: governance/intro/daos.md
         - OnChain / OffChain: governance/intro/onchain-offchain.md
         - Governance Model: governance/intro/model.md
@@ -138,7 +138,7 @@ nav:
         - TimeLock delay: governance/parameters/timelock-delay.md
       - Agent Governance:
         - Overview: governance/agent/overview.md
-        - Agent Review: governance/agent/review.md
+        - Agent Summary: governance/agent/review.md
         - Agent Delegate: governance/agent/delegate.md
         - Agent Voting: governance/agent/voting.md
         - FAQs: governance/agent/faqs.md
