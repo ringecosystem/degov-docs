@@ -63,27 +63,9 @@ Your DAO's security is ensured through proven, transparent technology.
 
 #### How does DeGov.AI utilize AI capabilities?
 
-Utilizing AI capabilities is a core focus of DeGov.AI. Currently, the following AI-related features are available:
+The AI capabilities in DeGov.AI can be seen in the [Agent Governance](./governance/agent/overview.md).
 
-1. **AI-Powered Proposal Review**, this feature allows AI agents to assist with proposal review, summarization, and voting analysis. This reduces cognitive load and increases participation quality.
-
-    ![alt text](./images/ai-review.png)
-
-2. **Agent Delegation and Voting**
-
-    As the screen shows, the "DeGov Agent" is the AI agent that can receive delegation and vote on behalf of the delegator who has delegated their voting power to the agent. 
-
-    ![alt text](./images/agent-1.png)
-
-    ![alt text](./images/agent-2.png)
-
-    Once the agent receives delegation, it will automatically vote on proposals based on the community's preferences and feedback before the voting deadline. 
-
-    ![alt text](./images/agent-3.png)
-
-    ![alt text](./images/agent-4.png)
-
-This is just a brief overview of the AI capabilities currently available in DeGov.AI, for more details, please refer to our [Agent Governance Overview](./governance/agent/overview.md). Bringing AI into governance opens up exciting possibilities for the future of decentralized organizations. We are actively developing these features this year, so stay tuned for updates!
+In a nutshell, there is a special delegate called `degov-agent.eth` powered by AI. Community members can delegate their voting power to this agent, which will then analyze proposals and cast votes automatically based on community sentiment and on-chain data.
 
 ## Proposal
 

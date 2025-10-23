@@ -4,22 +4,22 @@ description: "DeGov.AI integration guide - learn how to deploy and set up DeGov.
 
 # Integration Overview
 
-Welcome to the DeGov.AI integration guide! This section will help you understand how to get DeGov.AI up and running for your DAO, whether you prefer a self-hosted solution or professional assistance.
+Welcome to the [degov](https://github.com/ringecosystem/degov) integration guide! This section will help you understand how to get degov up and running for your DAO, whether you prefer a self-hosted solution or professional assistance.
 
-## Try DeGov.AI
+## Try DeGov
 
 ### 🎯 Live Demo
 
-Experience DeGov.AI in action: [demo.degov.ai](https://demo.degov.ai/)
+Experience DeGov in action: [demo.degov.ai](https://demo.degov.ai/)
 
 ### 🚀 Production Examples
 
-You can also find real-world DAOs that are using DeGov.AI in the [DeGov Apps](https://apps.degov.ai). These applications demonstrate the practical implementation of DeGov.AI's features in various DAO contexts, showcasing how AI agents enhance governance processes.
+You can also find real-world DAOs that are using degov in the [DeGov Square](https://square.degov.ai).
 
 
 ## Integration Options
 
-We offer two main paths to get DeGov.AI running for your DAO:
+We offer two main paths to get degov running for your DAO:
 
 ### 🛠️ Self-Deployment
 Perfect for technical teams who want full control over their infrastructure.
