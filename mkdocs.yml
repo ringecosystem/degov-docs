@@ -136,6 +136,8 @@ nav:
         - Proposal delay: governance/parameters/proposal-delay.md
         - Voting period: governance/parameters/voting-period.md
         - TimeLock delay: governance/parameters/timelock-delay.md
+      - Get Notifications:
+        - Email Notifications: governance/notifications/email.md
       - Agent Governance:
         - Overview: governance/agent/overview.md
         - Agent Summary: governance/agent/review.md
@@ -148,3 +150,4 @@ nav:
       - Overview: integration/overview.md
       - Deploy By Yourself: integration/deploy.md
       - Launch With Assistant: integration/launch.md
+      - DAOs Registry: integration/registry.md
