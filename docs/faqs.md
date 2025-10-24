@@ -4,90 +4,36 @@ description: "Frequently asked questions about DeGov.AI covering general informa
 
 # Frequently Asked Questions (FAQs)
 
-This document provides answers to frequently asked questions about DeGov.AI including general information, proposal processes, and delegation, etc. Here you will find essential details to help you navigate the platform effectively.
-
 ## General
 
 #### What blockchains does DeGov.AI support?
 
-We plan to expand support to all the mainstream EVM-compatible chains, including Ethereum Mainnet, Arbitrum, Base at the first stage. See the [DeGov Apps](https://apps.degov.ai) for the latest updates on supported chains and DAOs.
-
-#### How does DeGov.AI utilize AI capabilities?
-
-Utilizing AI capabilities is a core focus of DeGov.AI. Currently, the following AI-related features are available:
-
-1. **AI-Powered Proposal Review**, this feature allows AI agents to assist with proposal review, summarization, and voting analysis. This reduces cognitive load and increases participation quality.
-
-    ![alt text](./images/ai-review.png)
-
-2. **Agent Delegation and Voting**
-
-    As the screen shows, the "DeGov Agent" is the AI agent that can receive delegation and vote on behalf of the delegator who has delegated their voting power to the agent. 
-
-    ![alt text](./images/agent-1.png)
-
-    ![alt text](./images/agent-2.png)
-
-    Once the agent receives delegation, it will automatically vote on proposals based on the community's preferences and feedback before the voting deadline. 
-
-    ![alt text](./images/agent-3.png)
-
-    ![alt text](./images/agent-4.png)
-
-This is just a brief overview of the AI capabilities currently available in DeGov.AI, for more details, please refer to our [Agent Governance Overview](./governance/agent/overview.md). Bringing AI into governance opens up exciting possibilities for the future of decentralized organizations. We are actively developing these features this year, so stay tuned for updates!
-
-#### Is there an off-chain platform for discussing proposals?
-
-DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
-
-![alt text](./images/offchain-discussion.png)
+Most of the mainstream EVM-compatible chains have been supported by DeGov.AI. See the [https://square.degov.ai](https://square.degov.ai) for the latest supported chains and DAOs.
 
 #### What's the difference between DeGov.AI and [Tally](https://www.tally.xyz/)?
 
 Both DeGov.AI and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences:
 
 - DeGov.AI is open source and fully customizable, allowing you to run your own instance and modify the code as needed. Tally is a closed-source platform with limited customization options.
-- DeGov.AI support agent governance, enabling AI agents to participate in the governance process. Tally does not currently have AI agent integration.
-- For each proposal created in the DeGov.AI platform, it will automatically create a corresponding X post to notify the community, while Tally does not have this feature.
-
-    ![alt text](./images/x-1.png)
-
-    ![alt text](./images/x-2.png)
-
+- DeGov.AI support agent governance, enabling AI agents to participate in the governance process. See the [agent governance](./governance/agent/overview.md) for more details.
 
 #### What's the difference between DeGov.AI and Snapshot?
 
 DeGov.AI and Snapshot serve different purposes in the governance ecosystem:
 
-- DeGov.AI is built on OpenZeppelin Governor and provides on-chain governance with smart contract execution. It integrates AI agents directly into the governance workflow for enhanced decision-making and features automatic proposal execution.
+- DeGov.AI is built on OpenZeppelin Governor and provides *on-chain* governance with smart contract execution.
+- Snapshot is primarily an *off-chain* voting platform that uses cryptographic signatures for gasless voting. While cost-effective, it requires manual execution of approved proposals.
 
-- Snapshot is primarily an off-chain voting platform that uses cryptographic signatures for gasless voting. While cost-effective, it requires manual execution of approved proposals.
-
-DeGov.AI combines the best of both worlds: on-chain security with AI-powered enhancements and user-friendly interfaces. Learn more about [on-chain vs off-chain governance](governance/intro/onchain-offchain.md).
+Learn more about [on-chain vs off-chain governance](governance/intro/onchain-offchain.md) here.
 
 #### How can my DAO get support from DeGov.AI?
 
-Getting support for your DAO is straightforward:
-
-1. Community Support: Join our [Telegram channel](https://t.me/RingDAO_Hub) for community-driven help
-2. Documentation: Review our comprehensive docs for self-service setup
-3. GitHub: Report issues or contribute to our [open-source codebase](https://github.com/ringecosystem/degov)
-4. Direct Contact: Reach out via our social channels for partnership opportunities
-
-We're committed to supporting DAOs of all sizes in their governance journey.
-
+We're glad to support your DAO on the DeGov Square platform! Just provide your DAO details, especially the governance contract address, and we'll help you get started.
+You can also setup your own instance of DeGov by following our [deployment guide](integration/deploy.md).
 
 #### I'm not a developer. Can I still use DeGov.AI?
 
-Absolutely! DeGov.AI is designed for all community members:
-
-- User-Friendly Interface: Intuitive web interface requires no coding knowledge
-- Guided Workflows: Step-by-step processes for all governance actions
-- AI Assistance: AI agents help explain complex proposals in simple terms
-- Mobile-Friendly: Access governance features from any device
-- Educational Resources: Comprehensive guides and tutorials available
-
-No technical expertise required to participate in governance! Check out our [DAO introduction guide](governance/intro/daos.md) to get started.
+Of course! You can find DAOs that interest you on [https://square.degov.ai](https://square.degov.ai) and monitor their governance activities via email or DeGovX notifications. You can also participate in governance by creating or voting on proposals directly through the DeGov Square.
 
 #### I'm a developer. How can I set up a DAO?
 
@@ -95,7 +41,13 @@ If you're a developer, familiarity with smart contract development and deploymen
 
 #### Will DeGov.AI support other governance models in the future?
 
-Yes! We're actively developing these features based on community feedback. Learn about current [governance models](governance/intro/model.md) we support.
+Yes, especially for DeGovX. It can easily expand to other ecosystems and support different governance models beyond OpenZeppelin Governor.
+
+#### Is there an off-chain platform for discussing proposals?
+
+DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
+
+![alt text](./images/offchain-discussion.png)
 
 #### Is DeGov.AI secure?
 
@@ -108,6 +60,12 @@ Security is our top priority:
 - Best Practices: Follows industry-standard security protocols
 
 Your DAO's security is ensured through proven, transparent technology.
+
+#### How does DeGov.AI utilize AI capabilities?
+
+The AI capabilities in DeGov.AI can be seen in the [Agent Governance](./governance/agent/overview.md).
+
+In a nutshell, there is a special delegate called `degov-agent.eth` powered by AI. Community members can delegate their voting power to this agent, which will then analyze proposals and cast votes automatically based on community sentiment and on-chain data.
 
 ## Proposal
 
@@ -384,7 +342,7 @@ Free Features: Reading proposal data, checking voting power, and browsing are ga
 
 #### Can I use DeGov.AI on mobile devices?
 
-Currently, DeGov.AI is optimized for desktop use, but we are actively working on a mobile-friendly version.
+Yes, you can.
 
 #### What wallets are compatible with DeGov.AI?
 
