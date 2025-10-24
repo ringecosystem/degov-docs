@@ -1,3 +1,7 @@
+---
+description: "Overview of DeGovX - your personal governance assistant on X, delivering timely updates on DAO proposals, votes, and discussions."
+---
+
 ![alt text](../images/degovx-1.png)
 
 [DeGovX](https://x.com/degov_x) is an automated X account under DeGov.AI that aims to be your personal governance assistant.

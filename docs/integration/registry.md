@@ -4,6 +4,6 @@ The [DeGov Square](https://square.degov.ai) lists various DAOs that use DeGov fo
 
 You can also access a DAO's configuration from its dashboard. For example, clicking the edit button:
 
-![DAO configuration link on dashboard](image.png)
+![DAO configuration link on dashboard](../images/registry-1.png)
 
 This will take you to the corresponding `degov.yml` file in the registry, like this example for [ring-dao.yml](https://github.com/ringecosystem/degov-registry/blob/main/daos/ring-dao.yml).
