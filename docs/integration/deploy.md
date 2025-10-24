@@ -4,7 +4,7 @@ description: "Self-deploy degov using Docker Compose - complete guide to setting
 
 # Deploy By Yourself
 
-Deploy your own degov instance using the [DeGov Launcher](https://github.com/ringecosystem/degov-launcher). The launcher provides a up-to-date Docker Compose configuration for the simplest way to set up your own governance platform.
+[DeGov](https://github.com/ringecosystem/degov) is an open-source project, allowing anyone to deploy and host their own instance. The [DeGov Launcher](https://github.com/ringecosystem/degov-launcher) is a dedicated tool that simplifies this process using Docker Compose.
 
 ## Prerequisites
 
