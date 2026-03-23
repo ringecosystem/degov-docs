@@ -26,7 +26,7 @@ Learn more about [on-chain vs off-chain governance](governance/intro/onchain-off
 #### How can my DAO get support from DeGov.AI?
 
 We're glad to support your DAO on the DeGov Square platform! Just provide your DAO details, especially the governance contract address, and we'll help you get started.
-You can also set up your own instance of DeGov by following the official [setup instructions](https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions).
+You can also set up your own instance of DeGov by following our [setup instructions](integration/deploy.md).
 
 #### I'm not a developer. Can I still use DeGov.AI?
 
@@ -34,7 +34,7 @@ Of course! You can find DAOs that interest you on [https://square.degov.ai](http
 
 #### I'm a developer. How can I set up a DAO?
 
-If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: follow the official [setup instructions](https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions) for the latest technical guidance.
+If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: check the [integration overview](integration/overview.md), then follow the [setup instructions](integration/deploy.md).
 
 #### Will DeGov.AI support other governance models in the future?
 
