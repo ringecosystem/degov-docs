@@ -2,10 +2,9 @@
 description: "DeGov.AI delivers secure, reliable, and AI‑enhanced governance solutions for DAOs on the Ethereum ecosystem."
 ---
 
-[DeGov.AI](https://degov.ai) delivers secure, reliable, and AI‑enhanced governance solutions for DAOs on the Ethereum ecosystem. We currently offer two flagship products:
+[DeGov.AI](https://degov.ai) delivers secure, reliable, and AI‑enhanced governance solutions for DAOs on the Ethereum ecosystem.
 
-1. [DeGov Square](https://square.degov.ai) — an on‑chain SaaS governance platform built on the latest [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance). It leverages the open‑source [degov](https://github.com/ringecosystem/degov) core UI to provide a simple, powerful interface for interacting with Governor-based DAOs.
-2. [DeGovX](https://x.com/degov_x) — a governance agent on X that delivers real-time proposal updates, concise analyses, and seamless interactions to keep users informed and engaged.
+[DeGov Square](https://square.degov.ai) is our flagship on‑chain SaaS governance platform, built on the latest [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance). It leverages the open‑source [degov](https://github.com/ringecosystem/degov) core UI to provide a simple, powerful interface for interacting with Governor-based DAOs.
 
 ## Our Vision
 

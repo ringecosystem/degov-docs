@@ -113,6 +113,16 @@ plugins:
       redirect_maps:
         "roadmap.md": "index.md"
         "best-practices.md": "index.md"
+        "degovx/overview.md": "index.md"
+        "governance/agent/overview.md": "governance/overview.md"
+        "governance/agent/review.md": "governance/overview.md"
+        "governance/agent/delegate.md": "governance/overview.md"
+        "governance/agent/voting.md": "governance/overview.md"
+        "governance/agent/faqs.md": "governance/overview.md"
+        "integration/overview.md": "https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions"
+        "integration/deploy.md": "https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions"
+        "integration/registry.md": "https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions"
+        "integration/launch.md": "https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions"
 
 nav:
   - Home: 
@@ -138,16 +148,4 @@ nav:
         - TimeLock delay: governance/parameters/timelock-delay.md
       - Get Notifications:
         - Email Notifications: governance/notifications/email.md
-      - Agent Governance:
-        - Overview: governance/agent/overview.md
-        - Agent Summary: governance/agent/review.md
-        - Agent Delegate: governance/agent/delegate.md
-        - Agent Voting: governance/agent/voting.md
-        - FAQs: governance/agent/faqs.md
-  - DeGovX:
-      - Overview: degovx/overview.md
-  - Integration:
-      - Overview: integration/overview.md
-      - DeGov Launcher: integration/deploy.md
-      - DAOs Registry: integration/registry.md
-      - Launch With Assistant: integration/launch.md
+  - Integration: https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions
