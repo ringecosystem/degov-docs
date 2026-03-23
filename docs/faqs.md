@@ -10,11 +10,9 @@ description: "Frequently asked questions about DeGov.AI covering general informa
 
 Most of the mainstream EVM-compatible chains have been supported by DeGov.AI. See the [https://square.degov.ai](https://square.degov.ai) for the latest supported chains and DAOs.
 
-#### What's the difference between DeGov.AI and [Tally](https://www.tally.xyz/)?
+#### What's the difference between DeGov and [Tally](https://www.tally.xyz/)?
 
-Both DeGov.AI and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences:
-
-- DeGov.AI is open source and fully customizable, allowing you to run your own instance and modify the code as needed. Tally is a closed-source platform with limited customization options.
+Both DeGov and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences: DeGov is specifically designed for open-source and flexible customization since it's first version and Tally is a closed-source product.
 
 #### What's the difference between DeGov.AI and Snapshot?
 
