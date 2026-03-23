@@ -1,70 +1,43 @@
 ---
-description: "DeGov.AI integration guide - learn how to deploy and set up DeGov.AI for your DAO, with options for self-hosting or professional assistance."
+description: "DeGov.AI integration guide - understand how to self-host DeGov, where DAO configurations live, and when to contact the team for assisted launch."
 ---
 
 # Integration Overview
 
-Welcome to the [degov](https://github.com/ringecosystem/degov) integration guide! This section will help you understand how to get degov up and running for your DAO, whether you prefer a self-hosted solution or professional assistance.
+Welcome to the [degov](https://github.com/ringecosystem/degov) integration guide. This section explains how to get DeGov running for your DAO, where to find real DAO configuration examples, and when to choose assisted launch support.
 
 ## Try DeGov
 
-### 🎯 Live Demo
+### Live Demo
 
-Experience DeGov in action: [demo.degov.ai](https://demo.degov.ai/)
+Experience DeGov in action at [demo.degov.ai](https://demo.degov.ai/).
 
-### 🚀 Production Examples
+### Production Examples
 
-You can also find real-world DAOs that are using degov in the [DeGov Square](https://square.degov.ai).
+You can also browse live DAOs powered by DeGov on [DeGov Square](https://square.degov.ai).
 
+## Integration Paths
 
-## Integration Options
+### Self-Hosted Setup
 
-We offer two main paths to get degov running for your DAO:
+If your team wants full control over deployment and configuration, start with the local [Setup Instructions](deploy.md). This page is based on the current setup flow from the main [degov GitHub repository](https://github.com/ringecosystem/degov?tab=readme-ov-file#setup-instructions).
 
-### 🛠️ Self-Deployment
-Perfect for technical teams who want full control over their infrastructure.
+[**-> Setup Instructions**](deploy.md){ .md-button .md-button--primary }
 
-**Pros:**
+### DAO Configuration Examples
 
-- Complete control over your deployment
-- No recurring service fees
-- Full customization capabilities
-- Learn and understand the system deeply
+DeGov DAO configurations are maintained in the [DeGov Registry](https://github.com/ringecosystem/degov-registry). It is the best place to review real `degov.yml` examples before configuring your own DAO.
 
-**Best for:**
+[**-> DAOs Registry**](registry.md){ .md-button }
 
-- Technical teams with DevOps experience
-- DAOs prioritizing self-sovereignty
-- Organizations with existing infrastructure
-- Development and testing environments
+### Assisted Launch
 
-[**→ Deploy By Yourself**](deploy.md){ .md-button .md-button--primary }
+If you prefer a managed setup or need a custom deployment, see [Launch With Assistant](launch.md).
 
-### 🤝 Assisted Launch
-Ideal for DAOs that want professional setup and ongoing support.
+[**-> Launch With Assistant**](launch.md){ .md-button }
 
-**Pros:**
+## Recommended Reading Order
 
-- Professional deployment and optimization
-- Ongoing technical support and maintenance
-- Custom integrations and features
-- Focus on governance, not infrastructure
-
-**Best for:**
-
-- Non-technical teams
-- Production environments requiring high availability
-- DAOs needing custom integrations
-- Organizations preferring managed solutions
-
-[**→ Launch With Assistant**](launch.md){ .md-button .md-button--primary }
-
-## Next Steps
-
-Choose your integration path:
-
-1. **Technical team with DevOps experience?** → [Deploy By Yourself](deploy.md)
-2. **Prefer professional assistance?** → [Launch With Assistant](launch.md)
-3. **Still deciding?** → Join our [Telegram community](https://t.me/RingDAO_Hub) to discuss your needs
-
-Ready to transform your DAO's governance with AI-powered tools? Let's get started! 🚀 
+1. Review the [Setup Instructions](deploy.md) to understand the deployment flow.
+2. Check the [DAOs Registry](registry.md) for real DAO configuration examples.
+3. Use [Launch With Assistant](launch.md) if you want hands-on support from the DeGov team.

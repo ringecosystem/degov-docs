@@ -1,5 +1,5 @@
 ---
-description: "Frequently asked questions about DeGov.AI covering general information, proposal processes, delegation, AI agents, and platform features. Essential guidance for users."
+description: "Frequently asked questions about DeGov.AI covering general information, proposal processes, delegation, and platform features. Essential guidance for users."
 ---
 
 # Frequently Asked Questions (FAQs)
@@ -10,12 +10,9 @@ description: "Frequently asked questions about DeGov.AI covering general informa
 
 Most of the mainstream EVM-compatible chains have been supported by DeGov.AI. See the [https://square.degov.ai](https://square.degov.ai) for the latest supported chains and DAOs.
 
-#### What's the difference between DeGov.AI and [Tally](https://www.tally.xyz/)?
+#### What's the difference between DeGov and [Tally](https://www.tally.xyz/)?
 
-Both DeGov.AI and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences:
-
-- DeGov.AI is open source and fully customizable, allowing you to run your own instance and modify the code as needed. Tally is a closed-source platform with limited customization options.
-- DeGov.AI support agent governance, enabling AI agents to participate in the governance process. See the [agent governance](./governance/agent/overview.md) for more details.
+Both DeGov and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences: DeGov is specifically designed for open-source and flexible customization since it's first version and Tally is a closed-source product.
 
 #### What's the difference between DeGov.AI and Snapshot?
 
@@ -29,19 +26,19 @@ Learn more about [on-chain vs off-chain governance](governance/intro/onchain-off
 #### How can my DAO get support from DeGov.AI?
 
 We're glad to support your DAO on the DeGov Square platform! Just provide your DAO details, especially the governance contract address, and we'll help you get started.
-You can also setup your own instance of DeGov by following our [deployment guide](integration/deploy.md).
+You can also set up your own instance of DeGov by following our [setup instructions](integration/deploy.md).
 
 #### I'm not a developer. Can I still use DeGov.AI?
 
-Of course! You can find DAOs that interest you on [https://square.degov.ai](https://square.degov.ai) and monitor their governance activities via email or DeGovX notifications. You can also participate in governance by creating or voting on proposals directly through the DeGov Square.
+Of course! You can find DAOs that interest you on [https://square.degov.ai](https://square.degov.ai) and monitor their governance activities via email notifications. You can also participate in governance by creating or voting on proposals directly through DeGov Square.
 
 #### I'm a developer. How can I set up a DAO?
 
-If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: Check our [Integration Guide](integration/overview.md) and [deployment documentation](integration/deploy.md) for detailed technical documentation.
+If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: check the [integration overview](integration/overview.md), then follow the [setup instructions](integration/deploy.md).
 
 #### Will DeGov.AI support other governance models in the future?
 
-Yes, especially for DeGovX. It can easily expand to other ecosystems and support different governance models beyond OpenZeppelin Governor.
+Yes. DeGov.AI can expand to other ecosystems and support governance models beyond OpenZeppelin Governor over time.
 
 #### Is there an off-chain platform for discussing proposals?
 
@@ -60,12 +57,6 @@ Security is our top priority:
 - Best Practices: Follows industry-standard security protocols
 
 Your DAO's security is ensured through proven, transparent technology.
-
-#### How does DeGov.AI utilize AI capabilities?
-
-The AI capabilities in DeGov.AI can be seen in the [Agent Governance](./governance/agent/overview.md).
-
-In a nutshell, there is a special delegate called `degov-agent.eth` powered by AI. Community members can delegate their voting power to this agent, which will then analyze proposals and cast votes automatically based on community sentiment and on-chain data.
 
 ## Proposal
 
