@@ -11,6 +11,7 @@ edit_uri: https://github.com/ringecosystem/degov-docs/edit/main/docs
 
 theme:
   name: material
+  custom_dir: docs/overrides
   logo: resource/pics/degov.svg
   favicon: resource/pics/degov.svg
   font:
@@ -46,6 +47,15 @@ theme:
 extra:
   generator: false
   homepage: https://degov.ai
+  social_preview:
+    site_name: DeGov.AI Docs
+    title_suffix: " | DeGov.AI Docs"
+    image: https://degov.ai/images/degov-social-card.png
+    image_width: 1200
+    image_height: 630
+    image_type: image/png
+    image_alt: "DeGov.AI Docs — governance guides for better communities."
+    twitter_site: "@ai_degov"
   status:
     new: Recently added
     deprecated: Deprecated
