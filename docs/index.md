@@ -6,6 +6,10 @@ description: "DeGov.AI delivers secure, reliable, and AI‑enhanced governance s
 
 [DeGov Square](https://square.degov.ai) is our flagship on‑chain SaaS governance platform, built on the latest [OpenZeppelin Governor](https://docs.openzeppelin.com/contracts/5.x/governance). It leverages the open‑source [degov](https://github.com/ringecosystem/degov) core UI to provide a simple, powerful interface for interacting with Governor-based DAOs.
 
+!!! info "Content ownership"
+
+    Canonical owner: DeGov Docs. Editorial review: 2026-08-04. Primary sources: [DeGov official site](https://degov.ai), [DeGov Square](https://square.degov.ai), [OpenZeppelin Governor documentation](https://docs.openzeppelin.com/contracts/5.x/governance), and the [open-source degov repository](https://github.com/ringecosystem/degov). The review date describes this explanatory page, not a deploy or build timestamp.
+
 ## Our Vision
 
 We strongly believe that DAOs represent a new organizational paradigm for the future, fostering stronger community-based organizations than traditional companies. Therefore, we are committed to building tools that accelerate the adoption of DAOs.

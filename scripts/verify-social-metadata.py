@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import html
 import re
 import struct
 import sys
@@ -40,6 +41,26 @@ def read_head(path):
 def require(condition, message):
     if not condition:
         raise AssertionError(message)
+
+
+def visible_text(path):
+    source = path.read_text(encoding="utf-8")
+    source = re.sub(r"<script\b[^>]*>.*?</script>", " ", source, flags=re.I | re.S)
+    source = re.sub(r"<style\b[^>]*>.*?</style>", " ", source, flags=re.I | re.S)
+    source = re.sub(r"<[^>]+>", " ", source)
+    return re.sub(r"\s+", " ", html.unescape(source)).strip()
+
+
+def verify_content_provenance(site_dir):
+    index_path = site_dir / "index.html"
+    text = visible_text(index_path)
+    for phrase in [
+        "Canonical owner: DeGov Docs.",
+        "Editorial review: 2026-08-04.",
+        "Primary sources:",
+        "The review date describes this explanatory page, not a deploy or build timestamp.",
+    ]:
+        require(phrase in text, f"index.html missing provenance phrase: {phrase}")
 
 
 def verify_page(site_dir, relative_path):
@@ -117,6 +138,7 @@ def main():
     site_dir = Path(args.site_dir)
     for page in ["index.html", "integration/overview/index.html"]:
         verify_page(site_dir, page)
+    verify_content_provenance(site_dir)
 
     if args.fetch_image:
         verify_remote_image()
