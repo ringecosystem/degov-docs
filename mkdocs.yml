@@ -95,6 +95,9 @@ extra:
 extra_css:
   - resource/stylesheets/extra.css
 
+extra_javascript:
+  - resource/javascripts/navigation-analytics.js
+
 markdown_extensions:
   - attr_list
   - admonition
