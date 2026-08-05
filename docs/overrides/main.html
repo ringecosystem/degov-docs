@@ -3,10 +3,11 @@
 {% block extrahead %}
   {{ super() }}
   {% set social = config.extra.social_preview %}
-  {% set page_title = page.meta.title if page.meta and page.meta.title else page.title %}
+  {% set page_title = page.meta.title if page and page.meta and page.meta.title else page.title if page and page.title else config.site_name %}
   {% set social_title = page_title ~ social.title_suffix %}
-  {% set social_description = page.meta.description if page.meta and page.meta.description else config.site_description %}
-  {% set social_url = page.canonical_url %}
+  {% set social_description = page.meta.description if page and page.meta and page.meta.description else config.site_description %}
+  {% set social_url = page.canonical_url if page and page.canonical_url else config.site_url %}
+  {% set docs_home_url = config.site_url.rstrip("/") ~ "/" %}
   <meta property="og:title" content="{{ social_title }}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ social_url }}" />
@@ -25,4 +26,44 @@
   <meta name="twitter:description" content="{{ social_description }}" />
   <meta name="twitter:image" content="{{ social.image }}" />
   <meta name="twitter:image:alt" content="{{ social.image_alt }}" />
+  {% if page and page.canonical_url and page.canonical_url != docs_home_url %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ config.site_name | tojson }},
+          "item": {{ docs_home_url | tojson }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page_title | tojson }},
+          "item": {{ page.canonical_url | tojson }}
+        }
+      ]
+    }
+  </script>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% set docs_home_url = config.site_url.rstrip("/") ~ "/" %}
+  {% set page_title = page.meta.title if page and page.meta and page.meta.title else page.title if page and page.title else config.site_name %}
+  {% if page and page.canonical_url and page.canonical_url != docs_home_url %}
+    <nav class="docs-breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <a href="{{ docs_home_url }}">DeGov.AI Docs</a>
+        </li>
+        <li aria-current="page">
+          <a href="{{ page.canonical_url }}">{{ page_title }}</a>
+        </li>
+      </ol>
+    </nav>
+  {% endif %}
+  {% include "partials/content.html" %}
 {% endblock %}
