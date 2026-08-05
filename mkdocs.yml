@@ -1,12 +1,12 @@
 # Project information
 site_name: DeGov.AI Docs
-site_url: https://degov.ai
+site_url: https://docs.degov.ai
 site_description: "DeGov.AI is a governance platform that leverages AI to enhance decision-making and community engagement."
-copyright: Copyright &copy; RingDAO 2025
+copyright: Copyright &copy; RingDAO 2026
 
 # Repository information
-repo_name: ringecosystem/degov
-repo_url: https://github.com/ringecosystem/degov
+repo_name: ringecosystem/degov-docs
+repo_url: https://github.com/ringecosystem/degov-docs
 edit_uri: https://github.com/ringecosystem/degov-docs/edit/main/docs
 
 theme:
@@ -42,7 +42,7 @@ theme:
     - scheme: default
       primary: deep purple
       accent: deep purple
- 
+
 extra:
   generator: false
   homepage: https://degov.ai
@@ -51,7 +51,7 @@ extra:
     deprecated: Deprecated
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/ringecosystem/degov
+      link: https://github.com/ringecosystem
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/ai_degov
     - icon: fontawesome/brands/telegram
@@ -95,6 +95,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight
 
 plugins:
   - search
@@ -118,7 +121,7 @@ plugins:
         "governance/agent/faqs.md": "governance/overview.md"
 
 nav:
-  - Home: 
+  - Home:
       - What is DeGov.AI?: index.md
       - FAQs: faqs.md
   - DeGov Square:
@@ -127,7 +130,7 @@ nav:
         - What are DAOs?: governance/intro/daos.md
         - OnChain / OffChain: governance/intro/onchain-offchain.md
         - Governance Model: governance/intro/model.md
-      - Proposal: 
+      - Proposal:
         - Overview: governance/proposal/overview.md
         - Lifecycle: governance/proposal/lifecycle.md
         - Vote Delegation: governance/proposal/delegation.md
@@ -141,6 +144,37 @@ nav:
         - TimeLock delay: governance/parameters/timelock-delay.md
       - Get Notifications:
         - Email Notifications: governance/notifications/email.md
+  - DeGov Atlas:
+      - Overview: atlas/index.md
+      - Governance Data: atlas/governance-data.md
+  - Agent API:
+      - Overview: agent-api/index.md
+      - Quickstart: agent-api/quickstart.md
+      - Authentication: agent-api/authentication.md
+      - Pricing & Rate Limits: agent-api/pricing-and-rate-limits.md
+      - Concepts:
+        - Proposal & Topic Keys: agent-api/concepts/proposal-and-topic-keys.md
+        - Pagination: agent-api/concepts/pagination.md
+        - Readiness & Coverage: agent-api/concepts/readiness-and-coverage.md
+        - Timestamps & Numbers: agent-api/concepts/timestamps-and-numbers.md
+        - Errors: agent-api/concepts/errors.md
+      - Guides:
+        - Find Active Proposals: agent-api/guides/find-active-proposals.md
+        - Resolve an External Proposal: agent-api/guides/resolve-external-proposal.md
+        - Follow Governance Signals: agent-api/guides/follow-governance-signals.md
+        - Build a Cited Research Brief: agent-api/guides/build-cited-research.md
+        - Inspect Proposal Votes: agent-api/guides/inspect-proposal-votes.md
+        - Research Voters: agent-api/guides/research-voters.md
+        - Browse Forum Topics: agent-api/guides/browse-forum-topics.md
+      - API Reference:
+        - Agent API v2: agent-api/reference/v2.md
+        - Agent API v1: agent-api/reference/v1.md
+      - Migration Guide: agent-api/migration-v1-to-v2.md
+      - Changelog: agent-api/changelog.md
+  - Agent Skills:
+      - Overview: agent-skills/index.md
+      - DAO Governance Research: agent-skills/dao-governance-research.md
+      - DAO Governance Security: agent-skills/dao-governance-security.md
   - Integration:
       - Overview: integration/overview.md
       - Setup Instructions: integration/deploy.md
