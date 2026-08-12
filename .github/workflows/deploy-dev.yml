@@ -15,8 +15,10 @@ jobs:
       - name: Build mkdocs
         run: |
           pip install -r requirements.txt
-          mkdocs build
+          mkdocs build --strict
           python scripts/verify-social-metadata.py --fetch-image
+          python scripts/verify_navigation_analytics.py
+          python scripts/verify-agent-api-docs.py
 
       - uses: darwinia-network/devops/actions/smart-vercel@main
         name: Deploy to Vercel
