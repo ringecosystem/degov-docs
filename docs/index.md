@@ -22,6 +22,10 @@ The DeGov Agent API is a machine-readable interface over the same governance dat
 
 [Agent skills](https://github.com/ringecosystem/degov-agent-skills) package reusable agent knowledge on top of the Agent API: DAO governance research and proposal security analysis with evidence, sources, and explicit uncertainty. See the [Agent Skills documentation](agent-skills/index.md).
 
+!!! info "Content ownership"
+
+    Canonical owner: DeGov Docs. Editorial review: 2026-08-04. Primary sources: [DeGov official site](https://degov.ai), [DeGov Square](https://square.degov.ai), [OpenZeppelin Governor documentation](https://docs.openzeppelin.com/contracts/5.x/governance), and the [open-source degov repository](https://github.com/ringecosystem/degov). The review date describes this explanatory page, not a deploy or build timestamp.
+
 ## Our Vision
 
 We strongly believe that DAOs represent a new organizational paradigm for the future, fostering stronger community-based organizations than traditional companies. Therefore, we are committed to building tools that accelerate the adoption of DAOs.

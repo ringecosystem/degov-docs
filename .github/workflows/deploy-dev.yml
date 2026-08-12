@@ -16,6 +16,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           mkdocs build
+          python scripts/verify-social-metadata.py --fetch-image
 
       - uses: darwinia-network/devops/actions/smart-vercel@main
         name: Deploy to Vercel
@@ -30,4 +31,3 @@ jobs:
           enable_notify_slack: false
           slack_channel: public-degov
           slack_webhook: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
-
