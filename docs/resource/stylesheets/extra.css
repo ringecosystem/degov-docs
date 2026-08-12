@@ -28,11 +28,28 @@
 
 .docs-breadcrumbs ol {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
     gap: 0.35rem;
     margin: 0;
     padding: 0;
     list-style: none;
+    overflow: hidden;
+}
+
+.docs-breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.docs-breadcrumbs li:first-child {
+    flex: 0 0 auto;
+}
+
+.docs-breadcrumbs li:last-child {
+    flex: 1 1 auto;
 }
 
 .docs-breadcrumbs li:not(:last-child)::after {
@@ -43,4 +60,7 @@
 
 .docs-breadcrumbs [aria-current="page"] a {
     color: var(--md-default-fg-color--light);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
