@@ -23,6 +23,8 @@ The skill prefers official governance interfaces, forums, DAO documentation, ver
 
 API routing, pricing, payment, and transport details remain inside the research capability. This keeps the security rubric stable when an endpoint or tier changes.
 
+When paid structured data is needed, the research skill uses MetaMask Agent Wallet for the x402 flow; the security skill itself remains focused on analysis rather than payment handling.
+
 ## Output
 
 The result includes an overall risk level, confidence, recommendation, bottom line, executable-action table, evidence-backed findings, uncertainties, and concrete user actions. Missing or undecoded executable payloads prevent a confident low-risk conclusion.

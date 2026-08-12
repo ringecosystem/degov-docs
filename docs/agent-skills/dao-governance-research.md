@@ -18,11 +18,11 @@ Repository: [dao-governance-research](https://github.com/ringecosystem/degov-age
 6. State missing, stale, backfilling, partial, or conflicting evidence.
 7. Return useful prose rather than raw JSON.
 
-## Payments
+## MetaMask Agent Wallet
 
-When an API request returns 402, the skill delegates offer inspection, authorization, spending controls, signing, settlement verification, and retry safety to the configured wallet capability. It does not bundle a CLI wallet or reproduce those policies.
+MetaMask Agent Wallet is the skill's default payment integration. When an API request returns 402, the research skill loads `metamask-agent-wallet` and delegates offer inspection, authorization, spending controls, signing, settlement verification, and retry safety to it.
 
-If payment is unavailable or not authorized, continue through official web sources where possible and disclose the evidence limitation.
+The governance skill does not duplicate wallet code or wallet policy. If MetaMask Agent Wallet is unavailable or payment is not authorized, it continues through official web sources where possible and discloses the evidence limitation.
 
 ## Evidence rules
 

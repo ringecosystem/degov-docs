@@ -1,362 +1,86 @@
 ---
-description: "Frequently asked questions about DeGov.AI covering general information, proposal processes, delegation, and platform features. Essential guidance for users."
+description: "Concise answers to common questions about DeGov Square, Atlas, Agent API, Agent Skills, voting, delegation, and integrations."
 ---
 
-# Frequently Asked Questions (FAQs)
+# Frequently Asked Questions
 
-## General
+## DeGov.AI
 
-#### What blockchains does DeGov.AI support?
+### What does DeGov.AI provide?
 
-Most of the mainstream EVM-compatible chains have been supported by DeGov.AI. See the [https://square.degov.ai](https://square.degov.ai) for the latest supported chains and DAOs.
+DeGov.AI includes four connected products:
 
-#### What's the difference between DeGov and [Tally](https://www.tally.xyz/)?
+- [DeGov Square](governance/overview.md) for operating and participating in onchain governance.
+- [DeGov Atlas](atlas/index.md) for browsing governance activity across DAOs.
+- [Agent API](agent-api/index.md) for structured governance data and integrations.
+- [Agent Skills](agent-skills/index.md) for governance research and proposal-security analysis.
 
-Both DeGov and Tally are governance platforms built based on OpenZeppelin Governor, but there are key differences: DeGov is specifically designed for open-source and flexible customization since it's first version and Tally is a closed-source product.
+### Which networks and DAOs are supported?
 
-#### What's the difference between DeGov.AI and Snapshot?
+Square supports EVM-compatible governance deployments. Browse [DeGov Square](https://square.degov.ai) for available communities. Atlas and the Agent API cover the DAOs currently indexed by DeGov; use Atlas or `GET /v2/daos` for the current directory.
 
-DeGov.AI and Snapshot serve different purposes in the governance ecosystem:
+### How is Square different from Snapshot?
 
-- DeGov.AI is built on OpenZeppelin Governor and provides *on-chain* governance with smart contract execution.
-- Snapshot is primarily an *off-chain* voting platform that uses cryptographic signatures for gasless voting. While cost-effective, it requires manual execution of approved proposals.
+Square focuses on executable onchain governance built around OpenZeppelin Governor. Snapshot primarily provides offchain, signature-based voting; approved decisions usually need a separate execution process. See [Onchain and Offchain Governance](governance/intro/onchain-offchain.md).
 
-Learn more about [on-chain vs off-chain governance](governance/intro/onchain-offchain.md) here.
+### How can my DAO use DeGov Square?
 
-#### How can my DAO get support from DeGov.AI?
+Contact the DeGov team through [Telegram](https://t.me/RingDAO_Hub), or follow the [Square integration guide](integration/overview.md) to deploy and register an instance.
 
-We're glad to support your DAO on the DeGov Square platform! Just provide your DAO details, especially the governance contract address, and we'll help you get started.
-You can also set up your own instance of DeGov by following our [setup instructions](integration/deploy.md).
+## Proposals & Voting
 
-#### I'm not a developer. Can I still use DeGov.AI?
+### How do I create a proposal?
 
-Of course! You can find DAOs that interest you on [https://square.degov.ai](https://square.degov.ai) and monitor their governance activities via email notifications. You can also participate in governance by creating or voting on proposals directly through DeGov Square.
+Connect your wallet, make sure you meet the DAO's [proposal threshold](governance/parameters/proposal-thresholds.md), enter the proposal description and executable actions, review them carefully, and submit the transaction. See [Proposal Overview](governance/proposal/overview.md).
 
-#### I'm a developer. How can I set up a DAO?
+### How do I vote?
 
-If you're a developer, familiarity with smart contract development and deployment is essential. Here's how to get started: check the [integration overview](integration/overview.md), then follow the [setup instructions](integration/deploy.md).
+Open an active proposal, review its description and actions, choose the available voting option, and confirm the transaction in your wallet. Voting rules and whether a vote can be changed depend on the DAO's Governor contract. See [Voting](governance/proposal/voting.md).
 
-#### Will DeGov.AI support other governance models in the future?
+### What happens if quorum is not reached?
 
-Yes. DeGov.AI can expand to other ecosystems and support governance models beyond OpenZeppelin Governor over time.
+The proposal does not succeed and its actions cannot proceed through the normal execution path. The exact status and resubmission rules depend on the DAO's contracts. See [Quorum](governance/parameters/quorum.md).
 
-#### Is there an off-chain platform for discussing proposals?
+### How long does voting last?
 
-DeGov.AI focuses on on-chain governance and doesn't provide a built-in off-chain discussion area. However, we provide an off-chain discussion entry point in the dashboard page that can link to your existing community forum or chat platform. This flexible approach allows you to use your preferred tools for discussions while keeping governance actions on-chain.
+Each DAO configures its own voting period. Check the DAO's governance parameters or the proposal deadline. See [Voting Period](governance/parameters/voting-period.md).
 
-![alt text](./images/offchain-discussion.png)
+## Delegation
 
-#### Is DeGov.AI secure?
+### What is delegation?
 
-Security is our top priority:
+Delegation assigns your voting power to another address without transferring ownership of your tokens. You can normally change or revoke it later. See [Vote Delegation](governance/proposal/delegation.md).
 
-- Battle-tested Foundation: Built on OpenZeppelin Governor, used by large DAOs like Uniswap and Compound
-- Open Source: All code is publicly auditable
-- Regular Audits: Smart contracts undergo professional security audits
-- Bug Bounty Program: Community-driven security testing
-- Best Practices: Follows industry-standard security protocols
+### What is voting power?
 
-Your DAO's security is ensured through proven, transparent technology.
+Voting power is the amount counted for governance at the contract's selected snapshot or checkpoint. It can reflect your eligible balance and voting power delegated to you.
 
-## Proposal
+### Can I split delegation between several delegates?
 
-#### How can I create or vote on proposals?
+Standard OpenZeppelin Governor delegation normally assigns an account's voting power to one delegate. A DAO can implement different rules, so verify its token and Governor contracts.
 
-Creating Proposals:
+### What happens when I transfer tokens?
 
-1. Connect your wallet to the DeGov.AI platform
-2. Ensure you meet the [proposal threshold](governance/parameters/proposal-thresholds.md) requirements
-3. Draft your proposal with clear title, description, and executable actions
-4. Submit the proposal for community review
+Token transfers change the voting power associated with the relevant account or delegate according to the token's checkpoint rules. The delegation preference may remain, but the delegated amount changes with the eligible balance.
 
-Voting on Proposals:
+## Agents, API & Integrations
 
-1. Navigate to active proposals in your DAO
-2. Review the proposal details and AI-generated summaries
-3. Cast your vote (For, Against, or Abstain)
-4. Your voting power is automatically calculated based on your token holdings
+### How do Agent Skills pay for API requests?
 
-Learn more about the complete [proposal lifecycle](governance/proposal/lifecycle.md) and [voting mechanisms](governance/proposal/voting.md). Try the process on our [demo platform](https://demo.degov.ai/) first!
+Paid Agent API resources use x402 on Base. DeGov Agent Skills use MetaMask Agent Wallet by default to inspect the offer, request authorization, sign, settle, and retry safely.
 
-#### What is the proposal threshold?
+### How do I get a partner key?
 
-The proposal threshold is the minimum amount of governance tokens required to create a proposal. This ensures that only committed community members can initiate governance actions, preventing spam and low-quality proposals. Learn more about [proposal thresholds](governance/parameters/proposal-thresholds.md).
+Partner keys are issued by DeGov. [Contact the team](https://t.me/RingDAO_Hub) with your integration and expected usage. Keep issued keys out of source control and logs.
 
-#### What is the lifecycle of a proposal?
+### Can I integrate DeGov with existing DAO tools?
 
-A proposal goes through several stages:
+Yes. Use the [Agent API](agent-api/index.md) for structured data integrations. For a Square deployment or governance-contract integration, start with the [Integration Overview](integration/overview.md) or contact the DeGov team.
 
-1. Pending: Proposal is submitted and awaits the delay period
-2. Active: Community can vote during the voting period
-3. Succeeded/Defeated: Based on vote results and quorum requirements
-4. Queued: Successful proposals enter timelock (if configured)
-5. Executed: Proposal actions are automatically executed on-chain
+### Which wallets work with Square?
 
-Each stage has specific timeframes defined by your DAO's governance parameters. See our detailed [proposal lifecycle guide](governance/proposal/lifecycle.md) for more information.
+Square supports EVM-compatible wallets through its available connection methods. Wallet and network availability can vary by deployment.
 
-#### What are the best practices for creating a proposal?
+### Is governance activity private?
 
-Follow these guidelines for successful proposals:
-
-Content Guidelines:
-- Clear Title: Descriptive and concise summary
-- Detailed Description: Explain the problem, solution, and expected outcomes
-- Executable Actions: Specify exact smart contract calls and parameters
-- Impact Analysis: Describe potential effects on the community
-
-Process Best Practices:
-- Community Discussion: Engage in preliminary discussions before formal submission
-- Stakeholder Input: Gather feedback from key community members
-- Technical Review: Ensure all smart contract interactions are correct
-- Timeline Considerations: Account for voting and execution periods
-
-AI Assistance: Use AI agents to help refine your proposal and identify potential issues. Learn more about [proposal creation](governance/proposal/overview.md) for details.
-
-#### How can I vote on a proposal?
-
-Voting is straightforward:
-
-1. Access the Proposal: Navigate to the active proposals list
-2. Review Details: Read the proposal description and AI summary
-3. Check Voting Power: Confirm your available voting power
-4. Cast Your Vote: Choose For, Against, or Abstain
-5. Confirm Transaction: Sign the transaction with your wallet
-
-Voting Options:
-- For: Support the proposal
-- Against: Oppose the proposal  
-- Abstain: Counted toward quorum but neutral on outcome
-
-Your vote is final and cannot be changed once submitted. Learn more about [voting mechanisms](governance/proposal/voting.md).
-
-#### How can I check the status of a proposal?
-
-DeGov.AI provides real-time updates on proposal status. See the [proposal lifecycle](governance/proposal/lifecycle.md) for details on each stage. Key status indicators include:
-
-- Pending: Proposal is awaiting the delay period
-- Active: Voting is currently open
-- Succeeded: Proposal passed with sufficient votes
-- Defeated: Proposal failed to meet quorum or majority
-- Queued: Proposal is waiting for timelock execution
-- Executed: Proposal actions have been successfully executed
-
-#### Can I change my vote after submitting it?
-
-No, votes are final and immutable once submitted to the blockchain. This ensures:
-
-- Vote Integrity: Prevents manipulation and vote buying
-- Transparency: All votes are permanently recorded
-- Fair Process: Equal treatment for all participants
-
-Before Voting:
-
-- Review all proposal details carefully
-- Consider AI-generated analysis and summaries
-- Participate in community discussions
-- Ensure you understand the implications
-
-Take your time to make informed decisions.
-
-#### What happens if a proposal doesn't reach quorum?
-
-When a proposal fails to reach the required quorum:
-
-- Status: Proposal is marked as "Defeated"
-- No Execution: Proposal actions are not executed
-- Resubmission: The proposal can be resubmitted with modifications
-- Learning Opportunity: Analyze why quorum wasn't reached
-
-Common Reasons for Low Turnout:
-
-- Insufficient community engagement
-- Poor proposal timing
-- Lack of clear communication
-- Technical complexity
-
-Use AI insights to understand participation patterns and improve future proposals. Learn about [quorum requirements](governance/parameters/quorum.md) and how they affect proposal outcomes.
-
-#### How long does the voting period last?
-
-Voting periods are configurable per DAO but typically range from:
-
-- Short Term: 3-7 days for routine decisions
-- Standard: 1-2 weeks for major proposals
-- Extended: 2-4 weeks for constitutional changes
-
-Factors Affecting Duration:
-
-- Proposal Importance: More critical decisions get longer periods
-- Community Size: Larger communities may need more time
-- Complexity: Technical proposals may require extended review
-
-Check your DAO's specific voting period in the governance parameters. See our guide on [voting periods](governance/parameters/voting-period.md) for configuration details.
-
-
-## Delegate
-
-#### What is delegation?
-
-Delegation allows token holders to assign their voting power to trusted community members who will vote on their behalf:
-
-Key Concepts:
-
-- Representative Democracy: Delegates act as representatives for token holders
-- Expertise Leverage: Delegate to members with relevant knowledge and experience  
-- Increased Participation: Ensures votes are cast even when you're unavailable
-- Revocable: You can change or revoke delegation at any time
-
-Self-Delegation: By default, you delegate to yourself and vote directly. Learn more about [delegation mechanisms](./governance/proposal/delegation.md).
-
-#### What is voting power?
-
-Voting power includes all the governance tokens you hold, plus any tokens delegated to you by others. It determines how much influence you have in governance decisions. 
-
-Example: If you hold 100 tokens and have 50 tokens delegated to you, your voting power is 150. See our [voting guide](./governance/proposal/voting.md) for detailed information.
-
-#### How are governance tokens and voting power related?
-
-The relationship is direct but includes delegation mechanics:
-
-Token Holdings:
-
-- 1 Token = 1 Vote: Basic principle (when self-delegated)
-- Transferable: Voting power moves with token transfers
-- Non-Custodial: Delegation doesn't transfer token ownership
-
-#### How can I delegate my voting power?
-
-DeGov.AI provides a simple interface for delegation. Navigate to the delegation section in your DAO dashboard and click the "Delegate" button. 
-
-For detailed steps, see our [delegation guide](./governance/proposal/delegation.md).
-
-#### Can I split my voting power and delegate it to multiple delegates?
-
-Currently, standard delegation assigns all voting power to a single delegate. 
-
-#### Will delegation transfer my tokens to the delegate?
-
-No, absolutely not! Delegation is completely separate from token ownership.
-
-What Delegation Does:
-
-- Assigns voting rights only
-- Delegate votes with your power on proposals
-- You retain full token ownership and control
-
-What You Keep:
-
-- Complete ownership of your tokens
-- Ability to transfer, sell, or use tokens
-- Right to revoke delegation at any time
-- Access to all token utilities (staking, rewards, etc.)
-
-Security: Your tokens never leave your wallet during delegation. Learn more about [delegation mechanics](./governance/proposal/delegation.md).
-
-#### Does it support partial delegation?
-
-Standard OpenZeppelin Governor delegation is all-or-nothing:
-
-Current System:
-
-- Delegate all voting power to one address
-- Cannot split power between multiple delegates
-- Self-delegation keeps all power with you
-
-Workarounds:
-
-- Multiple Wallets: Split tokens across wallets for different delegation strategies
-- Dynamic Delegation: Change delegates based on proposal topics
-- Direct Voting: Temporarily reclaim delegation for important votes
-
-Future Development: Partial and liquid delegation features are being explored for future releases.
-
-#### How do I find good delegates?
-
-Choosing the right delegate is crucial for effective governance:
-
-Research Criteria:
-
-- Voting History: Consistent participation and thoughtful decisions
-- Expertise: Knowledge relevant to DAO's focus areas
-- Alignment: Values and vision that match your own
-- Communication: Active in community discussions and transparent about decisions
-
-Available Information:
-
-- Delegate Profiles: Many platforms provide delegate information pages
-- Voting Records: Public blockchain records of all votes
-- Community Feedback: Discussion forums and social media presence
-
-Red Flags: Avoid delegates with poor participation, misaligned values, or lack of transparency.
-
-#### Can I vote directly if I have delegated my tokens?
-
-Yes! You can always vote directly even if you have delegated your tokens. 
-
-#### What happens to my delegation if I transfer my tokens?
-
-Token transfers affect delegation differently:
-
-When You Transfer Tokens:
-
-- Delegation Stays: Your delegation preference remains with your wallet
-- Voting Power Reduces: Delegate's power decreases by the amount transferred
-- New Balance: Delegation applies to your remaining token balance
-
-When You Receive Tokens:
-
-- Auto-Delegation: New tokens follow your current delegation setting
-- Increased Power: If tokens come from non-delegated source, your delegate's power increases
-
-Important: Always check delegation status after significant token movements.
-
-## Technical
-
-#### What are the gas costs for governance actions?
-
-Gas costs vary by action and network:
-
-Typical Costs (Ethereum Mainnet):
-
-- Voting: 50,000-100,000 gas
-- Proposal Creation: 200,000-500,000 gas  
-- Delegation: 50,000-80,000 gas
-- Proposal Execution: Varies by proposal complexity
-
-Cost Optimization:
-
-- Layer 2 Networks: Significantly lower costs on Polygon, Arbitrum, etc.
-- Batch Transactions: Combine multiple actions when possible
-- Gas Timing: Monitor gas prices for optimal transaction timing
-
-Free Features: Reading proposal data, checking voting power, and browsing are gasless.
-
-#### Can I use DeGov.AI on mobile devices?
-
-Yes, you can.
-
-#### What wallets are compatible with DeGov.AI?
-
-Any EVM-compatible wallet can be used with DeGov.AI.
-
-#### How does DeGov.AI handle privacy?
-
-Privacy protection is built into our design:
-
-On-Chain Transparency:
-
-- Public Votes: All votes are publicly visible on the blockchain
-- Pseudonymous: Linked to wallet addresses, not personal identities
-- Immutable Record: Complete audit trail of all governance actions
-
-Off-Chain Privacy:
-
-- No Personal Data: No collection of personal information
-- Optional Profiles: Delegate profiles are voluntary
-- Off-Chain Discussions: Use your preferred platforms for discussions
-
-AI Privacy: AI processing doesn't store personal voting patterns or preferences.
-
-#### Can I integrate DeGov.AI with my existing DAO tools?
-
-Integration depends on the specific tools and their compatibility with EVM standards. Please contact us to discuss integration options.
+Onchain proposals, votes, addresses, and execution records are public. DeGov documentation and interfaces should not be treated as a privacy layer over public governance data.

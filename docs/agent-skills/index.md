@@ -1,10 +1,10 @@
 ---
-description: "Install and use DeGov Agent Skills for evidence-based DAO governance research and proposal security analysis."
+description: "Install DeGov Agent Skills for DAO governance research and proposal security with MetaMask Agent Wallet payments."
 ---
 
 # Agent Skills
 
-DeGov publishes reusable skills that help agents research DAO governance and assess proposal security with explicit evidence and uncertainty.
+DeGov publishes reusable skills that help agents research DAO governance and assess proposal security with evidence, primary-source verification, and explicit uncertainty.
 
 ## Install
 
@@ -16,18 +16,22 @@ Repository: [ringecosystem/degov-agent-skills](https://github.com/ringecosystem/
 
 ## Available skills
 
-- [DAO Governance Research](dao-governance-research.md) uses the DeGov Agent API for covered structured data and official sources for verification, context, and coverage gaps.
-- [DAO Governance Security](dao-governance-security.md) evaluates executable actions, funds flow, permissions, proposer and process anomalies, execution risk, and uncertainty.
+- [DAO Governance Research](dao-governance-research.md) answers questions about DAO activity, proposals, votes, voters, forums, events, and signals.
+- [DAO Governance Security](dao-governance-security.md) assesses executable actions, funds flow, permissions, proposer and process anomalies, execution risk, and uncertainty.
 
-## How the capabilities compose
+## MetaMask Agent Wallet
+
+The research skill is designed to use [MetaMask Agent Wallet](https://github.com/MetaMask/agent-wallet) by default for paid Agent API resources. When the API returns `402 Payment Required`, the skill loads `metamask-agent-wallet` and delegates offer inspection, user authorization, spending controls, signing, settlement verification, and retry safety to it.
+
+The wallet implementation is not duplicated inside the governance skill. If MetaMask Agent Wallet is unavailable or payment is not authorized, the agent can continue with official public sources and disclose that paid structured data was not used.
+
+## How they work together
 
 ```text
 User question
-  -> research skill selects the smallest useful evidence set
+  -> governance skill selects the smallest useful evidence set
   -> DeGov Agent API supplies covered structured data
-  -> official sources verify intent and primary facts
-  -> wallet capability handles authorization and settlement after a 402
+  -> MetaMask Agent Wallet handles an x402 challenge when required
+  -> official sources verify primary facts and fill coverage gaps
   -> agent produces a direct, source-aware answer
 ```
-
-The governance skills do not bundle a wallet, duplicate wallet authorization policy, or require a custom paid-call confirmation script. If payment is unavailable or not authorized, research can continue with official public sources while disclosing that structured paid API data was not used.

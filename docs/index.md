@@ -1,8 +1,10 @@
 ---
-description: "DeGov.AI delivers secure, reliable, and AI-enhanced governance solutions for DAOs on the Ethereum ecosystem."
+description: "DeGov.AI provides governance infrastructure, intelligence, APIs, and agent skills for DAO participation, research, and security."
 ---
 
-[DeGov.AI](https://degov.ai) delivers secure, reliable, and AI-enhanced governance solutions for DAOs on the Ethereum ecosystem.
+[DeGov.AI](https://degov.ai) builds the infrastructure and intelligence layer for DAO governance. DeGov Square gives communities an open-source interface for proposing, voting, delegating, and executing onchain decisions. DeGov Atlas organizes governance activity across ecosystems into browsable proposals, votes, voters, discussions, timelines, and signals. The Agent API exposes the same curated data to agents and integrations, while Agent Skills turn it into evidence-based governance research and proposal-security analysis with MetaMask Agent Wallet support for paid data access.
+
+Together, these products serve both sides of governance: communities operating their own decision-making process, and people or agents trying to understand what is happening across many DAOs. DeGov emphasizes open-source infrastructure, verifiable sources, transparent data limitations, and safer participation rather than treating AI-generated output as a substitute for governance evidence.
 
 ## Products
 
