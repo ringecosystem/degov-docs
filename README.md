@@ -14,9 +14,11 @@ Documentation site for [DeGov.AI](https://degov.ai), built with [MkDocs Material
 
 ## Local development
 
+Use Python 3.12 so the local environment matches CI and deployment builds.
+
 ```sh
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
 .venv/bin/mkdocs serve
 ```
 
@@ -25,7 +27,8 @@ Open http://127.0.0.1:8000.
 ## Building (strict)
 
 ```sh
-.venv/bin/pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip check
 .venv/bin/mkdocs build --strict
 ```
 

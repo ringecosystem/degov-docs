@@ -1,6 +1,7 @@
-mkdocs-git-revision-date-localized-plugin==1.2.7
+mkdocs==1.6.1
+mkdocs-material==9.7.7
+mkdocs-git-revision-date-localized-plugin==1.5.3
 mkdocs-git-authors-plugin==0.10.0
-mkdocs-redirects==1.2.0
+# Version 1.2.3 adds ProperDocs alongside MkDocs without providing needed features here.
+mkdocs-redirects==1.2.2
 mkdocs-meta-descriptions-plugin==4.1.0
-mkdocs-material==9.4.3
-mkdocs-git-committers-plugin-2==2.5.0
