@@ -2,16 +2,13 @@
 description: "DeGov Agent API proposal and topic keys — opaque identifiers returned by the API, never constructed by callers."
 ---
 
-!!! warning "Proposed Agent API v2 — not yet available"
-    This page describes the proposed v2 contract. The v2 endpoints are **not live yet**. See [Agent API overview](../index.md).
-
 # Proposal & Topic Keys
 
-v2 addresses proposals and forum topics with **opaque keys** that the API generates and returns. Callers copy the key and pass it to the next endpoint. They never construct, parse, or guess keys.
+The current API addresses proposals and forum topics with **opaque keys** that the API generates and returns. Callers copy the key and pass it to the next endpoint. They never construct, parse, or guess keys.
 
 ## Why not raw identifiers?
 
-v1 addressed items with `kind + externalId`. That required callers to know the provider's own id scheme and to URL-encode it correctly. v2 instead returns a single stable value:
+Provider identifiers differ across governance systems. The API instead returns one transport-safe value:
 
 - The key encodes the full identity (`daoId`, `provider`, `externalId`) internally.
 - It is versioned, so the encoding can evolve without breaking callers.

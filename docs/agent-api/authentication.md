@@ -1,70 +1,42 @@
 ---
-description: "DeGov Agent API authentication — x402 per-request payment on Base, partner API tokens, and access tiers."
+description: "DeGov Agent API authentication — public resources, partner tokens, and x402 payments on Base."
 ---
-
-!!! warning "Proposed Agent API v2 — not yet available"
-    This page describes authentication for the proposed v2 contract. The v2 endpoints are **not live yet**. See [Agent API overview](index.md).
 
 # Authentication
 
-The Agent API has three access paths. Free endpoints need no authentication.
+The Agent API supports three access paths.
 
-## 1. Public / free
+## Public resources
 
-Endpoints in the **free** tier — `/v2/meta/pricing`, `/v2/meta/data-status`, `/v2/daos`, `/v2/daos/:daoId` — require no credentials.
+Pricing, data status, the DAO directory, and DAO detail are free and need no credentials.
 
-## 2. x402 payment (per-request, no key)
+## Partner tokens
 
-Paid endpoints can be used on a pay-per-request basis through [x402](https://x402.org) on Base, settled in USDC. There is no subscription and no API key to provision.
-
-How it works:
-
-1. Send the request without credentials.
-2. The API responds `402 Payment Required` with an x402 challenge describing the required payment (token, amount, network, recipient).
-3. The caller (an agent or CLI) submits the payment and retries the request with the payment header.
-4. Settlement is on-chain; receipts are verifiable via the returned transaction hash.
-
-The official CLI — bundled with the [dao-governance-research skill](https://github.com/ringecosystem/degov-agent-skills) — implements this flow automatically with a dedicated local wallet. Browser-based "Try It" tools are **not** expected to sign payments; use the CLI or curl for paid calls.
-
-Always check current prices before paying: `GET /v2/meta/pricing` (free).
-
-## 3. Partner API tokens
-
-Partner integrations receive an API key used with the `x-degov-api-token` header:
+Partners send an issued token with each paid request:
 
 ```bash
-curl -H "x-degov-api-token: <token>" https://agent-api.degov.ai/v2/proposals?daoId=ens-dao
+curl -H "x-degov-api-token: <token>" \
+  "https://agent-api.degov.ai/v2/proposals?daoId=example-dao&limit=25"
 ```
 
-Token properties:
+Treat the token as a secret. Do not place it in browser URLs, source control, screenshots, or logs. Tokens can be scoped and revoked; contact DeGov for issuance or replacement.
 
-- Issued by DeGov on request; the raw token is shown exactly once at creation and stored as a verifier/hash on the server.
-- Revocable immediately.
-- Scoped per access tier:
-  - `v1:paid:standard`, `v1:paid:plus`, `v1:paid:*` — v1 endpoints.
-  - `v2:paid:standard`, `v2:paid:plus`, `v2:paid:*` — v2 endpoints.
-  - `v2:paid:*` grants the highest v2 permission scope.
-- Existing partner keys issued before v2 are automatically upgraded to `v2:paid:*` when v2 launches; nothing needs to be re-issued on the partner side.
+An invalid or insufficient token may currently fall through to the normal 402 challenge. Clients should inspect the actual response instead of assuming every token failure is a fixed 401 or 403 envelope.
 
-### Rate limits and quotas
+## x402 payment
 
-Rate limits are enforced per limiter key and per backend process, and monthly quotas apply to partner-key requests:
+Paid resources also support per-request USDC payment on Base (`eip155:8453`):
 
-| Plan | Monthly limit | Standard bucket | Detail bucket |
-| --- | --- | --- | --- |
-| Developer | 3,000/month | 30 rpm, burst 10 | 10 rpm, burst 5 |
-| Business | 20,000/month | 120 rpm, burst 40 | 30 rpm, burst 10 |
-| Custom | 100,000/month baseline | 300 rpm, burst 100 | 75 rpm, burst 25 |
-| x402 pay-per-use | None (per-request) | 60 rpm, burst 20 | 20 rpm, burst 8 |
+1. Send the request without payment credentials.
+2. Read the `402 Payment Required` response and `payment-required` header.
+3. Let an x402-capable wallet apply its normal authorization and spending controls.
+4. Retry using the wallet-produced payment credential.
+5. Verify settlement before treating the request as paid.
 
-See [Pricing & Rate Limits](pricing-and-rate-limits.md) for the endpoint-to-bucket mapping.
+DeGov Agent Skills do not bundle a wallet or reimplement payment authorization. They delegate 402 handling to the configured wallet capability, such as MetaMask Agent Wallet.
 
-## Internal access (not public)
+Always read current route prices from `GET /v2/meta/pricing`.
 
-DeGov's own services use a separate internal token (`x-degov-internal-token`) for trusted server-to-server calls. This token is **never** exposed to partners, browsers, logs, or public documentation.
+## Browser behavior
 
-## Security notes
-
-- Never share a partner token, wallet private key, or passphrase.
-- Raw tokens appear once at issuance; treat them like credentials.
-- If a token leaks, revoke it immediately through DeGov support and request a replacement.
+Requests from `https://docs.degov.ai` can preflight the `x-degov-api-token` header. This makes partner-token browser calls technically possible, but the current OpenAPI is not yet complete enough for a reliable generated Try It experience. Browser-based automatic x402 payment is not promised.

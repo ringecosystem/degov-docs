@@ -2,14 +2,11 @@
 description: "DeGov Agent API timestamps and numbers — RFC 3339 UTC timestamps and exact decimal strings for voting power and quorum."
 ---
 
-!!! warning "Proposed Agent API v2 — not yet available"
-    This page describes the proposed v2 contract. The v2 endpoints are **not live yet**. See [Agent API overview](../index.md).
-
 # Timestamps & Numbers
 
 ## Timestamps
 
-All v2 timestamps are **RFC 3339 UTC** strings with millisecond precision:
+API timestamps are **RFC 3339 UTC** strings:
 
 ```
 2026-08-05T07:30:00.000Z
@@ -33,7 +30,7 @@ Values that represent money, voting power, or other exact quantities are returne
 
 - Strings preserve full precision (up to 78-digit decimals where the chain provides it).
 - JSON numbers would lose precision on large values — never parse them as `Number` for arithmetic.
-- Counts that are plain integers (`votes`, `uniqueVoters`, `proposalCount`) are returned as strings too, for consistency and to avoid overflow on large datasets.
+- Governance aggregates such as voting power, vote-summary totals, timeline values, and voter counts are decimal strings. Ordinary metadata such as `rank` and global data-status counters can be JSON numbers.
 
 ## Rules for callers
 

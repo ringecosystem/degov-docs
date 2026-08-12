@@ -1,42 +1,33 @@
 ---
-description: "The dao-governance-research skill — DeGov Agent API as the primary source for DAO governance facts."
+description: "DAO Governance Research skill — structured DeGov data plus official sources for accurate governance answers."
 ---
 
 # DAO Governance Research
 
-**When to use:** the user asks about Web3 DAO governance and the answer depends on accurate, recent governance information — DAO activity, proposal details, vote results, or governance timelines.
-
-**Goal:** avoid hallucinating DAO governance facts. Use the DeGov [Agent API](../agent-api/index.md) as the primary evidence source, then web search as a follow-up layer when API coverage is missing, stale, too shallow, or needs source verification.
+Use this skill when a question depends on recent DAO proposals, votes, forum activity, voter behavior, governance events, or source-backed evidence.
 
 Repository: [dao-governance-research](https://github.com/ringecosystem/degov-agent-skills/tree/main/skills/dao-governance-research)
 
-## Workflow
+## Research flow
 
-1. **Plan the query:** which DAO(s), what time range, discovery vs. detail, free vs. paid.
-2. **Free first:** `data-status`, `daos`, DAO detail — no payment needed.
-3. **Paid path requires explicit user consent:** present a clear choice between the DeGov Agent API paid path and web-search-only.
-4. **Wallet:** the bundled CLI manages a dedicated local Base wallet for x402 payments (USDC). The wallet and passphrase stay local — never shared or exposed in chat.
-5. **Answer:** turn API results into a plain-language explanation with sources; never dump raw JSON.
-6. **Verify:** when linked sources matter, follow them; when API data is missing/stale/too shallow, say so and use official DAO forums, Snapshot/Tally pages, and announcements.
+1. Identify the DAO, time range, and whether the request is discovery, a specific proposal, voter analysis, forum research, or security context.
+2. Use free DAO and data-status resources when they can establish coverage.
+3. Select the smallest set of current API resources that can answer the question.
+4. Follow pagination only while more rows materially improve the answer.
+5. Open official governance pages, forums, docs, and explorers when primary text or execution details need verification.
+6. State missing, stale, backfilling, partial, or conflicting evidence.
+7. Return useful prose rather than raw JSON.
 
-## API call patterns
+## Payments
 
-The skill's CLI wraps the [Agent API](../agent-api/index.md) endpoints. High-level patterns:
+When an API request returns 402, the skill delegates offer inspection, authorization, spending controls, signing, settlement verification, and retry safety to the configured wallet capability. It does not bundle a CLI wallet or reproduce those policies.
 
-| Question type | Endpoints |
-| --- | --- |
-| "What has DAO X been doing lately?" | `data-status`, DAO detail, `events` (or `signals` for curated) |
-| "What are the biggest stories this week?" | `events` / `signals` with a 7-day window |
-| "Explain this proposal (URL/title)" | `proposals/resolve` → `proposals/:proposalKey` |
-| "How did the vote go?" | `proposals/:proposalKey/votes/summary` |
-| "Who voted, with how much power?" | `proposals/:proposalKey/votes` |
-| "Who are the top voters in DAO X?" | `daos/:daoId/voters` → `voters/:voterIdentity` |
-| "What are people discussing?" | `forum-topics` → `forum-topics/:topicKey` |
+If payment is unavailable or not authorized, continue through official web sources where possible and disclose the evidence limitation.
 
-## Rules
+## Evidence rules
 
-- Fetch `proposalKey` from the API; never construct it.
-- Use `votes/summary` for results instead of paging `votes`.
-- Use `evidence` only for citation/audit answers.
-- State readiness/coverage limitations explicitly.
-- Never push wallet setup after the user declines the paid path.
+- Treat API data as evidence, not final prose.
+- Never construct proposal keys, topic keys, or cursors.
+- Prefer primary sources for proposal intent, executable actions, and deadlines.
+- Do not infer outcomes, totals, or dates from titles.
+- Use the security skill when the user asks whether a proposal is safe or risky.

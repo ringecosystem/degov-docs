@@ -1,72 +1,37 @@
 ---
-description: "DeGov Agent API pagination — cursor-based pages, hasMore, nextCursor, and how to recover from stale cursors."
+description: "DeGov Agent API cursor pagination, page metadata, and stale-cursor recovery."
 ---
-
-!!! warning "Proposed Agent API v2 — not yet available"
-    This page describes the proposed v2 contract. The v2 endpoints are **not live yet**. See [Agent API overview](../index.md).
 
 # Pagination
 
-Every v2 collection endpoint uses **cursor pagination**. There are no `total` counts and no `offset` parameters in v2.
-
-## Page shape
+Most list resources return rows in `data.items` and pagination in `meta.page`:
 
 ```json
 {
-  "data": [ /* items */ ],
+  "data": { "items": [] },
   "meta": {
-    "page": {
-      "limit": 25,
-      "hasMore": true,
-      "nextCursor": "eyJ2IjoxLCJlbmRwb2ludCI6..."
-    }
+    "page": { "limit": 25, "hasMore": true, "nextCursor": "opaque-cursor" }
   }
 }
 ```
 
-- `data` — the current page of items.
-- `meta.page.limit` — the page size used.
-- `meta.page.hasMore` — whether another page exists.
-- `meta.page.nextCursor` — opaque cursor for the next page; present only when `hasMore` is `true`.
-
-## Fetching the next page
-
-Pass `nextCursor` back unchanged as the `cursor` query parameter, keeping all other filters identical:
+Pass `nextCursor` back unchanged as `cursor`, keeping the same endpoint, limit, filters, and sort. Cursors are bound to the serving revision and can become stale after data publication changes; restart from the first page when the API rejects a cursor.
 
 ```bash
 curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals?daoId=ens-dao&lifecycleStatus=active&limit=25&cursor=eyJ2IjoxLCJlbmRwb2ludCI6..."
+  "https://agent-api.degov.ai/v2/proposals?daoId=example-dao&limit=25&cursor=opaque-cursor"
 ```
 
-Repeat until `hasMore` is `false`.
+Do not decode, construct, cache indefinitely, or reuse a cursor for another query.
 
-## Why not `total`?
+## Voter-ranking exception
 
-Exact totals require counting the full candidate set on every request, which does not scale on live datasets. v2 returns deterministic pages instead. If you need an aggregate, use a dedicated endpoint (`/v2/meta/data-status` for dataset counts, `/v2/proposals/:proposalKey/votes/summary` for vote totals).
+`GET /v2/daos/:daoId/voters` ranks voters and may use a rank-oriented cursor. Treat it exactly like every other opaque cursor; its internal ordering is not a page number.
 
-## Cursor semantics
+## Common limits
 
-Each cursor is bound to the request that produced it:
-
-- **Endpoint** — a cursor from `/v2/proposals` is invalid on `/v2/events`.
-- **Filters** — changing `daoId`, `lifecycleStatus`, or any filter invalidates the cursor.
-- **Sort** — cursors are tied to the sort order used to create them.
-- **Serving revision** — the cursor records the data revision it was created against.
-
-## Error handling
-
-| Situation | Response | Recovery |
-| --- | --- | --- |
-| Cursor reused with different endpoint/filters/sort | `400 CURSOR_INVALID` | Restart from the first page |
-| Data was rebuilt between pages | `409 CURSOR_STALE` | Restart from the first page |
-| Cursor missing/expired | `400 VALIDATION_ERROR` | Restart from the first page |
-
-There is no way to jump to an arbitrary page; always page forward from the start.
-
-## Limits
-
-| Endpoint group | Default | Range |
-| --- | --- | --- |
-| Lists (`/v2/proposals`, `/v2/forum-topics`, `/v2/events`, `/v2/signals`, `/v2/daos`) | 25–50 | 1–100 |
-| `/v2/proposals/:proposalKey/votes` | 100 | 1–500 |
-| `/v2/voters/:voterIdentity/votes` | 50 | 1–100 |
+- Most lists: maximum 100 rows.
+- Events: maximum 200 rows.
+- Proposal votes: maximum 500 rows.
+- Events and signals: maximum 90-day window.
+- Proposal and voter-history windows: maximum 365 days.

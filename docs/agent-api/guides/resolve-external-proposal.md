@@ -1,72 +1,18 @@
 ---
-description: "Guide — resolve a Snapshot/Tally URL, external id, or proposal title to a canonical proposalKey."
+description: "Resolve a governance proposal URL, title, or external ID to a DeGov proposal key."
 ---
-
-!!! warning "Proposed Agent API v2 — not yet available"
-    This guide describes the proposed v2 contract. The v2 endpoints are **not live yet**. See [Agent API overview](../index.md).
 
 # Resolve an External Proposal
 
-**User goal:** "I was given a Snapshot/Tally URL (or just a title/external id). Which proposal is it, and what's its canonical key?"
+**Tier:** standard.
 
-## Prerequisites
-
-- Tier: `standard` (paid).
-- Auth: x402 or partner token.
-- Input: exactly one of `url`, `title`, or `externalId`.
-
-## Call graph
-
-```text
-GET /v2/proposals/resolve        (standard)
-  -> returns proposalKey
-  -> GET /v2/proposals/:proposalKey        (plus, optional)
-  -> GET /v2/proposals/:proposalKey/votes/summary   (plus, optional)
-```
-
-## 1. Resolve a URL
+Use resolve only when you have a URL, title, or external ID but no `proposalKey`. Supply exactly one identifier and add `daoId` or `provider` when it reduces ambiguity.
 
 ```bash
 curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals/resolve?url=https%3A%2F%2Fsnapshot.org%2F%23%2Fproposal%2Fabc123"
+  "https://agent-api.degov.ai/v2/proposals/resolve?url=https%3A%2F%2Fsnapshot.org%2F%23%2Fexample%2Fproposal%2F0xabc&daoId=example-dao"
 ```
 
-## 2. Relevant response excerpt
+Read candidates from `data.candidates`. `match.type` describes how the candidate matched; it is not a probability. Select the candidate whose DAO, provider, title, and source URL agree with the user's input, then pass its opaque `proposalKey` to detail resources.
 
-```json
-{
-  "data": {
-    "candidates": [
-      {
-        "proposalKey": "p1_eyJkYW9JZCI6ImVucy1kYW8iLCJwcm92aWRlciI6InNuYXBzaG90IiwiZXh0ZXJuYWxJZCI6ImFiYzEyMyJ9",
-        "title": "Increase Protocol Budget",
-        "match": { "type": "url_exact", "matchedFields": ["sourceUrl"] }
-      }
-    ]
-  }
-}
-```
-
-## 3. How to interpret
-
-- `match.type` is a **real matching method**, not a made-up confidence score:
-  - `url_exact` — the URL matched a known source URL.
-  - `external_id_exact` — the external id matched exactly.
-  - `title_exact` / `title_contains` — title matching, possibly with DAO disambiguation.
-- Multiple candidates are possible for fuzzy titles; the caller decides.
-- An empty `candidates` array means no match — try a different input or use the v1 surface / web search.
-
-## 4. Next actions
-
-- Open the proposal: `GET /v2/proposals/:proposalKey`.
-- Get the vote result: `GET /v2/proposals/:proposalKey/votes/summary`.
-
-## 5. Failure recovery
-
-- `400 VALIDATION_ERROR` — you passed more than one primary selector, or none.
-- `402` — payment required.
-- Empty candidates — no match; relax the input or add `daoId`/`provider` disambiguation.
-
-## When to use this endpoint
-
-Only when the input came from **outside** the API (a link in chat, an external id, a spoken title). If you already have a `proposalKey` — from a list, event, or signal — you don't need resolve at all.
+An empty candidate list means the proposal was not resolved. Try a more exact identifier or verify it through the official governance source.
