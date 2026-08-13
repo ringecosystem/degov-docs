@@ -24,6 +24,7 @@ jobs:
           python -m mkdocs build --strict
           python scripts/verify-social-metadata.py --fetch-image
           python scripts/verify_navigation_analytics.py
+          python scripts/verify_ga4_activation.py --expect-disabled
           python scripts/verify-agent-api-docs.py
 
       - uses: darwinia-network/devops/actions/smart-vercel@main

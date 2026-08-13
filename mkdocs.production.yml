@@ -1,0 +1,5 @@
+INHERIT: mkdocs.yml
+
+extra:
+  analytics:
+    property: G-P1X6QLGZX6
