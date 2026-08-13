@@ -56,7 +56,12 @@ if site_index.exists():
     site_html = site_index.read_text(encoding="utf-8")
     if args.expect_enabled:
         require(MEASUREMENT_ID in site_html, "production artifact must include GA4 measurement ID")
+        require(
+            "consent.analytics&&__md_analytics()" in site_html,
+            "production analytics must remain behind Material analytics consent",
+        )
     else:
-        require(MEASUREMENT_ID not in site_html, "non-production artifact must not include GA4 measurement ID")
+        require("googletagmanager.com/gtag/js" not in site_html, "non-production artifact must not load GA")
+        require("id=\"__analytics\"" not in site_html, "non-production artifact must not initialize GA")
 
 print("GA4 activation verification passed.")
