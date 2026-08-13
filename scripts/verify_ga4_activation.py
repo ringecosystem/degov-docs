@@ -28,15 +28,17 @@ dev_workflow = (ROOT / ".github/workflows/deploy-dev.yml").read_text(encoding="u
 site_index = ROOT / "site/index.html"
 
 require(
-    "provider: google" in base_config,
-    "base MkDocs config must preserve Material Google analytics provider",
+    "provider: google" not in base_config,
+    "base MkDocs config must not enable the Google analytics provider",
 )
 require(
     MEASUREMENT_ID not in base_config,
     "base MkDocs config must not include production GA4 property",
 )
 require(
-    "INHERIT: mkdocs.yml" in production_config and f"property: {MEASUREMENT_ID}" in production_config,
+    "INHERIT: mkdocs.yml" in production_config
+    and "provider: google" in production_config
+    and f"property: {MEASUREMENT_ID}" in production_config,
     "production MkDocs overlay must set GA4 measurement ID",
 )
 require(

@@ -68,8 +68,6 @@ extra:
       link: https://t.me/RingDAO_Hub
 
   analytics:
-    provider: google
-    property: 
     feedback:
       title: Was this page helpful?
       ratings:

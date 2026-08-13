@@ -2,4 +2,5 @@ INHERIT: mkdocs.yml
 
 extra:
   analytics:
+    provider: google
     property: G-P1X6QLGZX6
