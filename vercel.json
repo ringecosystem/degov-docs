@@ -24,27 +24,52 @@
   ],
   "redirects": [
     {
-      "source": "/agent-api/reference/v1/:path*",
+      "source": "/agent-api/reference/v1",
       "destination": "/agent-api/reference/",
       "permanent": true
     },
     {
-      "source": "/agent-api/migration-v1-to-v2/:path*",
+      "source": "/agent-api/reference/v1/",
+      "destination": "/agent-api/reference/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/migration-v1-to-v2",
       "destination": "/agent-api/quickstart/",
       "permanent": true
     },
     {
-      "source": "/agent-api/reference/v2-metadata/:path*",
+      "source": "/agent-api/migration-v1-to-v2/",
+      "destination": "/agent-api/quickstart/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/reference/v2-metadata",
       "destination": "/agent-api/pricing-and-rate-limits/",
       "permanent": true
     },
     {
-      "source": "/agent-api/reference/v2-feeds/:path*",
+      "source": "/agent-api/reference/v2-metadata/",
+      "destination": "/agent-api/pricing-and-rate-limits/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/reference/v2-feeds",
       "destination": "/atlas/discussions-timelines-signals/",
       "permanent": true
     },
     {
-      "source": "/agent-api/guides/follow-governance-signals/:path*",
+      "source": "/agent-api/reference/v2-feeds/",
+      "destination": "/atlas/discussions-timelines-signals/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/guides/follow-governance-signals",
+      "destination": "/atlas/discussions-timelines-signals/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/guides/follow-governance-signals/",
       "destination": "/atlas/discussions-timelines-signals/",
       "permanent": true
     },
