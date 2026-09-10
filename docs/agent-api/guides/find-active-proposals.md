@@ -1,38 +1,22 @@
 ---
-description: "Find active DAO proposals and capture proposal keys for detail and vote requests."
+description: "Find active DAO proposals using current status filters and preserve returned proposal IDs for follow-up research."
 ---
 
 # Find Active Proposals
 
-**Tier:** free DAO discovery, then standard proposal discovery.
-
-1. Find the canonical `daoId` with `GET /v2/daos`.
-2. Query proposals with an active lifecycle status.
-3. Read rows from `data.items`.
-4. Keep the returned `proposalKey` for detail or vote requests.
+1. Find the DAO using the free directory's `query` parameter.
+2. Request its active proposals, optionally sorted by the closest known voting deadline.
+3. Read the top-level `data` array and preserve each returned `proposalId`.
 
 ```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals?daoId=example-dao&lifecycleStatus=active&sort=endingSoon&limit=25"
+curl -sS 'https://agent-api.degov.ai/v2/daos?query=Uniswap&limit=5'
+
+curl -sS -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  'https://agent-api.degov.ai/v2/proposals?daoId=uniswapgovernance-eth&status=active&sort=votingEndsAtAsc&limit=25'
 ```
 
-```json
-{
-  "data": {
-    "items": [
-      {
-        "proposalKey": "p1_opaque",
-        "identity": { "daoId": "example-dao", "provider": "snapshot", "externalId": "0xabc" },
-        "title": "Fund the governance working group",
-        "lifecycleStatus": "active",
-        "outcome": null,
-        "endAt": "2026-08-14T18:00:00Z",
-        "coverageStatus": "ready"
-      }
-    ]
-  },
-  "meta": { "page": { "limit": 25, "hasMore": false } }
-}
-```
+The second request is paid; the header illustrates issued partner-token access. An x402-capable wallet is the alternative.
 
-If the DAO is missing, verify coverage with `data-status`. If the query is too broad, add a DAO, time window, status, or provider filter.
+Use `status=active&status=pending` to request multiple statuses. Do not comma-separate them. `query` searches proposal titles; `createdFrom` and `createdTo` filter creation time, not voting deadlines. Each time window is at most 365 days.
+
+Explain `status`, `outcome`, and `executionStatus` separately. Verify deadlines against `source.url` when they affect an action. Follow `page.nextCursor` only while more results are useful; an empty list means no matching proposals in the published view.

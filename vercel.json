@@ -21,5 +21,37 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/agent-api/reference/v1/:path*",
+      "destination": "/agent-api/reference/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/migration-v1-to-v2/:path*",
+      "destination": "/agent-api/quickstart/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/reference/v2-metadata/:path*",
+      "destination": "/agent-api/pricing-and-rate-limits/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/reference/v2-feeds/:path*",
+      "destination": "/atlas/discussions-timelines-signals/",
+      "permanent": true
+    },
+    {
+      "source": "/agent-api/guides/follow-governance-signals/:path*",
+      "destination": "/atlas/discussions-timelines-signals/",
+      "permanent": true
+    },
+    {
+      "source": "/openapi.json",
+      "destination": "https://agent-api.degov.ai/openapi.json",
+      "permanent": false
+    }
   ]
 }

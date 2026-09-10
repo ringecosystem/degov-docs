@@ -1,58 +1,18 @@
 ---
-description: "DeGov Agent API proposal and topic keys — opaque identifiers returned by the API, never constructed by callers."
+description: "Use DeGov DAO slugs, opaque proposal and topic IDs, and normalized voter identities without guessing or decoding."
 ---
 
-# Proposal & Topic Keys
+# Public Identifiers
 
-The current API addresses proposals and forum topics with **opaque keys** that the API generates and returns. Callers copy the key and pass it to the next endpoint. They never construct, parse, or guess keys.
-
-## Why not raw identifiers?
-
-Provider identifiers differ across governance systems. The API instead returns one transport-safe value:
-
-- The key encodes the full identity (`daoId`, `provider`, `externalId`) internally.
-- It is versioned, so the encoding can evolve without breaking callers.
-- External ids containing `/`, `:`, `%`, or Unicode round-trip safely.
-- Serving-layer internal ids (which can change when data is rebuilt) are never exposed.
-
-## Format
-
-| Kind | Prefix | Example |
+| Field | Meaning | Obtain it from |
 | --- | --- | --- |
-| Proposal | `p1_` | `p1_eyJkYW9JZCI6ImVucy1kYW8iLCJwcm92aWRlciI6InNuYXBzaG90IiwiZXh0ZXJuYWxJZCI6ImFiYzEyMyJ9` |
-| Forum topic | `t1_` | `t1_eyJkYW9JZCI6ImVuc...` |
+| `daoId` | Public DAO slug | DAO directory |
+| `proposalId` | Opaque proposal identifier beginning with `p1_` | Proposal list, exact resolver, or voter history |
+| `topicId` | Opaque topic identifier beginning with `t1_` | Forum topic list |
+| `voterId` | Normalized voter identity; EVM addresses are lowercase | Participant or vote resources |
 
-The part after the prefix is a base64url-encoded identity payload. Treat it as opaque data.
+Pass returned values back unchanged, URL-encoding path segments when constructing requests. Do not derive a DAO slug from a name, encode your own proposal identifier, or reuse a provider's raw ID as `proposalId`. The `p1_` and `t1_` prefixes identify opaque formats, not API versions.
 
-## Where keys come from
+The documentation uses `p1_<opaque>` as a placeholder: replace it with a real response value before calling a detail or vote route. `topicId` supports caching and deduplication; the public contract has no standalone forum-topic detail route.
 
-| Endpoint | Returns |
-| --- | --- |
-| `GET /v2/proposals` | `proposalKey` on each item |
-| `GET /v2/proposals/resolve` | `proposalKey` on each candidate |
-| `GET /v2/events` | `proposalKey` / `topicKey` on each event item |
-| `GET /v2/signals` | `proposalKey` / `topicKey` on each signal |
-| `GET /v2/forum-topics` | `topicKey` on each item |
-| `GET /v2/voters/:voterIdentity/votes` | `proposalKey` on each vote item |
-
-## Using a key
-
-```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals/p1_eyJkYW9JZCI6ImVucy1kYW8iLCJwcm92aWRlciI6InNuYXBzaG90IiwiZXh0ZXJuYWxJZCI6ImFiYzEyMyJ9/votes/summary"
-```
-
-The same key works across every sub-resource of the proposal:
-
-- `GET /v2/proposals/:proposalKey`
-- `GET /v2/proposals/:proposalKey/votes/summary`
-- `GET /v2/proposals/:proposalKey/votes`
-- `GET /v2/proposals/:proposalKey/evidence`
-
-## Rules for callers
-
-1. **Never construct a key.** If you don't have one, get it from a list, resolve, events, or signals endpoint.
-2. **Never decode or re-encode a key.** Pass it through unchanged, including URL encoding of the full path segment.
-3. **A malformed key** returns `400 VALIDATION_ERROR`.
-4. **A well-formed key with no matching proposal** returns `404 NOT_FOUND`.
-5. **Keys are not secrets.** They identify public governance data, but they are also not stable forever — if a proposal disappears from coverage, its key may stop resolving.
+For an exact external proposal URL or complete source identity, use [proposal resolution](../guides/resolve-external-proposal.md). For a title, use proposal search instead.

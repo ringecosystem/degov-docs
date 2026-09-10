@@ -1,42 +1,49 @@
 ---
-description: "DeGov Agent API authentication — public resources, partner tokens, and x402 payments on Base."
+description: "Access free DeGov data anonymously or use x402 and scoped partner tokens for paid governance resources."
 ---
 
 # Authentication
 
-The Agent API supports three access paths.
+## Free resources
 
-## Public resources
-
-Pricing, data status, the DAO directory, and DAO detail are free and need no credentials.
+The OpenAPI specification, DAO directory, and DAO detail require no credentials. You can explore available data without an account or wallet.
 
 ## Partner tokens
 
-Partner keys are issued directly by DeGov. [Contact us](https://t.me/RingDAO_Hub) with your integration and expected usage to request one, then send the issued token with each paid request:
+Partner keys are issued directly by DeGov. [Contact the team](mailto:support@degov.ai) with your integration and expected usage. Send the issued token in a request header:
 
 ```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals?daoId=example-dao&limit=25"
+curl -sS -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  'https://agent-api.degov.ai/v2/proposals?limit=5'
 ```
 
-Treat the token as a secret. Do not place it in browser URLs, source control, screenshots, or logs. Tokens can be scoped and revoked; contact DeGov for issuance, scope changes, revocation, or replacement.
+Set `DEGOV_API_TOKEN` through your environment or secret manager. Keep tokens out of URLs, browser code, source control, and logs.
 
-An invalid or insufficient token may currently fall through to the normal 402 challenge. Clients should inspect the actual response instead of assuming every token failure is a fixed 401 or 403 envelope.
+| Scope | Access |
+| --- | --- |
+| `v2:paid:standard` | Standard paid operations |
+| `v2:paid:plus` | Plus paid operations |
+| `v2:paid:*` | Both paid tiers |
+
+A plus scope alone does not grant standard access. Keys also have an access plan, expiry, and revocation state. Contact DeGov for issuance, scope changes, replacement, or revocation. `atlas:read` is for the Atlas application and does not grant Agent API paid access.
+
+An absent, invalid, or insufficient partner token can fall through to the normal x402 challenge. Inspect the response rather than assuming every token failure produces 401 or 403.
 
 ## x402 payment
 
-Paid resources also support per-request USDC payment on Base (`eip155:8453`):
+Paid resources also accept per-request USDC payment on Base (`eip155:8453`):
 
-1. Send the request without payment credentials.
-2. Read the `402 Payment Required` response and `payment-required` header.
-3. Let an x402-capable wallet apply its normal authorization and spending controls.
-4. Retry using the wallet-produced payment credential.
-5. Verify settlement before treating the request as paid.
+1. Make the request and read the **402** response and `PAYMENT-REQUIRED` header.
+2. Pass the offer to an x402-capable wallet for authorization and spending controls.
+3. Retry the same method, URL, and body using its `PAYMENT-SIGNATURE` credential.
+4. Check the successful response and `PAYMENT-RESPONSE` settlement result.
 
-DeGov Agent Skills use MetaMask Agent Wallet as their default x402 wallet integration. The governance skill loads the wallet skill when it encounters a 402, while MetaMask owns authorization, spending controls, signing, settlement verification, and safe retries.
+[DeGov Agent Skills](../agent-skills/index.md) use MetaMask Agent Wallet for this workflow. The wallet owns signing and safe retries. A discovered offer or verified signature alone is not settlement; unsuccessful handler responses are not settled. Do not blindly replay signed requests after a transport failure.
 
-Always read current route prices from `GET /v2/meta/pricing`.
+Current advertised prices are in the operation's `x-payment-info` in [OpenAPI](https://agent-api.degov.ai/openapi.json). The actual challenge specifies the asset, amount, network, and recipient.
 
-## Browser behavior
+## Product boundaries
 
-Requests from `https://docs.degov.ai` can preflight the `x-degov-api-token` header. This makes partner-token browser calls technically possible, but the current OpenAPI is not yet complete enough for a reliable generated Try It experience. Browser-based automatic x402 payment is not promised.
+The Agent API does not require an OAuth login for these public or paid access paths. Square's GraphQL and MCP services use `api.degov.ai` and have separate authentication; they are not the Agent API base URL. Use the current [Agent API reference](reference/index.md) for programmatic governance research.
+
+Requests from DeGov Docs can preflight the partner-token header, but that does not make a browser a safe place to embed a private key. Automatic browser x402 payment is not part of this documentation.

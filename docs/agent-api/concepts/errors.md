@@ -1,27 +1,38 @@
 ---
-description: "DeGov Agent API validation, payment, rate-limit, quota, and server error behavior."
+description: "Recover from current DeGov public API validation, missing data, x402, rate limits, and server errors."
 ---
 
 # Errors
 
-Do not assume every failure has one envelope. The API currently exposes several response families.
+Documented non-payment errors use `error` and `requestId`:
 
-## Validation and resource errors
+```json
+{
+  "error": {
+    "code": "INVALID_ARGUMENT",
+    "message": "Request validation failed",
+    "details": {
+      "issues": [{ "path": "/limit", "message": "must be >= 1", "keyword": "minimum" }]
+    }
+  },
+  "requestId": "req-example"
+}
+```
 
-Business errors identify a stable code and message when available. Common cases include invalid parameters, missing resources, oversized query windows, invalid cursors, stale cursors, and candidate-budget limits. Fix the query or restart pagination as directed.
+`details` is optional. Preserve `requestId` when reporting a failure.
 
-## Payment challenges
+| Status / code | Meaning | Recovery |
+| --- | --- | --- |
+| 400 `INVALID_ARGUMENT` | Unknown, malformed, conflicting, or out-of-range input | Correct the request against OpenAPI |
+| 402 Payment Required | A paid resource needs a valid payment or partner credential | Inspect `PAYMENT-REQUIRED`; use the wallet's authorized workflow |
+| 404 `NOT_FOUND` | Public resource not found | Obtain the correct ID from discovery or the exact resolver |
+| 404 `DATA_NOT_AVAILABLE` | A normalized vote summary is unavailable | Try vote rows or the official source; disclose the gap |
+| 413 `INVALID_ARGUMENT` | Resolver body exceeds the size limit | Send only the documented exact lookup body |
+| 415 `INVALID_ARGUMENT` | Resolver body is not supported JSON | Set `Content-Type: application/json` |
+| 429 `RATE_LIMITED` | Rate limit or monthly quota exhausted | Honor `Retry-After` and inspect the message |
+| 500 `INTERNAL_ERROR` | Unexpected service failure | Keep the request ID and retry later |
+| 503 `TEMPORARILY_UNAVAILABLE` | The resource cannot currently be served | Retry later or use an official source |
 
-An unpaid paid-route request returns HTTP 402 with a `payment-required` header and a JSON payment description. This is an x402 offer, not the normal business-error envelope. Inspect the current offer and delegate authorization and settlement to an x402-capable wallet.
+A 402 follows the x402 protocol envelope, not the non-payment error schema. An invalid or insufficient partner token can also return that challenge. Do not invent payment credentials or blindly repeat signed requests.
 
-## Authentication behavior
-
-An invalid or insufficient partner token may currently fall through to a 402 challenge. Clients should branch on the observed response rather than hardcoding 401/403 assumptions.
-
-## Rate limits and quotas
-
-HTTP 429 can represent a short-window rate limit or monthly quota exhaustion. Back off for rate limits; wait for quota renewal or change the partner plan for exhausted quotas.
-
-## Server errors
-
-Retry transient 5xx responses with bounded exponential backoff. Include `requestId` when reporting a persistent problem. Never automatically replay a payment without the wallet capability's retry and settlement checks.
+Unknown paths can return the framework's JSON 404 shape (`message`, `error`, `statusCode`) instead. Recover using the current [OpenAPI contract](https://agent-api.degov.ai/openapi.json); avoid guessing undocumented endpoints.

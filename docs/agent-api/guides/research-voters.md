@@ -1,25 +1,26 @@
 ---
-description: "Research DAO voter rankings, cross-DAO profiles, and voting history."
+description: "Research DAO participants and cross-DAO voter history using returned voter identities."
 ---
 
 # Research Voters
 
-**Tier:** plus.
-
-1. Rank voters within a DAO.
-2. Capture the returned `voterIdentity`.
-3. Open the cross-DAO profile.
-4. Fetch vote history only when the individual records matter.
+Start with a DAO's participant ranking, then select only the voter profiles or histories needed for the question. All three resources are paid plus operations.
 
 ```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/daos/example-dao/voters?limit=25"
-
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/voters/voter%3A0xabc"
-
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/voters/voter%3A0xabc/votes?daoId=example-dao&limit=50"
+curl -sS -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  'https://agent-api.degov.ai/v2/daos/uniswapgovernance-eth/participants?sort=votedProposalCountDesc&limit=5'
 ```
 
-Ranking and vote-history lists use `data.items`. Treat `voterIdentity` as the resource handle; ranking and profile responses do not promise a separate `voterAddress` field.
+Read the `data` array. Preserve a returned `voterId`, URL-encode it when needed, and use it for detail and history:
+
+```bash
+curl -sS -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  "https://agent-api.degov.ai/v2/voters/$VOTER_ID"
+
+curl -sS -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  "https://agent-api.degov.ai/v2/voters/$VOTER_ID/votes?daoId=uniswapgovernance-eth&limit=25"
+```
+
+Participant ranking counts proposals with an effective latest vote. `latestEffectiveVoteAtDesc` is the alternative ranking sort. Both ranking and history use cursor pagination; history is newest first and supports `votedFrom` and `votedTo` within 365 days.
+
+Voter totals and histories describe observed participation, not a person's identity or reputation. EVM `voterId` values are lowercase addresses; other providers can use other non-blank identities. `address` and timestamps can be null. If publication is unavailable, honor a 503 response and use official sources instead of treating it as zero activity.

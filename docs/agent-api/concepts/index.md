@@ -1,12 +1,12 @@
 ---
-description: "Core DeGov Agent API concepts: responses, keys, pagination, coverage, timestamps, numbers, and errors."
+description: "Understand DeGov API identifiers, response envelopes, pagination, source provenance, timestamps, and errors."
 ---
 
 # Concepts
 
-- [Response envelope](response-envelope.md) — where payloads, pages, timestamps, and readiness appear.
-- [Proposal and topic keys](proposal-and-topic-keys.md) — opaque handles returned by discovery resources.
-- [Pagination](pagination.md) — cursor pages and the voter-ranking exception.
-- [Readiness and coverage](readiness-and-coverage.md) — service availability, publication state, and data completeness.
-- [Timestamps and numbers](timestamps-and-numbers.md) — UTC timestamps and exact decimal strings.
-- [Errors](errors.md) — validation, payment, rate limits, quotas, and recovery.
+- [Response envelope](response-envelope.md): objects in `data`, lists in `data` plus `page`.
+- [Public identifiers](proposal-and-topic-keys.md): use returned DAO, proposal, topic, and voter identifiers unchanged.
+- [Pagination](pagination.md): opaque cursors, fixed filters, and live traversal.
+- [Data availability](readiness-and-coverage.md): resource families, missing evidence, and source observations.
+- [Timestamps and numbers](timestamps-and-numbers.md): governance time, nullable fields, and decimal voting power.
+- [Errors](errors.md): validation, unavailable data, payment challenges, and retries.

@@ -1,91 +1,51 @@
 ---
-description: "DeGov Agent API quickstart — check production data, list DAOs, and understand paid access."
+description: "Make free DAO requests, inspect the OpenAPI contract, and understand an unsigned x402 payment challenge."
 ---
 
 # Quickstart
 
-The first two calls are free and require no wallet or token.
+Start without an account, API key, wallet, or payment. The commands below require `curl`; the optional extraction command uses `jq`.
 
-## 1. Check data status
-
-```bash
-curl -s https://agent-api.degov.ai/v2/meta/data-status
-```
-
-```json
-{
-  "data": {
-    "scope": "global",
-    "counts": { "daos": 883, "proposals": 66437, "voteProposals": 66437 },
-    "coverageStatus": "backfilling",
-    "dataAsOf": "2026-08-12T06:15:50.433Z",
-    "projections": { "pending": 0, "running": 10, "dead": 0 }
-  },
-  "meta": {
-    "requestId": "req-example",
-    "generatedAt": "2026-08-12T06:42:29.362Z",
-    "dataAsOf": "2026-08-12T06:15:50.433Z"
-  }
-}
-```
-
-The values above are a fixed example. Use the live response for current counts and status. `backfilling` means the API is available while data coverage is still being completed.
-
-## 2. List DAOs
+## 1. Find a DAO
 
 ```bash
-curl -s "https://agent-api.degov.ai/v2/daos?hasVoteData=true&limit=3"
+curl -sS 'https://agent-api.degov.ai/v2/daos?query=Uniswap&limit=5'
 ```
 
-Lists use `data.items`, with pagination in `meta.page`:
+Read the DAO objects from the top-level `data` array. Each includes `daoId`, `sources`, `availableData`, proposal counts, nullable participation totals, and `dataAsOf`. A list also includes `page.hasMore` and `page.nextCursor`.
 
-```json
-{
-  "data": {
-    "items": [
-      {
-        "daoId": "example-dao",
-        "name": "Example DAO",
-        "hasVoteData": true,
-        "hasForumData": true,
-        "coverageStatus": "ready"
-      }
-    ]
-  },
-  "meta": {
-    "page": { "limit": 3, "hasMore": true, "nextCursor": "opaque-cursor" }
-  }
-}
-```
+## 2. Read its available data
 
-Copy `nextCursor` unchanged into the next request; never construct or decode it.
-
-## 3. Inspect live pricing
+Use a `daoId` returned by that directory, unchanged. This example selects the first match and stops if none exists:
 
 ```bash
-curl -s https://agent-api.degov.ai/v2/meta/pricing
+DAO_ID=$(curl -sS 'https://agent-api.degov.ai/v2/daos?query=Uniswap&limit=5' | jq -er '.data[0].daoId') &&
+  curl -sS "https://agent-api.degov.ai/v2/daos/$DAO_ID"
 ```
 
-The response identifies every route as `free`, `standard`, or `plus`. At the time of this example, standard calls cost `0.005 USDC` and plus calls cost `0.01 USDC` on Base. The live pricing response is authoritative.
+The response contains one object in `data`. `availableData` identifies the public resource families available for that DAO. `dataAsOf` describes source observations included in the record; neither field guarantees that every source is current.
 
-## 4. See a paid-route challenge
-
-Calling a paid route without credentials does not spend anything:
+## 3. Inspect the contract and pricing
 
 ```bash
-curl -i "https://agent-api.degov.ai/v2/proposals?daoId=example-dao&limit=1"
+curl -sS 'https://agent-api.degov.ai/openapi.json'
 ```
 
-The API returns `402 Payment Required` and a `payment-required` header describing the x402 offer. Continue through either:
+Use an operation's parameters, schemas, and `x-payment-info` to plan a request. Read [pricing](pricing-and-rate-limits.md) before paid data access. Discovery itself is free.
 
-- a partner token in `x-degov-api-token`; or
-- an x402-capable wallet that inspects, authorizes, signs, settles, and retries the request.
+## 4. Inspect a paid-route challenge
 
-Do not copy a receiver address or price from documentation; use the challenge returned for that request.
+```bash
+curl -sS -i 'https://agent-api.degov.ai/v2/proposals?limit=1'
+```
+
+Without payment credentials or a partner token, this returns **402 Payment Required** and a `PAYMENT-REQUIRED` header. This unsigned request does not sign or settle a payment.
+
+To retrieve paid data, use an [issued partner token or an x402-capable wallet](authentication.md). [DeGov Agent Skills](../agent-skills/index.md) delegate payment authorization, spending controls, signing, and settlement verification to MetaMask Agent Wallet.
 
 ## Next steps
 
-- [Find active proposals](guides/find-active-proposals.md)
-- [Inspect proposal votes](guides/inspect-proposal-votes.md)
-- [Browse forum topics](guides/browse-forum-topics.md)
-- [Authentication](authentication.md)
+- [Find active proposals](guides/find-active-proposals.md).
+- [Resolve an exact proposal URL](guides/resolve-external-proposal.md).
+- [Read pagination](concepts/pagination.md) before traversing lists.
+- If a request fails, use its [error code and recovery guidance](concepts/errors.md).

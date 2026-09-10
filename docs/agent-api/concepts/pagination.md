@@ -1,37 +1,18 @@
 ---
-description: "DeGov Agent API cursor pagination, page metadata, and stale-cursor recovery."
+description: "Traverse live DeGov governance collections with opaque cursors and consistent filters."
 ---
 
 # Pagination
 
-Most list resources return rows in `data.items` and pagination in `meta.page`:
+All public collection operations use `limit` and `cursor`. `limit` is an integer from **1 to 100**, defaulting to **25**.
 
-```json
-{
-  "data": { "items": [] },
-  "meta": {
-    "page": { "limit": 25, "hasMore": true, "nextCursor": "opaque-cursor" }
-  }
-}
-```
+1. Make the first request without a cursor.
+2. Read records from `data`.
+3. If `page.hasMore` is true, use `page.nextCursor` for the next request.
+4. Preserve the route, filters, and sort. Stop when `hasMore` is false and `nextCursor` is null.
 
-Pass `nextCursor` back unchanged as `cursor`, keeping the same endpoint, limit, filters, and sort. Cursors are bound to the serving revision and can become stale after data publication changes; restart from the first page when the API rejects a cursor.
+Pass cursors unchanged. Do not decode, shorten, construct, or reuse them for another request shape. There is no separate offset-based participant-ranking contract.
 
-```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals?daoId=example-dao&limit=25&cursor=opaque-cursor"
-```
+Pagination is a live keyset traversal. Unrelated publications do not expire cursors, but inserts and updates can move matching records while you page. A traversal is not a frozen point-in-time snapshot. If results change during a full scan, restart and reconcile by stable resource ID rather than claiming snapshot completeness.
 
-Do not decode, construct, cache indefinitely, or reuse a cursor for another query.
-
-## Voter-ranking exception
-
-`GET /v2/daos/:daoId/voters` ranks voters and may use a rank-oriented cursor. Treat it exactly like every other opaque cursor; its internal ordering is not a page number.
-
-## Common limits
-
-- Most lists: maximum 100 rows.
-- Events: maximum 200 rows.
-- Proposal votes: maximum 500 rows.
-- Events and signals: maximum 90-day window.
-- Proposal and voter-history windows: maximum 365 days.
+When both bounds are supplied, proposal creation, forum activity, and voter-history time windows must be ordered and at most **365 days**. Lower `From` bounds are inclusive; upper `To` bounds are exclusive. A single bound filters only that side of the interval; use both for a reproducible research interval. See the exact operation in [OpenAPI](https://agent-api.degov.ai/openapi.json).

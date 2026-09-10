@@ -1,50 +1,38 @@
 ---
-description: "DeGov Agent API — production governance data for proposals, votes, voters, forum topics, events, and signals."
+description: "Use the current DeGov Agent API for DAO discovery, proposals, votes, forum topics, participants, and voter history."
 ---
 
 # Agent API
 
-The DeGov Agent API is the production, machine-readable interface to DeGov's governance data. It is designed for agents and integrations that need structured, source-aware DAO information.
+The DeGov Agent API gives agents and integrations structured DAO governance data with official source links. Start with free DAO discovery, then request the proposal, vote, forum, or voter evidence needed for your task.
 
-**v2 is the current API for new integrations.** v1 remains available as a frozen compatibility surface; use the [migration runbook](migration-v1-to-v2.md) when moving an existing integration.
+Base URL: **`https://agent-api.degov.ai`**. The current public contract contains **11 operations** under `/v2`.
 
-The same curated data powers [DeGov Atlas](../atlas/index.md). The API exposes it through focused resources with explicit pagination, freshness, coverage, pricing, and errors.
+## When to use it
 
-## Base URL
-
-```text
-https://agent-api.degov.ai
-```
-
-The `/v2` prefix is part of the current HTTP contract.
-
-## Data status
-
-The service can be available while a projection is still backfilling. Check the free `GET /v2/meta/data-status` resource before a research session and read `coverageStatus` and `dataAsOf` instead of treating backfilling as an outage.
-
-## Endpoint groups
-
-| Group | Resources | Tier |
+| Need | Resource | Access |
 | --- | --- | --- |
-| Metadata | Pricing and data status | free |
-| DAOs | Directory and detail | free |
-| Proposals, forum, events, signals | Discovery and feeds | standard |
-| Proposal details, votes, evidence, timelines, voters | Deep research | plus |
+| Find a DAO and inspect available data | DAO directory and detail | Free; no wallet or API key |
+| Find proposals or resolve an exact proposal URL | Proposal list and resolver | Paid standard |
+| Read proposal content and analyze ballots | Proposal detail, vote summary, and vote rows | Paid plus |
+| Find governance discussions | Forum topic list | Paid standard |
+| Research participation | DAO participants, voter profile, and voter history | Paid plus |
 
-Prices are returned by the free [pricing resource](pricing-and-rate-limits.md) and may change.
+Paid calls accept x402 payment or an issued partner token. Prices and payment protocols are declared in the [OpenAPI contract](https://agent-api.degov.ai/openapi.json); the actual 402 challenge supplies the payment offer. See [pricing and rate limits](pricing-and-rate-limits.md).
+
+The public API is focused on governance resources. Operational status, private feeds, executable calldata, evidence bundles, and timeline endpoints are outside this contract. Use returned official source URLs for primary evidence beyond the available fields. [Atlas](../atlas/index.md) provides its own human-facing activity views.
 
 ## Start here
 
-1. [Quickstart](quickstart.md) — make free calls and inspect a real 402 challenge.
-2. [Authentication](authentication.md) — partner tokens and x402.
-3. [Concepts](concepts/index.md) — response envelopes, keys, pagination, coverage, and errors.
-4. [Guides](guides/index.md) — task-oriented research workflows.
-5. [API reference](reference/index.md) — endpoints grouped by resource.
+1. [Quickstart](quickstart.md) — find a DAO without signing up or paying.
+2. [Authentication](authentication.md) — free resources, partner tokens, and x402.
+3. [Concepts](concepts/index.md) — identifiers, pagination, availability, and errors.
+4. [Guides](guides/index.md) — focused research workflows.
+5. [API reference](reference/index.md) — all 11 public operations.
+6. [Agent Skills](../agent-skills/index.md) — install reusable research and security guidance.
 
-## Machine-readable contracts
+## Contract and version
 
-- [Agent API v2 OpenAPI](https://agent-api.degov.ai/openapi/agent-v2.json)
-- [Agent API v1 OpenAPI](https://agent-api.degov.ai/openapi/agent-v1.json)
-- [Combined public OpenAPI](https://agent-api.degov.ai/openapi.json)
+[OpenAPI](https://agent-api.degov.ai/openapi.json) is the authoritative specification for methods, paths, typed inputs, responses, errors, and payment metadata. [The V2 alias](https://agent-api.degov.ai/openapi/agent-v2.json) serves the same specification. Each operation has a unique `operationId` for generated clients and agent tools.
 
-The current v2 OpenAPI is useful for route discovery, but it does not yet contain enough schemas, parameters, security declarations, and examples to replace the human-readable reference.
+These docs describe the public contract released in [Agent API v0.9.0](https://github.com/ringecosystem/degov-agent-api/releases/tag/v0.9.0), checked against the live specification on 10 September 2026. API version `v2` and software release `v0.9.0` identify different things. Follow the live specification when a later release changes the contract.

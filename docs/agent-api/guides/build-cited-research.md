@@ -1,23 +1,20 @@
 ---
-description: "Build a source-aware DAO governance brief from proposal detail, evidence, and primary sources."
+description: "Build a cited DAO governance explanation from current proposal resources and official source evidence."
 ---
 
 # Build a Cited Research Brief
 
-**Tier:** plus after proposal discovery.
-
-1. Resolve or discover a proposal key.
-2. Fetch proposal detail for normalized content and source URLs.
-3. Fetch evidence only when provenance, quality, or auditability affects the answer.
-4. Open official source URLs to verify intent, executable actions, deadlines, or disputed facts.
-5. Separate confirmed facts, interpretation, and missing evidence.
+1. Discover a proposal or resolve an exact external URL.
+2. Fetch proposal detail for its body, source links, voting window, outcome, and execution status.
+3. Add vote summary or vote rows only when they affect the answer.
+4. Open `source.url` and any `source.discussionUrl` for primary text, executable actions, or disputed facts.
+5. Separate confirmed facts, interpretation, and missing evidence in your answer.
 
 ```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals/p1_opaque"
-
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals/p1_opaque/evidence"
+curl -sS -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  "https://agent-api.degov.ai/v2/proposals/$PROPOSAL_ID"
 ```
 
-Evidence can contain provenance, source references, intelligence availability, quality flags, and warnings. It is not required for an ordinary proposal explanation. Always disclose stale, partial, backfilling, unavailable, or conflicting evidence.
+A research brief is an agent-produced answer grounded in retrieved evidence, not a public API endpoint. The contract does not provide an evidence bundle or executable calldata. Verify targets, permissions, transfers, timelocks, and execution transactions through official governance sources and explorers.
+
+Cite the relevant source URLs, explain the requested time range, and identify missing or stale information. `dataAsOf` is record provenance; a successful request does not guarantee complete or current coverage. For a security question, apply [DAO Governance Security](../../agent-skills/dao-governance-security.md) after collecting the available evidence.

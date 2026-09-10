@@ -2,7 +2,7 @@
 description: "DeGov.AI provides governance infrastructure, intelligence, APIs, and agent skills for DAO participation, research, and security."
 ---
 
-[DeGov.AI](https://degov.ai) builds the infrastructure and intelligence layer for DAO governance. DeGov Square gives communities an open-source interface for proposing, voting, delegating, and executing onchain decisions. DeGov Atlas organizes governance activity across ecosystems into browsable proposals, votes, voters, discussions, timelines, and signals. The Agent API exposes the same curated data to agents and integrations, while Agent Skills turn it into evidence-based governance research and proposal-security analysis with MetaMask Agent Wallet support for paid data access.
+[DeGov.AI](https://degov.ai) builds the infrastructure and intelligence layer for DAO governance. DeGov Square gives communities an open-source interface for proposing, voting, delegating, and executing onchain decisions. DeGov Atlas organizes governance activity across ecosystems into browsable proposals, votes, voters, discussions, timelines, and signals. The Agent API exposes a focused public subset of that data to agents and integrations, while Agent Skills turn it into evidence-based governance research and proposal-security analysis with MetaMask Agent Wallet support for paid data access.
 
 Together, these products serve both sides of governance: communities operating their own decision-making process, and people or agents trying to understand what is happening across many DAOs. DeGov emphasizes open-source infrastructure, verifiable sources, transparent data limitations, and safer participation rather than treating AI-generated output as a substitute for governance evidence.
 
@@ -18,7 +18,7 @@ Together, these products serve both sides of governance: communities operating t
 
 ### Agent API
 
-The DeGov Agent API is a machine-readable interface over the same governance data that powers Atlas. It gives agents and partners precise, verifiable answers about DAO proposals, votes, voters, forum topics, events, and curated signals. See the [Agent API documentation](agent-api/index.md).
+The DeGov Agent API is a machine-readable interface over the same governance data that powers Atlas. It gives agents and partners precise, verifiable answers about DAOs, proposals, votes, participants, voters, and governance forum topics. See the [Agent API documentation](agent-api/index.md).
 
 ### Agent Skills
 
@@ -26,7 +26,7 @@ The DeGov Agent API is a machine-readable interface over the same governance dat
 
 !!! info "Content ownership"
 
-    Canonical owner: DeGov Docs. Editorial review: 2026-08-04. Primary sources: [DeGov official site](https://degov.ai), [DeGov Square](https://square.degov.ai), [OpenZeppelin Governor documentation](https://docs.openzeppelin.com/contracts/5.x/governance), and the [open-source degov repository](https://github.com/ringecosystem/degov). The review date describes this explanatory page, not a deploy or build timestamp.
+    Canonical owner: DeGov Docs. Editorial review: 2026-09-10. Primary sources: [DeGov official site](https://degov.ai), [DeGov Square](https://square.degov.ai), [OpenZeppelin Governor documentation](https://docs.openzeppelin.com/contracts/5.x/governance), and the [open-source degov repository](https://github.com/ringecosystem/degov). The review date describes this explanatory page, not a deploy or build timestamp.
 
 ## Our Vision
 

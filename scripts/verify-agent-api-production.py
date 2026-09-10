@@ -1,71 +1,101 @@
 #!/usr/bin/env python3
-"""Explicit production smoke test; do not run on every ordinary PR build."""
+"""Explicit read-only production contract smoke; no credentials, signing, or settlement."""
 
 from __future__ import annotations
 
+import base64
+import importlib.util
 import json
+from pathlib import Path
 import time
 from urllib.error import HTTPError, URLError
+from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 BASE = "https://agent-api.degov.ai"
+module_spec = importlib.util.spec_from_file_location("docs_contract", Path(__file__).with_name("verify-agent-api-docs.py"))
+contract = importlib.util.module_from_spec(module_spec)
+module_spec.loader.exec_module(contract)
 
 
-def get(path: str) -> tuple[int, dict[str, str], bytes]:
-    request = Request(BASE + path, headers={"User-Agent": "degov-docs-production-smoke"})
+def request(path: str, method: str = "GET", body: dict | None = None) -> tuple[int, dict, dict]:
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; DeGovDocsVerification/1.0)"}
+    data = None
+    if body is not None:
+        headers["Content-Type"] = "application/json"
+        data = json.dumps(body).encode()
+    req = Request(BASE + path, data=data, headers=headers, method=method)
     for attempt in range(2):
         try:
-            with urlopen(request, timeout=30) as response:
-                return response.status, dict(response.headers.items()), response.read()
+            response = urlopen(req, timeout=30)
         except HTTPError as error:
-            return error.code, dict(error.headers.items()), error.read()
+            response = error
         except URLError:
-            if attempt == 1:
+            if attempt:
                 raise
             time.sleep(1)
+            continue
+        with response:
+            return response.status, {k.lower(): v for k, v in response.headers.items()}, json.load(response)
     raise AssertionError("unreachable")
 
 
+def require_error(path: str, status: int, code: str, **kwargs: object) -> None:
+    actual, _, body = request(path, **kwargs)
+    assert actual == status, (path, actual, status)
+    assert body["error"]["code"] == code, (path, body)
+    assert body["requestId"], path
+
+
+def require_offer(path: str, **kwargs: object) -> None:
+    status, headers, _ = request(path, **kwargs)
+    assert status == 402, (path, status)
+    offer = json.loads(base64.b64decode(headers["payment-required"]))
+    assert offer["x402Version"] == 2 and offer["accepts"], path
+    if "resource" in offer:
+        assert offer["resource"]["url"].startswith(BASE + path.split("?")[0]), offer["resource"]
+    for accepted in offer["accepts"]:
+        assert {"scheme", "network", "amount", "asset", "payTo"} <= accepted.keys(), accepted
+        assert accepted["scheme"] == "exact" and int(accepted["amount"]) > 0, accepted
+    assert any(a["network"] == "eip155:8453" for a in offer["accepts"]), path
+    assert "payment-response" not in headers, "An unsigned request must not settle a payment"
+
+
 def main() -> None:
-    for path in ("/health", "/v2/meta/pricing", "/v2/meta/data-status", "/v2/daos?limit=1"):
-        status, _, body = get(path)
-        assert status == 200, (path, status)
-        json.loads(body)
+    status, _, spec = request("/openapi.json")
+    assert status == 200 and spec["openapi"].startswith("3."), status
+    operations = {(method.upper(), path) for path, item in spec["paths"].items()
+                  for method in item if method in {"get", "post", "put", "patch", "delete"}}
+    assert operations == contract.PUBLIC_OPERATIONS, operations
+    ids = [op["operationId"] for item in spec["paths"].values() for op in item.values()]
+    assert len(set(ids)) == 11, ids
+    status, _, alias = request("/openapi/agent-v2.json")
+    assert status == 200 and alias == spec, "OpenAPI alias differs"
+    for path, item in spec["paths"].items():
+        for op in item.values():
+            assert op["responses"]["200"]["content"]["application/json"]["schema"], path
+            if op.get("security"):
+                assert "x-payment-info" in op and "402" in op["responses"], path
 
-    minimum_operations = {"agent-v1": 10, "agent-v2": 18, "atlas": 17}
-    for name, minimum in minimum_operations.items():
-        status, _, body = get(f"/openapi/{name}.json")
-        assert status == 200, (name, status)
-        spec = json.loads(body)
-        operation_count = sum(
-            method.lower() in {"get", "post", "put", "patch", "delete"}
-            for path_item in spec.get("paths", {}).values()
-            for method in path_item
-        )
-        assert operation_count >= minimum, (name, operation_count, minimum)
+    status, _, listing = request("/v2/daos?limit=1")
+    assert status == 200 and set(listing) == {"data", "page"} and listing["data"], listing
+    assert isinstance(listing["data"], list) and isinstance(listing["page"]["hasMore"], bool)
+    dao_id = listing["data"][0]["daoId"]
+    status, _, detail = request("/v2/daos/" + quote(dao_id, safe=""))
+    assert status == 200 and set(detail) == {"data"} and detail["data"]["daoId"] == dao_id, detail
+    assert "availableData" in detail["data"] and "dataAsOf" in detail["data"], detail
+    if listing["page"]["hasMore"]:
+        status, _, following = request("/v2/daos?" + urlencode({"limit": 1, "cursor": listing["page"]["nextCursor"]}))
+        assert status == 200 and following["data"][0]["daoId"] != dao_id, following
 
-    status, headers, _ = get("/v2/proposals?limit=1")
-    normalized_headers = {key.lower(): value for key, value in headers.items()}
-    assert status == 402, status
-    assert "payment-required" in normalized_headers
-
-    preflight = Request(
-        BASE + "/v2/proposals?limit=1",
-        method="OPTIONS",
-        headers={
-            "User-Agent": "degov-docs-production-smoke",
-            "Origin": "https://docs.degov.ai",
-            "Access-Control-Request-Method": "GET",
-            "Access-Control-Request-Headers": "x-degov-api-token",
-        },
-    )
-    with urlopen(preflight, timeout=20) as response:
-        headers = {key.lower(): value for key, value in response.headers.items()}
-        assert response.status == 204
-        assert headers.get("access-control-allow-origin") == "https://docs.degov.ai"
-        assert "x-degov-api-token" in headers.get("access-control-allow-headers", "").lower()
-
-    print("Production Agent API smoke test passed.")
+    require_error("/v2/daos?limit=0", 400, "INVALID_ARGUMENT")
+    require_error("/v2/daos?unknown=true", 400, "INVALID_ARGUMENT")
+    require_error("/v2/proposals/resolve", 400, "INVALID_ARGUMENT", method="POST", body={"by": "url"})
+    require_offer("/v2/proposals?limit=1")
+    resolver = spec["paths"]["/v2/proposals/resolve"]["post"]["requestBody"]["content"]["application/json"]["schema"]
+    source_url = resolver["anyOf"][0]["properties"]["url"]["examples"][0]
+    require_offer("/v2/proposals/resolve", method="POST", body={"by": "url", "url": source_url})
+    print("Production contract verified: 11 operations, spec alias, free discovery/detail/pagination, validation, and unsigned GET/POST x402 offers. No payment was signed or settled.")
 
 
 if __name__ == "__main__":

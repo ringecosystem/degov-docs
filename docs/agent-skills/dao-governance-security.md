@@ -6,7 +6,7 @@ description: "DAO Governance Security skill — evidence-first assessment of exe
 
 Use this skill when the user asks whether a governance proposal is safe, malicious, unexpectedly permissive, or worth supporting from a security perspective.
 
-Repository: [dao-governance-security](https://github.com/ringecosystem/degov-agent-skills/tree/main/skills/dao-governance-security)
+Current skill version: **0.2.0**. Source: [dao-governance-security](https://github.com/ringecosystem/degov-agent-skills/tree/main/skills/dao-governance-security)
 
 ## What it evaluates
 
@@ -23,8 +23,10 @@ The skill prefers official governance interfaces, forums, DAO documentation, ver
 
 API routing, pricing, payment, and transport details remain inside the research capability. This keeps the security rubric stable when an endpoint or tier changes.
 
+The public API does not supply executable calldata, timelock details, or an evidence bundle. Retrieve these from official governance sources and explorers before making a security claim.
+
 When paid structured data is needed, the research skill uses MetaMask Agent Wallet for the x402 flow; the security skill itself remains focused on analysis rather than payment handling.
 
 ## Output
 
-The result includes an overall risk level, confidence, recommendation, bottom line, executable-action table, evidence-backed findings, uncertainties, and concrete user actions. Missing or undecoded executable payloads prevent a confident low-risk conclusion.
+The result includes an overall risk level, confidence, recommendation, conclusion, executable-action table, evidence-backed findings, uncertainties, and concrete user actions. Missing or undecoded executable payloads prevent a confident low-risk conclusion.

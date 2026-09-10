@@ -1,18 +1,34 @@
 ---
-description: "Resolve a governance proposal URL, title, or external ID to a DeGov proposal key."
+description: "Resolve an exact proposal URL or complete source identity using a POST JSON request."
 ---
 
 # Resolve an External Proposal
 
-**Tier:** standard.
+Use **`POST /v2/proposals/resolve`** when you have an exact proposal URL or its complete source identity but no public `proposalId`. The resolver returns one proposal item in `data`.
 
-Use resolve only when you have a URL, title, or external ID but no `proposalKey`. Supply exactly one identifier and add `daoId` or `provider` when it reduces ambiguity.
+## By canonical URL
 
 ```bash
-curl -H "x-degov-api-token: <token>" \
-  "https://agent-api.degov.ai/v2/proposals/resolve?url=https%3A%2F%2Fsnapshot.org%2F%23%2Fexample%2Fproposal%2F0xabc&daoId=example-dao"
+curl -sS -X POST \
+  -H 'Content-Type: application/json' \
+  -H "x-degov-api-token: $DEGOV_API_TOKEN" \
+  --data '{"by":"url","url":"https://snapshot.org/#/uniswapgovernance.eth/proposal/0x5ae3426216321df66a67eb677874b725f80e51888ad2da72b382b21669c554ee"}' \
+  'https://agent-api.degov.ai/v2/proposals/resolve'
 ```
 
-Read candidates from `data.candidates`. `match.type` describes how the candidate matched; it is not a probability. Select the candidate whose DAO, provider, title, and source URL agree with the user's input, then pass its opaque `proposalKey` to detail resources.
+## By complete source identity
 
-An empty candidate list means the proposal was not resolved. Try a more exact identifier or verify it through the official governance source.
+Send all four fields; use exact values from the provider or an API response:
+
+```json
+{
+  "by": "source_id",
+  "daoId": "uniswapgovernance-eth",
+  "provider": "snapshot",
+  "externalId": "0x5ae3426216321df66a67eb677874b725f80e51888ad2da72b382b21669c554ee"
+}
+```
+
+These forms are mutually exclusive and reject extra fields. A title is not a resolver input: search proposal titles with `GET /v2/proposals?query=...` and narrow by DAO when possible.
+
+Keep `data.proposalId` unchanged for proposal detail and vote requests. A `404 NOT_FOUND` means the exact source identity was not found; verify the official source instead of inventing an ID. For x402 payment, preserve the POST method and exact JSON body during the wallet-managed retry.

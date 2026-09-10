@@ -1,42 +1,32 @@
 ---
-description: "DeGov Agent API pricing tiers, live route prices, quotas, and rate-limit behavior."
+description: "Discover current per-operation DeGov API prices through OpenAPI and x402 offers, and handle rate limits safely."
 ---
 
 # Pricing & Rate Limits
 
-Every route is free, standard, or plus. Fetch the authoritative route table before estimating cost:
+## Discover current prices
+
+The public API has free, standard, and plus resources. Query the [OpenAPI specification](https://agent-api.degov.ai/openapi.json) for current advertised pricing; inspect the actual x402 challenge before authorizing payment.
 
 ```bash
-curl -s https://agent-api.degov.ai/v2/meta/pricing
+curl -sS 'https://agent-api.degov.ai/openapi.json' | \
+  jq '.paths["/v2/proposals"].get["x-payment-info"]'
 ```
 
-```json
-{
-  "data": {
-    "token": "USDC",
-    "network": "eip155:8453",
-    "routes": [
-      {
-        "routeId": "v2.proposals.list",
-        "method": "GET",
-        "path": "/v2/proposals",
-        "tier": "standard",
-        "paid": true,
-        "price": "0.005"
-      }
-    ]
-  }
-}
-```
+`x-payment-info.price` describes the advertised amount, currency, and pricing mode, while `protocols` names the payment protocol. For x402, `PAYMENT-REQUIRED` supplies the exact payment asset, atomic amount, network, and recipient for the requested resource. Do not substitute a cached documentation example for a live offer.
 
-At the time of this example, standard calls cost `0.005 USDC` and plus calls cost `0.01 USDC`. Prices in the live response override documentation examples.
-
-| Tier | Typical use |
+| Tier | Operations |
 | --- | --- |
-| free | Pricing, data status, DAO discovery and detail |
-| standard | Proposal and forum discovery, events, signals, proposal resolution |
-| plus | Proposal detail, votes, evidence, timelines, and voter research |
+| Free | DAO directory and DAO detail |
+| Standard | Proposal list, exact proposal resolver, and forum topic list |
+| Plus | Proposal detail, vote summary, vote rows, DAO participants, voter profile, and voter history |
 
-Partner plans may enforce short-window rate limits and monthly quotas. A 429 response can mean either rate limiting or quota exhaustion; use the response code and retry guidance. x402 access is priced per successful paid request rather than by a partner subscription quota.
+The API uses per-request USDC payments on Base. No subscription or partner key is required for the x402 path. Issued partner keys have separately agreed plans and scopes. Square managed-hosting prices do not apply to Agent API calls or Atlas partnerships.
 
-For efficient research, discover DAOs for free, use standard resources to narrow candidates, and call plus resources only for items that materially affect the answer.
+## Rate limits and quotas
+
+Paid access is subject to its applicable plan and route limit. A **429 `RATE_LIMITED`** response can indicate a short-window limit or a partner's monthly quota exhaustion. Inspect the message and retry timing, and honor `Retry-After`. Normal success responses do not currently promise remaining-quota headers.
+
+x402 access is charged per successfully settled request rather than from an included partner subscription quota. A 402 response is an offer, not proof of payment. Follow the wallet's recovery policy when a paid request times out; avoid blind signed retries.
+
+For efficient research, discover DAOs for free, use standard resources to narrow candidates, and fetch plus resources only when they materially improve the answer.

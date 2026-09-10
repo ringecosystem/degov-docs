@@ -1,39 +1,32 @@
 ---
-description: "DeGov Agent API timestamps and numbers — RFC 3339 UTC timestamps and exact decimal strings for voting power and quorum."
+description: "Interpret governance timestamps, proposal lifecycle and execution, decimal voting power, and nullable values."
 ---
 
 # Timestamps & Numbers
 
 ## Timestamps
 
-API timestamps are **RFC 3339 UTC** strings:
+Public timestamps are RFC 3339 date-time strings, or null where the provider has no reliable value.
 
-```
-2026-08-05T07:30:00.000Z
-```
+| Field | Meaning |
+| --- | --- |
+| `createdAt` | Source proposal or forum-topic creation |
+| `votingStartsAt`, `votingEndsAt` | Proposal voting window |
+| `sourceUpdatedAt` | Provider-reported proposal update |
+| `lastPostedAt` | Forum activity time |
+| `votedAt` | Source vote time |
+| `dataAsOf` | Latest source observation included in this published record |
 
-- `generatedAt` — when this response was produced.
-- `dataAsOf` — how fresh the underlying data is.
-- Resource timestamps (`createdAt`, `startAt`, `endAt`, `votedAt`, ...) — source event times.
-- Time-window query parameters (`from`, `to`) use the same format and define a **half-open interval** `[from, to)`: `from` is inclusive, `to` is exclusive.
+Do not substitute voting deadlines or source-observation times for proposal creation. Preserve the time zone when explaining a deadline. `From` filters include their lower bound; `To` filters exclude their upper bound.
+
+## Proposal state
+
+`status` describes the voting lifecycle: `pending`, `active`, `closed`, or null. `outcome` describes the decision: `passed`, `failed`, `canceled`, `no_quorum`, or `unknown`. `executionStatus` independently describes execution: `not_started`, `queued`, `executed`, `expired`, `not_applicable`, or `unknown`.
+
+A passed proposal is not necessarily executed. An active proposal normally has an unknown outcome. Verify unknown execution through `source.url` instead of inferring a transaction from the voting result.
 
 ## Numbers
 
-Values that represent money, voting power, or other exact quantities are returned as **decimal strings**, not JSON numbers:
+Counts such as `voteCount` and `votedProposalCount` are JSON integers. `votingPower`, `knownVotingPower`, quorum requirements, and quorum progress are decimal strings; use decimal arithmetic rather than binary floating point. Null means unavailable, not zero.
 
-```json
-{
-  "totals": { "votingPower": "1234567.890123456789012345" },
-  "quorum": { "progress": "0.7342", "reached": true }
-}
-```
-
-- Strings preserve full precision (up to 78-digit decimals where the chain provides it).
-- JSON numbers would lose precision on large values — never parse them as `Number` for arithmetic.
-- Governance aggregates such as voting power, vote-summary totals, timeline values, and voter counts are decimal strings. Ordinary metadata such as `rank` and global data-status counters can be JSON numbers.
-
-## Rules for callers
-
-1. Compare timestamps as ISO strings or parse to epoch millis explicitly — don't rely on locale parsing.
-2. Treat every numeric-looking string as a decimal; format for display, don't round for logic.
-3. Quorum comparisons should use `quorum.reached` / `quorum.progress` from the API, not re-derive them client-side.
+Vote summaries include votes with missing power in the vote count while excluding their unknown power from the known-power total. Ballot rules define the units, so do not compare raw power across unrelated DAOs or strategies. Governor quorum follows the provider's counting rules and does not automatically include Against votes.

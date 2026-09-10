@@ -103,7 +103,7 @@ def verify_content_provenance(site_dir):
     text = visible_text(index_path)
     for phrase in [
         "Canonical owner: DeGov Docs.",
-        "Editorial review: 2026-08-04.",
+        "Editorial review: 2026-09-10.",
         "Primary sources:",
         "The review date describes this explanatory page, not a deploy or build timestamp.",
     ]:

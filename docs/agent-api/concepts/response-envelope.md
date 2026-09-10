@@ -1,27 +1,32 @@
 ---
-description: "DeGov Agent API response envelopes for resources, lists, pagination, and readiness metadata."
+description: "Read DeGov API detail responses and top-level cursor-paginated collections."
 ---
 
 # Response Envelope
 
-Single-resource responses place the resource directly in `data`:
-
-```json
-{ "data": { "daoId": "example-dao", "name": "Example DAO" }, "meta": { "requestId": "req-example" } }
-```
-
-List responses place rows in `data.items`:
+Detail responses contain one object in `data`. This is a shortened illustrative excerpt:
 
 ```json
 {
-  "data": { "items": [] },
-  "meta": {
-    "requestId": "req-example",
-    "generatedAt": "2026-08-12T06:42:29.362Z",
-    "readiness": { "status": "ready", "currentRevision": "revision" },
-    "page": { "limit": 25, "hasMore": false }
+  "data": {
+    "daoId": "uniswapgovernance-eth",
+    "name": "Uniswap"
   }
 }
 ```
 
-`meta.page` appears on paginated lists. `meta.readiness` appears when publication state is relevant; do not assume every response contains it. `generatedAt` describes response creation, while `dataAsOf` describes underlying data freshness.
+Collections contain a `data` array and a top-level `page`. An empty result is:
+
+```json
+{
+  "data": [],
+  "page": {
+    "hasMore": false,
+    "nextCursor": null
+  }
+}
+```
+
+When `hasMore` is true, pass `nextCursor` unchanged to the same route, filters, and sort. See [pagination](pagination.md).
+
+The API does not wrap records in `items` or expose operational metadata. Resource records can contain `dataAsOf`; read it as source-observation provenance rather than a global freshness guarantee. See [data availability](readiness-and-coverage.md).
