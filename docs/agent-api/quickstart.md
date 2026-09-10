@@ -41,6 +41,8 @@ curl -sS -i 'https://agent-api.degov.ai/v2/proposals?limit=1'
 
 Without payment credentials or a partner token, this returns **402 Payment Required** and a `PAYMENT-REQUIRED` header. This unsigned request does not sign or settle a payment.
 
+In v0.9.1, the challenge also describes the resource and includes Bazaar input/output schemas. Anonymous paid-route probes receive 402 before input validation, so a challenge alone does not prove that your parameters or identifiers are valid. Construct the actual request from OpenAPI.
+
 To retrieve paid data, use an [issued partner token or an x402-capable wallet](authentication.md). [DeGov Agent Skills](../agent-skills/index.md) delegate payment authorization, spending controls, signing, and settlement verification to MetaMask Agent Wallet.
 
 ## Next steps

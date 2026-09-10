@@ -42,6 +42,12 @@ Paid resources also accept per-request USDC payment on Base (`eip155:8453`):
 
 Current advertised prices are in the operation's `x-payment-info` in [OpenAPI](https://agent-api.degov.ai/openapi.json). The actual challenge specifies the asset, amount, network, and recipient.
 
+## Anonymous discovery in v0.9.1
+
+All nine paid operations advertise an x402 v2 challenge before parsing or validating anonymous requests. This includes path placeholders and a POST resolver request without a body. The `PAYMENT-REQUIRED` header contains `resource` metadata (URL, description, and MIME type), payment offers in `accepts`, and `extensions.bazaar` input/output schemas derived from the route contracts.
+
+Receiving 402 establishes that the route advertises payment; it does not validate the supplied input or establish that a requested record exists. Use OpenAPI to construct a valid request before authorizing payment. Requests carrying payment or partner credentials still pass strict input validation before access checks. A credential header by itself grants no access. Free DAO routes retain their normal validation behavior.
+
 ## Product boundaries
 
 The Agent API does not require an OAuth login for these public or paid access paths. Square's GraphQL and MCP services use `api.degov.ai` and have separate authentication; they are not the Agent API base URL. Use the current [Agent API reference](reference/index.md) for programmatic governance research.

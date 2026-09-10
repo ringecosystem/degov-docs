@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Explicit read-only production contract smoke; no credentials, signing, or settlement."""
+"""Read-only v0.9.1 production smoke; no credentials, signing, or settlement."""
 
 from __future__ import annotations
 
@@ -49,11 +49,19 @@ def require_error(path: str, status: int, code: str, **kwargs: object) -> None:
 
 def require_offer(path: str, **kwargs: object) -> None:
     status, headers, _ = request(path, **kwargs)
-    assert status == 402, (path, status)
+    assert status == 402, f"{path}: expected anonymous v0.9.1 discovery status 402, received {status}"
     offer = json.loads(base64.b64decode(headers["payment-required"]))
     assert offer["x402Version"] == 2 and offer["accepts"], path
-    if "resource" in offer:
-        assert offer["resource"]["url"].startswith(BASE + path.split("?")[0]), offer["resource"]
+    assert "resource" in offer, f"{path}: missing v0.9.1 resource metadata; check deployment version"
+    resource = offer["resource"]
+    assert resource["url"] == BASE + path, resource
+    assert resource["description"] and resource["mimeType"] == "application/json", resource
+    bazaar = offer.get("extensions", {}).get("bazaar")
+    assert bazaar, f"{path}: missing v0.9.1 Bazaar discovery schema"
+    assert bazaar["info"]["input"]["type"] == "http", bazaar
+    assert bazaar["info"]["input"]["method"] == kwargs.get("method", "GET"), bazaar
+    assert bazaar["info"]["output"]["type"] == "json", bazaar
+    assert "data" in bazaar["schema"]["properties"]["output"]["properties"]["example"]["properties"], path
     for accepted in offer["accepts"]:
         assert {"scheme", "network", "amount", "asset", "payTo"} <= accepted.keys(), accepted
         assert accepted["scheme"] == "exact" and int(accepted["amount"]) > 0, accepted
@@ -90,12 +98,17 @@ def main() -> None:
 
     require_error("/v2/daos?limit=0", 400, "INVALID_ARGUMENT")
     require_error("/v2/daos?unknown=true", 400, "INVALID_ARGUMENT")
-    require_error("/v2/proposals/resolve", 400, "INVALID_ARGUMENT", method="POST", body={"by": "url"})
+    print("Public operation inventory, free DAO access, pagination, and free-route validation passed.", flush=True)
+    paid = [(method, path) for method, path in operations if spec["paths"][path][method.lower()].get("security")]
+    assert len(paid) == 9, paid
+    for method, path in sorted(paid):
+        require_offer(quote(path, safe="/"), method=method)
     require_offer("/v2/proposals?limit=1")
+    require_offer("/v2/proposals/resolve", method="POST", body={"by": "url"})
     resolver = spec["paths"]["/v2/proposals/resolve"]["post"]["requestBody"]["content"]["application/json"]["schema"]
     source_url = resolver["anyOf"][0]["properties"]["url"]["examples"][0]
     require_offer("/v2/proposals/resolve", method="POST", body={"by": "url", "url": source_url})
-    print("Production contract verified: 11 operations, spec alias, free discovery/detail/pagination, validation, and unsigned GET/POST x402 offers. No payment was signed or settled.")
+    print("Production v0.9.1 contract verified: 11 operations, spec alias, free discovery/detail/pagination, validation, and all nine anonymous x402 discovery challenges with resource and Bazaar schemas. No payment was signed or settled.")
 
 
 if __name__ == "__main__":

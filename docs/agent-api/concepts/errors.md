@@ -33,6 +33,6 @@ Documented non-payment errors use `error` and `requestId`:
 | 500 `INTERNAL_ERROR` | Unexpected service failure | Keep the request ID and retry later |
 | 503 `TEMPORARILY_UNAVAILABLE` | The resource cannot currently be served | Retry later or use an official source |
 
-A 402 follows the x402 protocol envelope, not the non-payment error schema. An invalid or insufficient partner token can also return that challenge. Do not invent payment credentials or blindly repeat signed requests.
+A 402 follows the x402 protocol envelope, not the non-payment error schema. In v0.9.1, anonymous paid-route requests receive this challenge before body parsing, validation, or data-availability checks. An invalid placeholder, missing resolver body, or malformed query can therefore return 402 instead of a validation error. Requests carrying credentials are still validated before access checks; free routes retain normal validation. An invalid or insufficient partner token can also return a challenge after valid input. Do not invent payment credentials or blindly repeat signed requests.
 
 Unknown paths can return the framework's JSON 404 shape (`message`, `error`, `statusCode`) instead. Recover using the current [OpenAPI contract](https://agent-api.degov.ai/openapi.json); avoid guessing undocumented endpoints.

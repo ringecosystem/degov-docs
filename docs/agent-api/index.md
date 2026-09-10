@@ -35,4 +35,6 @@ The public API is focused on governance resources. Operational status, private f
 
 [OpenAPI](https://agent-api.degov.ai/openapi.json) is the authoritative specification for methods, paths, typed inputs, responses, errors, and payment metadata. [The V2 alias](https://agent-api.degov.ai/openapi/agent-v2.json) serves the same specification. Each operation has a unique `operationId` for generated clients and agent tools.
 
-These docs describe the public contract released in [Agent API v0.9.0](https://github.com/ringecosystem/degov-agent-api/releases/tag/v0.9.0), checked against the live specification on 10 September 2026. API version `v2` and software release `v0.9.0` identify different things. Follow the live specification when a later release changes the contract.
+These docs follow [Agent API v0.9.1](https://github.com/ringecosystem/degov-agent-api/releases/tag/v0.9.1), released on 10 September 2026. API namespace `v2` and software release `v0.9.1` identify different things. This release keeps the 11 operations and successful response contracts, and improves anonymous x402 discovery; see [authentication](authentication.md).
+
+A release tag does not itself upgrade every deployment. The live OpenAPI and actual response headers describe the deployment you are calling. Follow them when inspecting capabilities and offers.
